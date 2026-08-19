@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "metadata": {
+        "namespace": "assistant",
+        "name": "assistant-mcp-7f9b6c-x2n4",
+        "creationTimestamp": "2026-08-10T09:00:00Z"
+      },
+      "status": {
+        "phase": "Running",
+        "containerStatuses": [
+          {
+            "name": "mcp",
+            "restartCount": 7,
+            "state": { "waiting": { "reason": "CrashLoopBackOff", "message": "back-off 5m0s restarting failed container" } },
+            "lastState": { "terminated": { "exitCode": 1, "finishedAt": "2026-08-16T14:00:00Z" } }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[
+  { "url": "https://ok.example/", "status": 200, "latencyMs": 320, "tlsDaysLeft": 60 },
+  { "url": "https://auth.example/", "status": 401, "latencyMs": 150, "tlsDaysLeft": 60 },
+  { "url": "https://mismatch.example/", "status": 503, "latencyMs": 1200, "tlsDaysLeft": 60 },
+  { "url": "https://slow.example/", "status": 200, "latencyMs": 3400, "tlsDaysLeft": 60 },
+  { "url": "https://tls-warn.example/", "status": 200, "latencyMs": 210, "tlsDaysLeft": 12.4 },
+  { "url": "https://tls-crit.example/", "status": 200, "latencyMs": 210, "tlsDaysLeft": 2.1 },
+  { "url": "https://expired.example/", "status": 200, "latencyMs": 210, "tlsDaysLeft": -5.5 },
+  { "url": "https://lan.example/", "error": "ETIMEDOUT" },
+  { "url": "https://down.example/", "error": "ENOTFOUND" },
+  { "url": "https://marker.example/", "status": 200, "latencyMs": 400, "containsFound": false, "tlsDaysLeft": 60 }
+]

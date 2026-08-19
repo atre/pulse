@@ -1,0 +1,2461 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"name\":\"storefront-abandoned-carts\",\"namespace\":\"commerce\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":120,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"command\":[\"sh\",\"-c\",\"curl -sf -H \\\"Authorization: Bearer $CRON_SECRET\\\" \\\\\\n  http://storefront.commerce.svc.cluster.local/api/cron/abandoned-carts\\n\"],\"env\":[{\"name\":\"CRON_SECRET\",\"valueFrom\":{\"secretKeyRef\":{\"key\":\"CRON_SECRET\",\"name\":\"storefront-secret\"}}}],\"image\":\"curlimages/curl:8.5.0\",\"name\":\"cron\",\"resources\":{\"limits\":{\"cpu\":\"50m\",\"memory\":\"64Mi\"},\"requests\":{\"cpu\":\"10m\",\"memory\":\"32Mi\"}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"readOnlyRootFilesystem\":true}}],\"restartPolicy\":\"Never\",\"securityContext\":{\"runAsNonRoot\":true,\"runAsUser\":65534,\"seccompProfile\":{\"type\":\"RuntimeDefault\"}}}}}},\"schedule\":\"*/15 * * * *\",\"successfulJobsHistoryLimit\":3}}\n"
+        },
+        "creationTimestamp": "2026-07-05T23:46:56Z",
+        "generation": 1,
+        "name": "storefront-abandoned-carts",
+        "namespace": "commerce",
+        "resourceVersion": "3211616",
+        "uid": "077626ba-0696-4155-9984-b85c85c2ea03"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 120,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "command": [
+                      "sh",
+                      "-c",
+                      "curl -sf -H \"Authorization: Bearer $CRON_SECRET\" \\\n  http://storefront.commerce.svc.cluster.local/api/cron/abandoned-carts\n"
+                    ],
+                    "env": [
+                      {
+                        "name": "CRON_SECRET",
+                        "valueFrom": {
+                          "secretKeyRef": {
+                            "key": "CRON_SECRET",
+                            "name": "storefront-secret"
+                          }
+                        }
+                      }
+                    ],
+                    "image": "curlimages/curl:8.5.0",
+                    "imagePullPolicy": "IfNotPresent",
+                    "name": "cron",
+                    "resources": {
+                      "limits": {
+                        "cpu": "50m",
+                        "memory": "64Mi"
+                      },
+                      "requests": {
+                        "cpu": "10m",
+                        "memory": "32Mi"
+                      }
+                    },
+                    "securityContext": {
+                      "allowPrivilegeEscalation": false,
+                      "capabilities": {
+                        "drop": [
+                          "ALL"
+                        ]
+                      },
+                      "readOnlyRootFilesystem": true
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File"
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                  "runAsNonRoot": true,
+                  "runAsUser": 65534,
+                  "seccompProfile": {
+                    "type": "RuntimeDefault"
+                  }
+                },
+                "terminationGracePeriodSeconds": 30
+              }
+            }
+          }
+        },
+        "schedule": "*/15 * * * *",
+        "successfulJobsHistoryLimit": 3,
+        "suspend": false
+      },
+      "status": {
+        "lastScheduleTime": "2026-08-16T15:45:00Z",
+        "lastSuccessfulTime": "2026-08-16T15:45:24Z"
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"name\":\"storefront-cleanup-review-images\",\"namespace\":\"commerce\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":300,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"command\":[\"sh\",\"-c\",\"curl -sf -H \\\"Authorization: Bearer $CRON_SECRET\\\" \\\\\\n  http://storefront.commerce.svc.cluster.local/api/cron/cleanup-review-images\\n\"],\"env\":[{\"name\":\"CRON_SECRET\",\"valueFrom\":{\"secretKeyRef\":{\"key\":\"CRON_SECRET\",\"name\":\"storefront-secret\"}}}],\"image\":\"curlimages/curl:8.5.0\",\"name\":\"cron\",\"resources\":{\"limits\":{\"cpu\":\"50m\",\"memory\":\"64Mi\"},\"requests\":{\"cpu\":\"10m\",\"memory\":\"32Mi\"}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"readOnlyRootFilesystem\":true}}],\"restartPolicy\":\"Never\",\"securityContext\":{\"runAsNonRoot\":true,\"runAsUser\":65534,\"seccompProfile\":{\"type\":\"RuntimeDefault\"}}}}}},\"schedule\":\"23 4 * * *\",\"successfulJobsHistoryLimit\":3}}\n"
+        },
+        "creationTimestamp": "2026-07-05T23:46:56Z",
+        "generation": 1,
+        "name": "storefront-cleanup-review-images",
+        "namespace": "commerce",
+        "resourceVersion": "3162121",
+        "uid": "93ff962b-9576-40e3-b3ed-df1a10136c6a"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 300,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "command": [
+                      "sh",
+                      "-c",
+                      "curl -sf -H \"Authorization: Bearer $CRON_SECRET\" \\\n  http://storefront.commerce.svc.cluster.local/api/cron/cleanup-review-images\n"
+                    ],
+                    "env": [
+                      {
+                        "name": "CRON_SECRET",
+                        "valueFrom": {
+                          "secretKeyRef": {
+                            "key": "CRON_SECRET",
+                            "name": "storefront-secret"
+                          }
+                        }
+                      }
+                    ],
+                    "image": "curlimages/curl:8.5.0",
+                    "imagePullPolicy": "IfNotPresent",
+                    "name": "cron",
+                    "resources": {
+                      "limits": {
+                        "cpu": "50m",
+                        "memory": "64Mi"
+                      },
+                      "requests": {
+                        "cpu": "10m",
+                        "memory": "32Mi"
+                      }
+                    },
+                    "securityContext": {
+                      "allowPrivilegeEscalation": false,
+                      "capabilities": {
+                        "drop": [
+                          "ALL"
+                        ]
+                      },
+                      "readOnlyRootFilesystem": true
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File"
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                  "runAsNonRoot": true,
+                  "runAsUser": 65534,
+                  "seccompProfile": {
+                    "type": "RuntimeDefault"
+                  }
+                },
+                "terminationGracePeriodSeconds": 30
+              }
+            }
+          }
+        },
+        "schedule": "23 4 * * *",
+        "successfulJobsHistoryLimit": 3,
+        "suspend": false
+      },
+      "status": {
+        "lastScheduleTime": "2026-08-16T02:23:00Z",
+        "lastSuccessfulTime": "2026-08-16T02:23:18Z"
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"name\":\"storefront-sync-tracking\",\"namespace\":\"commerce\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":300,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"command\":[\"sh\",\"-c\",\"curl -sf -H \\\"Authorization: Bearer $CRON_SECRET\\\" \\\\\\n  http://storefront.commerce.svc.cluster.local/api/cron/sync-tracking\\n\"],\"env\":[{\"name\":\"CRON_SECRET\",\"valueFrom\":{\"secretKeyRef\":{\"key\":\"CRON_SECRET\",\"name\":\"storefront-secret\"}}}],\"image\":\"curlimages/curl:8.5.0\",\"name\":\"cron\",\"resources\":{\"limits\":{\"cpu\":\"50m\",\"memory\":\"64Mi\"},\"requests\":{\"cpu\":\"10m\",\"memory\":\"32Mi\"}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"readOnlyRootFilesystem\":true}}],\"restartPolicy\":\"Never\",\"securityContext\":{\"runAsNonRoot\":true,\"runAsUser\":65534,\"seccompProfile\":{\"type\":\"RuntimeDefault\"}}}}}},\"schedule\":\"7 */2 * * *\",\"successfulJobsHistoryLimit\":3}}\n"
+        },
+        "creationTimestamp": "2026-07-05T23:46:56Z",
+        "generation": 1,
+        "name": "storefront-sync-tracking",
+        "namespace": "commerce",
+        "resourceVersion": "3206703",
+        "uid": "bf63a13d-e501-45d0-a878-272c1a7c8468"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 300,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "command": [
+                      "sh",
+                      "-c",
+                      "curl -sf -H \"Authorization: Bearer $CRON_SECRET\" \\\n  http://storefront.commerce.svc.cluster.local/api/cron/sync-tracking\n"
+                    ],
+                    "env": [
+                      {
+                        "name": "CRON_SECRET",
+                        "valueFrom": {
+                          "secretKeyRef": {
+                            "key": "CRON_SECRET",
+                            "name": "storefront-secret"
+                          }
+                        }
+                      }
+                    ],
+                    "image": "curlimages/curl:8.5.0",
+                    "imagePullPolicy": "IfNotPresent",
+                    "name": "cron",
+                    "resources": {
+                      "limits": {
+                        "cpu": "50m",
+                        "memory": "64Mi"
+                      },
+                      "requests": {
+                        "cpu": "10m",
+                        "memory": "32Mi"
+                      }
+                    },
+                    "securityContext": {
+                      "allowPrivilegeEscalation": false,
+                      "capabilities": {
+                        "drop": [
+                          "ALL"
+                        ]
+                      },
+                      "readOnlyRootFilesystem": true
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File"
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                  "runAsNonRoot": true,
+                  "runAsUser": 65534,
+                  "seccompProfile": {
+                    "type": "RuntimeDefault"
+                  }
+                },
+                "terminationGracePeriodSeconds": 30
+              }
+            }
+          }
+        },
+        "schedule": "7 */2 * * *",
+        "successfulJobsHistoryLimit": 3,
+        "suspend": false
+      },
+      "status": {
+        "lastScheduleTime": "2026-08-16T14:07:00Z",
+        "lastSuccessfulTime": "2026-08-16T14:07:06Z"
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"assistant-digest\"},\"name\":\"assistant-digest\",\"namespace\":\"assistant\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":1200,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"command\":[\"python\",\"main.py\",\"digest\",\"--print\"],\"envFrom\":[{\"secretRef\":{\"name\":\"assistant-secrets\"}}],\"image\":\"192.0.2.202:30500/assistant-sync:gd158d0bb2f48\",\"imagePullPolicy\":\"Always\",\"name\":\"digest\",\"resources\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"256Mi\"},\"requests\":{\"cpu\":\"50m\",\"memory\":\"128Mi\"}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]}}}],\"restartPolicy\":\"OnFailure\",\"securityContext\":{\"runAsNonRoot\":true,\"runAsUser\":1000,\"seccompProfile\":{\"type\":\"RuntimeDefault\"}}}}}},\"schedule\":\"45 6 * * *\",\"successfulJobsHistoryLimit\":1,\"suspend\":false,\"timeZone\":\"Europe/Berlin\"}}\n"
+        },
+        "creationTimestamp": "2026-08-15T21:00:28Z",
+        "generation": 2,
+        "labels": {
+          "app": "assistant-digest"
+        },
+        "name": "assistant-digest",
+        "namespace": "assistant",
+        "resourceVersion": "3171383",
+        "uid": "5a6cbafb-36ff-4bbd-8940-45b4d94d8700"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 1200,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "command": [
+                      "python",
+                      "main.py",
+                      "digest",
+                      "--print"
+                    ],
+                    "envFrom": [
+                      {
+                        "secretRef": {
+                          "name": "assistant-secrets"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/assistant-sync:gd158d0bb2f48",
+                    "imagePullPolicy": "Always",
+                    "name": "digest",
+                    "resources": {
+                      "limits": {
+                        "cpu": "500m",
+                        "memory": "256Mi"
+                      },
+                      "requests": {
+                        "cpu": "50m",
+                        "memory": "128Mi"
+                      }
+                    },
+                    "securityContext": {
+                      "allowPrivilegeEscalation": false,
+                      "capabilities": {
+                        "drop": [
+                          "ALL"
+                        ]
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File"
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "OnFailure",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                  "runAsNonRoot": true,
+                  "runAsUser": 1000,
+                  "seccompProfile": {
+                    "type": "RuntimeDefault"
+                  }
+                },
+                "terminationGracePeriodSeconds": 30
+              }
+            }
+          }
+        },
+        "schedule": "45 6 * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": false,
+        "timeZone": "Europe/Berlin"
+      },
+      "status": {
+        "lastScheduleTime": "2026-08-16T04:45:00Z",
+        "lastSuccessfulTime": "2026-08-16T04:47:39Z"
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"assistant-github-trending\"},\"name\":\"assistant-github-trending\",\"namespace\":\"assistant\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":900,\"backoffLimit\":2,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"command\":[\"python\",\"main.py\",\"github-trending\"],\"envFrom\":[{\"secretRef\":{\"name\":\"assistant-secrets\"}}],\"image\":\"192.0.2.202:30500/assistant-sync:gd158d0bb2f48\",\"imagePullPolicy\":\"Always\",\"name\":\"sync\",\"resources\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"256Mi\"},\"requests\":{\"cpu\":\"50m\",\"memory\":\"128Mi\"}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]}}}],\"restartPolicy\":\"OnFailure\",\"securityContext\":{\"runAsNonRoot\":true,\"runAsUser\":1000,\"seccompProfile\":{\"type\":\"RuntimeDefault\"}}}}}},\"schedule\":\"14 6 * * *\",\"successfulJobsHistoryLimit\":1,\"suspend\":false,\"timeZone\":\"Europe/Berlin\"}}\n"
+        },
+        "creationTimestamp": "2026-08-11T01:44:25Z",
+        "generation": 17,
+        "labels": {
+          "app": "assistant-github-trending"
+        },
+        "name": "assistant-github-trending",
+        "namespace": "assistant",
+        "resourceVersion": "3169246",
+        "uid": "9f794257-4698-4294-8252-8579bef32f85"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 900,
+            "backoffLimit": 2,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "command": [
+                      "python",
+                      "main.py",
+                      "github-trending"
+                    ],
+                    "envFrom": [
+                      {
+                        "secretRef": {
+                          "name": "assistant-secrets"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/assistant-sync:gd158d0bb2f48",
+                    "imagePullPolicy": "Always",
+                    "name": "sync",
+                    "resources": {
+                      "limits": {
+                        "cpu": "500m",
+                        "memory": "256Mi"
+                      },
+                      "requests": {
+                        "cpu": "50m",
+                        "memory": "128Mi"
+                      }
+                    },
+                    "securityContext": {
+                      "allowPrivilegeEscalation": false,
+                      "capabilities": {
+                        "drop": [
+                          "ALL"
+                        ]
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File"
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "OnFailure",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                  "runAsNonRoot": true,
+                  "runAsUser": 1000,
+                  "seccompProfile": {
+                    "type": "RuntimeDefault"
+                  }
+                },
+                "terminationGracePeriodSeconds": 30
+              }
+            }
+          }
+        },
+        "schedule": "14 6 * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": false,
+        "timeZone": "Europe/Berlin"
+      },
+      "status": {
+        "lastScheduleTime": "2026-08-16T04:14:00Z",
+        "lastSuccessfulTime": "2026-08-16T04:14:33Z"
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"assistant-news-sync\"},\"name\":\"assistant-news-sync\",\"namespace\":\"assistant\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":1800,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"command\":[\"python\",\"main.py\",\"news\",\"--since\",\"35\"],\"envFrom\":[{\"secretRef\":{\"name\":\"assistant-secrets\"}}],\"image\":\"192.0.2.202:30500/assistant-sync:gd158d0bb2f48\",\"imagePullPolicy\":\"Always\",\"name\":\"sync\",\"resources\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"256Mi\"},\"requests\":{\"cpu\":\"50m\",\"memory\":\"128Mi\"}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]}}}],\"restartPolicy\":\"OnFailure\",\"securityContext\":{\"runAsNonRoot\":true,\"runAsUser\":1000,\"seccompProfile\":{\"type\":\"RuntimeDefault\"}}}}}},\"schedule\":\"*/30 * * * *\",\"successfulJobsHistoryLimit\":1,\"suspend\":false}}\n"
+        },
+        "creationTimestamp": "2026-08-11T00:36:41Z",
+        "generation": 17,
+        "labels": {
+          "app": "assistant-news-sync"
+        },
+        "name": "assistant-news-sync",
+        "namespace": "assistant",
+        "resourceVersion": "3210927",
+        "uid": "656dec7a-7b93-42b4-a960-ab759dcaa4d2"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 1800,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "command": [
+                      "python",
+                      "main.py",
+                      "news",
+                      "--since",
+                      "35"
+                    ],
+                    "envFrom": [
+                      {
+                        "secretRef": {
+                          "name": "assistant-secrets"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/assistant-sync:gd158d0bb2f48",
+                    "imagePullPolicy": "Always",
+                    "name": "sync",
+                    "resources": {
+                      "limits": {
+                        "cpu": "500m",
+                        "memory": "256Mi"
+                      },
+                      "requests": {
+                        "cpu": "50m",
+                        "memory": "128Mi"
+                      }
+                    },
+                    "securityContext": {
+                      "allowPrivilegeEscalation": false,
+                      "capabilities": {
+                        "drop": [
+                          "ALL"
+                        ]
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File"
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "OnFailure",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                  "runAsNonRoot": true,
+                  "runAsUser": 1000,
+                  "seccompProfile": {
+                    "type": "RuntimeDefault"
+                  }
+                },
+                "terminationGracePeriodSeconds": 30
+              }
+            }
+          }
+        },
+        "schedule": "*/30 * * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": false
+      },
+      "status": {
+        "lastScheduleTime": "2026-08-16T15:30:00Z",
+        "lastSuccessfulTime": "2026-08-16T15:30:45Z"
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"assistant-rentals-classify\"},\"name\":\"assistant-rentals-classify\",\"namespace\":\"assistant\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":1800,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"command\":[\"python\",\"main.py\",\"rentals\",\"--match\"],\"envFrom\":[{\"secretRef\":{\"name\":\"assistant-secrets\"}}],\"image\":\"192.0.2.202:30500/assistant-sync:gd158d0bb2f48\",\"imagePullPolicy\":\"Always\",\"name\":\"sync\",\"resources\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"512Mi\"},\"requests\":{\"cpu\":\"50m\",\"memory\":\"128Mi\"}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]}}}],\"restartPolicy\":\"OnFailure\",\"securityContext\":{\"runAsNonRoot\":true,\"runAsUser\":1000,\"seccompProfile\":{\"type\":\"RuntimeDefault\"}}}}}},\"schedule\":\"27 7-23/4 * * *\",\"successfulJobsHistoryLimit\":1,\"suspend\":true,\"timeZone\":\"Europe/Berlin\"}}\n"
+        },
+        "creationTimestamp": "2026-08-11T00:36:41Z",
+        "generation": 19,
+        "labels": {
+          "app": "assistant-rentals-classify"
+        },
+        "name": "assistant-rentals-classify",
+        "namespace": "assistant",
+        "resourceVersion": "3142815",
+        "uid": "01f61ad8-0085-4bcc-a42c-e2339d858d28"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 1800,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "command": [
+                      "python",
+                      "main.py",
+                      "rentals",
+                      "--match"
+                    ],
+                    "envFrom": [
+                      {
+                        "secretRef": {
+                          "name": "assistant-secrets"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/assistant-sync:gd158d0bb2f48",
+                    "imagePullPolicy": "Always",
+                    "name": "sync",
+                    "resources": {
+                      "limits": {
+                        "cpu": "500m",
+                        "memory": "512Mi"
+                      },
+                      "requests": {
+                        "cpu": "50m",
+                        "memory": "128Mi"
+                      }
+                    },
+                    "securityContext": {
+                      "allowPrivilegeEscalation": false,
+                      "capabilities": {
+                        "drop": [
+                          "ALL"
+                        ]
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File"
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "OnFailure",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                  "runAsNonRoot": true,
+                  "runAsUser": 1000,
+                  "seccompProfile": {
+                    "type": "RuntimeDefault"
+                  }
+                },
+                "terminationGracePeriodSeconds": 30
+              }
+            }
+          }
+        },
+        "schedule": "27 7-23/4 * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": true,
+        "timeZone": "Europe/Berlin"
+      },
+      "status": {}
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"assistant-rss-sync\"},\"name\":\"assistant-rss-sync\",\"namespace\":\"assistant\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":1800,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"command\":[\"python\",\"main.py\",\"rss\"],\"envFrom\":[{\"secretRef\":{\"name\":\"assistant-secrets\"}}],\"image\":\"192.0.2.202:30500/assistant-sync:gd158d0bb2f48\",\"imagePullPolicy\":\"Always\",\"name\":\"sync\",\"resources\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"256Mi\"},\"requests\":{\"cpu\":\"50m\",\"memory\":\"128Mi\"}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]}}}],\"restartPolicy\":\"OnFailure\",\"securityContext\":{\"runAsNonRoot\":true,\"runAsUser\":1000,\"seccompProfile\":{\"type\":\"RuntimeDefault\"}}}}}},\"schedule\":\"*/15 * * * *\",\"successfulJobsHistoryLimit\":1,\"suspend\":false}}\n"
+        },
+        "creationTimestamp": "2026-08-11T00:36:42Z",
+        "generation": 17,
+        "labels": {
+          "app": "assistant-rss-sync"
+        },
+        "name": "assistant-rss-sync",
+        "namespace": "assistant",
+        "resourceVersion": "3211197",
+        "uid": "6a0e9605-4d42-4fd5-ae20-8ae491bb0989"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 1800,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "command": [
+                      "python",
+                      "main.py",
+                      "rss"
+                    ],
+                    "envFrom": [
+                      {
+                        "secretRef": {
+                          "name": "assistant-secrets"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/assistant-sync:gd158d0bb2f48",
+                    "imagePullPolicy": "Always",
+                    "name": "sync",
+                    "resources": {
+                      "limits": {
+                        "cpu": "500m",
+                        "memory": "256Mi"
+                      },
+                      "requests": {
+                        "cpu": "50m",
+                        "memory": "128Mi"
+                      }
+                    },
+                    "securityContext": {
+                      "allowPrivilegeEscalation": false,
+                      "capabilities": {
+                        "drop": [
+                          "ALL"
+                        ]
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File"
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "OnFailure",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                  "runAsNonRoot": true,
+                  "runAsUser": 1000,
+                  "seccompProfile": {
+                    "type": "RuntimeDefault"
+                  }
+                },
+                "terminationGracePeriodSeconds": 30
+              }
+            }
+          }
+        },
+        "schedule": "*/15 * * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": false
+      },
+      "status": {
+        "active": [
+          {
+            "apiVersion": "batch/v1",
+            "kind": "Job",
+            "name": "assistant-rss-sync-29781570",
+            "namespace": "assistant",
+            "resourceVersion": "3211196",
+            "uid": "fc902494-1156-4dd2-9d09-eefdd074148d"
+          }
+        ],
+        "lastScheduleTime": "2026-08-16T15:30:00Z",
+        "lastSuccessfulTime": "2026-08-16T15:36:21Z"
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"syncbot\"},\"name\":\"acme-persons\",\"namespace\":\"syncbot\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":300,\"template\":{\"metadata\":{\"labels\":{\"app\":\"syncbot\"}},\"spec\":{\"containers\":[{\"command\":[\"python\",\"main.py\",\"--job\",\"acme\",\"populate-persons\"],\"env\":[{\"name\":\"NO_MIGRATE\",\"value\":\"1\"},{\"name\":\"JOBS_YAML\",\"value\":\"/config/jobs.yaml\"}],\"envFrom\":[{\"secretRef\":{\"name\":\"syncbot-secrets\"}}],\"image\":\"192.0.2.202:30500/syncbot-sync:latest\",\"imagePullPolicy\":\"Always\",\"name\":\"persons\",\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]}},\"volumeMounts\":[{\"mountPath\":\"/config\",\"name\":\"jobs-config\",\"readOnly\":true}]}],\"restartPolicy\":\"OnFailure\",\"securityContext\":{\"runAsNonRoot\":true,\"runAsUser\":1000},\"volumes\":[{\"name\":\"jobs-config\",\"secret\":{\"secretName\":\"syncbot-jobs\"}}]}}}},\"schedule\":\"17 * * * *\",\"successfulJobsHistoryLimit\":1}}\n"
+        },
+        "creationTimestamp": "2026-06-30T00:50:19Z",
+        "generation": 4,
+        "labels": {
+          "app": "syncbot"
+        },
+        "name": "acme-persons",
+        "namespace": "syncbot",
+        "resourceVersion": "3210300",
+        "uid": "0ad65af6-dafe-42e6-8e3d-fefe65763944"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 300,
+            "template": {
+              "metadata": {
+                "labels": {
+                  "app": "syncbot"
+                }
+              },
+              "spec": {
+                "containers": [
+                  {
+                    "command": [
+                      "python",
+                      "main.py",
+                      "--job",
+                      "acme",
+                      "populate-persons"
+                    ],
+                    "env": [
+                      {
+                        "name": "NO_MIGRATE",
+                        "value": "1"
+                      },
+                      {
+                        "name": "JOBS_YAML",
+                        "value": "/config/jobs.yaml"
+                      }
+                    ],
+                    "envFrom": [
+                      {
+                        "secretRef": {
+                          "name": "syncbot-secrets"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/syncbot-sync:latest",
+                    "imagePullPolicy": "Always",
+                    "name": "persons",
+                    "resources": {},
+                    "securityContext": {
+                      "allowPrivilegeEscalation": false,
+                      "capabilities": {
+                        "drop": [
+                          "ALL"
+                        ]
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File",
+                    "volumeMounts": [
+                      {
+                        "mountPath": "/config",
+                        "name": "jobs-config",
+                        "readOnly": true
+                      }
+                    ]
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "OnFailure",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                  "runAsNonRoot": true,
+                  "runAsUser": 1000
+                },
+                "terminationGracePeriodSeconds": 30,
+                "volumes": [
+                  {
+                    "name": "jobs-config",
+                    "secret": {
+                      "defaultMode": 420,
+                      "secretName": "syncbot-jobs"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "schedule": "17 * * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": false
+      },
+      "status": {
+        "lastScheduleTime": "2026-08-16T15:17:00Z",
+        "lastSuccessfulTime": "2026-08-16T15:17:16Z"
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"syncbot\"},\"name\":\"acme-sync\",\"namespace\":\"syncbot\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":600,\"template\":{\"metadata\":{\"labels\":{\"app\":\"syncbot\"}},\"spec\":{\"containers\":[{\"command\":[\"python\",\"main.py\",\"--job\",\"acme\",\"sync-cycle\",\"--since\",\"5\",\"--sources\",\"jira,confluence\"],\"env\":[{\"name\":\"NO_MIGRATE\",\"value\":\"1\"},{\"name\":\"JOBS_YAML\",\"value\":\"/config/jobs.yaml\"}],\"envFrom\":[{\"secretRef\":{\"name\":\"syncbot-secrets\"}}],\"image\":\"192.0.2.202:30500/syncbot-sync:latest\",\"imagePullPolicy\":\"Always\",\"name\":\"sync\",\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]}},\"volumeMounts\":[{\"mountPath\":\"/config\",\"name\":\"jobs-config\",\"readOnly\":true}]}],\"restartPolicy\":\"OnFailure\",\"securityContext\":{\"runAsNonRoot\":true,\"runAsUser\":1000},\"volumes\":[{\"name\":\"jobs-config\",\"secret\":{\"secretName\":\"syncbot-jobs\"}}]}}}},\"schedule\":\"*/3 * * * *\",\"successfulJobsHistoryLimit\":1}}\n"
+        },
+        "creationTimestamp": "2026-06-30T00:50:19Z",
+        "generation": 5,
+        "labels": {
+          "app": "syncbot"
+        },
+        "name": "acme-sync",
+        "namespace": "syncbot",
+        "resourceVersion": "3211989",
+        "uid": "3dbc6e2e-45a4-47db-b9ae-438acb47e0c0"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 600,
+            "template": {
+              "metadata": {
+                "labels": {
+                  "app": "syncbot"
+                }
+              },
+              "spec": {
+                "containers": [
+                  {
+                    "command": [
+                      "python",
+                      "main.py",
+                      "--job",
+                      "acme",
+                      "sync-cycle",
+                      "--since",
+                      "5",
+                      "--sources",
+                      "jira,confluence"
+                    ],
+                    "env": [
+                      {
+                        "name": "NO_MIGRATE",
+                        "value": "1"
+                      },
+                      {
+                        "name": "JOBS_YAML",
+                        "value": "/config/jobs.yaml"
+                      }
+                    ],
+                    "envFrom": [
+                      {
+                        "secretRef": {
+                          "name": "syncbot-secrets"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/syncbot-sync:latest",
+                    "imagePullPolicy": "Always",
+                    "name": "sync",
+                    "resources": {},
+                    "securityContext": {
+                      "allowPrivilegeEscalation": false,
+                      "capabilities": {
+                        "drop": [
+                          "ALL"
+                        ]
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File",
+                    "volumeMounts": [
+                      {
+                        "mountPath": "/config",
+                        "name": "jobs-config",
+                        "readOnly": true
+                      }
+                    ]
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "OnFailure",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                  "runAsNonRoot": true,
+                  "runAsUser": 1000
+                },
+                "terminationGracePeriodSeconds": 30,
+                "volumes": [
+                  {
+                    "name": "jobs-config",
+                    "secret": {
+                      "defaultMode": 420,
+                      "secretName": "syncbot-jobs"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "schedule": "*/3 * * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": false
+      },
+      "status": {
+        "lastScheduleTime": "2026-08-16T15:54:00Z",
+        "lastSuccessfulTime": "2026-08-16T15:54:10Z"
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"pg-backup\"},\"name\":\"pg-backup\",\"namespace\":\"postgres\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"backoffLimit\":2,\"template\":{\"metadata\":{\"labels\":{\"app\":\"pg-backup\"}},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"command\":[\"sh\",\"-c\",\"set -eu\\nexport PGPASSWORD=\\\"$POSTGRES_PASSWORD\\\"\\nH=postgres.postgres.svc.cluster.local\\nSTAMP=$(date +%Y%m%d-%H%M)\\nfor DB in $(psql -h \\\"$H\\\" -U \\\"$POSTGRES_USER\\\" -d \\\"$POSTGRES_DB\\\" -At \\\\\\n    -c \\\"SELECT datname FROM pg_database WHERE NOT datistemplate\\\"); do\\n  echo \\\"dumping $DB\\\"\\n  pg_dump -h \\\"$H\\\" -U \\\"$POSTGRES_USER\\\" -Fc \\\"$DB\\\" \\\\\\n    \\u003e \\\"/backups/${DB}-${STAMP}.dump.tmp\\\"\\n  mv \\\"/backups/${DB}-${STAMP}.dump.tmp\\\" \\\"/backups/${DB}-${STAMP}.dump\\\"\\ndone\\nfind /backups -name '*.dump' -mtime +14 -delete\\nfind /backups -name '*.dump.tmp' -mmin +120 -delete\\necho \\\"backup complete:\\\"; ls -la /backups | tail -20\\n\"],\"envFrom\":[{\"secretRef\":{\"name\":\"postgres-secret\"}}],\"image\":\"postgres:16-alpine\",\"name\":\"backup\",\"resources\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"512Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"128Mi\"}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"readOnlyRootFilesystem\":true},\"volumeMounts\":[{\"mountPath\":\"/backups\",\"name\":\"backups\"}]}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"node-b\"},\"restartPolicy\":\"OnFailure\",\"securityContext\":{\"seccompProfile\":{\"type\":\"RuntimeDefault\"}},\"volumes\":[{\"hostPath\":{\"path\":\"/var/backups/pg\",\"type\":\"DirectoryOrCreate\"},\"name\":\"backups\"}]}},\"ttlSecondsAfterFinished\":172800}},\"schedule\":\"47 3 * * *\",\"successfulJobsHistoryLimit\":3}}\n"
+        },
+        "creationTimestamp": "2026-07-14T22:56:37Z",
+        "generation": 1,
+        "labels": {
+          "app": "pg-backup"
+        },
+        "name": "pg-backup",
+        "namespace": "postgres",
+        "resourceVersion": "3159788",
+        "uid": "a4142533-a896-4677-a801-8c4fe24b9937"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "backoffLimit": 2,
+            "template": {
+              "metadata": {
+                "labels": {
+                  "app": "pg-backup"
+                }
+              },
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "command": [
+                      "sh",
+                      "-c",
+                      "set -eu\nexport PGPASSWORD=\"$POSTGRES_PASSWORD\"\nH=postgres.postgres.svc.cluster.local\nSTAMP=$(date +%Y%m%d-%H%M)\nfor DB in $(psql -h \"$H\" -U \"$POSTGRES_USER\" -d \"$POSTGRES_DB\" -At \\\n    -c \"SELECT datname FROM pg_database WHERE NOT datistemplate\"); do\n  echo \"dumping $DB\"\n  pg_dump -h \"$H\" -U \"$POSTGRES_USER\" -Fc \"$DB\" \\\n    > \"/backups/${DB}-${STAMP}.dump.tmp\"\n  mv \"/backups/${DB}-${STAMP}.dump.tmp\" \"/backups/${DB}-${STAMP}.dump\"\ndone\nfind /backups -name '*.dump' -mtime +14 -delete\nfind /backups -name '*.dump.tmp' -mmin +120 -delete\necho \"backup complete:\"; ls -la /backups | tail -20\n"
+                    ],
+                    "envFrom": [
+                      {
+                        "secretRef": {
+                          "name": "postgres-secret"
+                        }
+                      }
+                    ],
+                    "image": "postgres:16-alpine",
+                    "imagePullPolicy": "IfNotPresent",
+                    "name": "backup",
+                    "resources": {
+                      "limits": {
+                        "cpu": "500m",
+                        "memory": "512Mi"
+                      },
+                      "requests": {
+                        "cpu": "100m",
+                        "memory": "128Mi"
+                      }
+                    },
+                    "securityContext": {
+                      "allowPrivilegeEscalation": false,
+                      "capabilities": {
+                        "drop": [
+                          "ALL"
+                        ]
+                      },
+                      "readOnlyRootFilesystem": true
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File",
+                    "volumeMounts": [
+                      {
+                        "mountPath": "/backups",
+                        "name": "backups"
+                      }
+                    ]
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "nodeSelector": {
+                  "kubernetes.io/hostname": "node-b"
+                },
+                "restartPolicy": "OnFailure",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                  "seccompProfile": {
+                    "type": "RuntimeDefault"
+                  }
+                },
+                "terminationGracePeriodSeconds": 30,
+                "volumes": [
+                  {
+                    "hostPath": {
+                      "path": "/var/backups/pg",
+                      "type": "DirectoryOrCreate"
+                    },
+                    "name": "backups"
+                  }
+                ]
+              }
+            },
+            "ttlSecondsAfterFinished": 172800
+          }
+        },
+        "schedule": "47 3 * * *",
+        "successfulJobsHistoryLimit": 3,
+        "suspend": false
+      },
+      "status": {
+        "lastScheduleTime": "2026-08-16T01:47:00Z",
+        "lastSuccessfulTime": "2026-08-16T01:47:23Z"
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"scrape-affiliate-feeds\"},\"name\":\"scrape-affiliate-feeds\",\"namespace\":\"crawler\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":1800,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"uv run crawler run affiliate_feeds\\n\"],\"command\":[\"/bin/sh\",\"-c\"],\"envFrom\":[{\"configMapRef\":{\"name\":\"crawler-config\"}},{\"secretRef\":{\"name\":\"crawler-secrets\"}}],\"image\":\"192.0.2.202:30500/crawler:latest\",\"name\":\"scraper\",\"resources\":{\"limits\":{\"cpu\":\"250m\",\"memory\":\"256Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"128Mi\"}}}],\"restartPolicy\":\"Never\"}}}},\"schedule\":\"0 4,16 * * *\",\"successfulJobsHistoryLimit\":1,\"suspend\":true}}\n"
+        },
+        "creationTimestamp": "2026-08-11T00:55:00Z",
+        "generation": 1,
+        "labels": {
+          "app": "scrape-affiliate-feeds"
+        },
+        "name": "scrape-affiliate-feeds",
+        "namespace": "crawler",
+        "resourceVersion": "2798575",
+        "uid": "fb6daef4-c4e1-4404-99d1-a2f1939a78d5"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 1800,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "args": [
+                      "uv run crawler run affiliate_feeds\n"
+                    ],
+                    "command": [
+                      "/bin/sh",
+                      "-c"
+                    ],
+                    "envFrom": [
+                      {
+                        "configMapRef": {
+                          "name": "crawler-config"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "crawler-secrets"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/crawler:latest",
+                    "imagePullPolicy": "Always",
+                    "name": "scraper",
+                    "resources": {
+                      "limits": {
+                        "cpu": "250m",
+                        "memory": "256Mi"
+                      },
+                      "requests": {
+                        "cpu": "100m",
+                        "memory": "128Mi"
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File"
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "terminationGracePeriodSeconds": 30
+              }
+            }
+          }
+        },
+        "schedule": "0 4,16 * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": true
+      },
+      "status": {}
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"scrape-listings\"},\"name\":\"scrape-listings\",\"namespace\":\"crawler\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":3600,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"Xvfb :99 -screen 0 1920x1080x24 -nolisten tcp \\u0026\\nfor i in $(seq 1 10); do xdpyinfo -display :99 \\u003e/dev/null 2\\u003e\\u00261 \\u0026\\u0026 break || sleep 1; done\\nexport DISPLAY=:99\\nuv run crawler run listings \\u0026\\u0026 \\\\\\n  uv run crawler run listings-enrich\\n\"],\"command\":[\"/bin/sh\",\"-c\"],\"envFrom\":[{\"configMapRef\":{\"name\":\"crawler-config\"}},{\"secretRef\":{\"name\":\"crawler-secrets\"}},{\"secretRef\":{\"name\":\"scraper-auth\"}}],\"image\":\"192.0.2.202:30500/crawler:latest\",\"name\":\"scraper\",\"resources\":{\"limits\":{\"cpu\":\"1000m\",\"memory\":\"1536Mi\"},\"requests\":{\"cpu\":\"250m\",\"memory\":\"768Mi\"}},\"volumeMounts\":[{\"mountPath\":\"/app/browser_state\",\"name\":\"browser-state\"}]}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"node-a\"},\"restartPolicy\":\"Never\",\"volumes\":[{\"name\":\"browser-state\",\"persistentVolumeClaim\":{\"claimName\":\"browser-state-pvc\"}}]}}}},\"schedule\":\"7 7-23/4 * * *\",\"successfulJobsHistoryLimit\":1,\"suspend\":true,\"timeZone\":\"Europe/Berlin\"}}\n"
+        },
+        "creationTimestamp": "2026-08-11T00:55:00Z",
+        "generation": 1,
+        "labels": {
+          "app": "scrape-listings"
+        },
+        "name": "scrape-listings",
+        "namespace": "crawler",
+        "resourceVersion": "2798576",
+        "uid": "d9f331f2-dd91-4994-9ab0-4d3b3007fef8"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 3600,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "args": [
+                      "Xvfb :99 -screen 0 1920x1080x24 -nolisten tcp &\nfor i in $(seq 1 10); do xdpyinfo -display :99 >/dev/null 2>&1 && break || sleep 1; done\nexport DISPLAY=:99\nuv run crawler run listings && \\\n  uv run crawler run listings-enrich\n"
+                    ],
+                    "command": [
+                      "/bin/sh",
+                      "-c"
+                    ],
+                    "envFrom": [
+                      {
+                        "configMapRef": {
+                          "name": "crawler-config"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "crawler-secrets"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "scraper-auth"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/crawler:latest",
+                    "imagePullPolicy": "Always",
+                    "name": "scraper",
+                    "resources": {
+                      "limits": {
+                        "cpu": "1",
+                        "memory": "1536Mi"
+                      },
+                      "requests": {
+                        "cpu": "250m",
+                        "memory": "768Mi"
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File",
+                    "volumeMounts": [
+                      {
+                        "mountPath": "/app/browser_state",
+                        "name": "browser-state"
+                      }
+                    ]
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "nodeSelector": {
+                  "kubernetes.io/hostname": "node-a"
+                },
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "terminationGracePeriodSeconds": 30,
+                "volumes": [
+                  {
+                    "name": "browser-state",
+                    "persistentVolumeClaim": {
+                      "claimName": "browser-state-pvc"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "schedule": "7 7-23/4 * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": true,
+        "timeZone": "Europe/Berlin"
+      },
+      "status": {}
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"scrape-site-d\"},\"name\":\"scrape-site-d\",\"namespace\":\"crawler\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":1800,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"command\":[\"uv\",\"run\",\"crawler\",\"run\",\"arbeitnow\"],\"envFrom\":[{\"configMapRef\":{\"name\":\"crawler-config\"}},{\"secretRef\":{\"name\":\"crawler-secrets\"}}],\"image\":\"192.0.2.202:30500/crawler:latest\",\"name\":\"scraper\",\"resources\":{\"limits\":{\"cpu\":\"250m\",\"memory\":\"256Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"128Mi\"}}}],\"restartPolicy\":\"Never\"}}}},\"schedule\":\"0 3,9,15,21 * * *\",\"successfulJobsHistoryLimit\":1,\"suspend\":true}}\n"
+        },
+        "creationTimestamp": "2026-08-11T00:55:00Z",
+        "generation": 3,
+        "labels": {
+          "app": "scrape-site-d"
+        },
+        "name": "scrape-site-d",
+        "namespace": "crawler",
+        "resourceVersion": "3013954",
+        "uid": "c1649b59-f752-44cf-9c3f-18a5e7477c2e"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 1800,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "command": [
+                      "uv",
+                      "run",
+                      "crawler",
+                      "run",
+                      "arbeitnow"
+                    ],
+                    "envFrom": [
+                      {
+                        "configMapRef": {
+                          "name": "crawler-config"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "crawler-secrets"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/crawler:latest",
+                    "imagePullPolicy": "Always",
+                    "name": "scraper",
+                    "resources": {
+                      "limits": {
+                        "cpu": "250m",
+                        "memory": "256Mi"
+                      },
+                      "requests": {
+                        "cpu": "100m",
+                        "memory": "128Mi"
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File"
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "terminationGracePeriodSeconds": 30
+              }
+            }
+          }
+        },
+        "schedule": "0 3,9,15,21 * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": true
+      },
+      "status": {
+        "lastScheduleTime": "2026-08-14T01:00:00Z"
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"scrape-site-e\"},\"name\":\"scrape-site-e\",\"namespace\":\"crawler\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":1800,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"uv run crawler run site-e --search \\u0026\\u0026 uv run crawler run site-e\\n\"],\"command\":[\"/bin/sh\",\"-c\"],\"envFrom\":[{\"configMapRef\":{\"name\":\"crawler-config\"}},{\"secretRef\":{\"name\":\"crawler-secrets\"}}],\"image\":\"192.0.2.202:30500/crawler:latest\",\"name\":\"scraper\",\"resources\":{\"limits\":{\"cpu\":\"250m\",\"memory\":\"256Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"128Mi\"}}}],\"restartPolicy\":\"Never\"}}}},\"schedule\":\"0 4,10,16,22 * * *\",\"successfulJobsHistoryLimit\":1,\"suspend\":true}}\n"
+        },
+        "creationTimestamp": "2026-08-11T00:55:00Z",
+        "generation": 3,
+        "labels": {
+          "app": "scrape-site-e"
+        },
+        "name": "scrape-site-e",
+        "namespace": "crawler",
+        "resourceVersion": "3013964",
+        "uid": "971042f5-bdb6-41b7-83be-daece7afb567"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 1800,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "args": [
+                      "uv run crawler run site-e --search && uv run crawler run site-e\n"
+                    ],
+                    "command": [
+                      "/bin/sh",
+                      "-c"
+                    ],
+                    "envFrom": [
+                      {
+                        "configMapRef": {
+                          "name": "crawler-config"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "crawler-secrets"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/crawler:latest",
+                    "imagePullPolicy": "Always",
+                    "name": "scraper",
+                    "resources": {
+                      "limits": {
+                        "cpu": "250m",
+                        "memory": "256Mi"
+                      },
+                      "requests": {
+                        "cpu": "100m",
+                        "memory": "128Mi"
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File"
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "terminationGracePeriodSeconds": 30
+              }
+            }
+          }
+        },
+        "schedule": "0 4,10,16,22 * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": true
+      },
+      "status": {
+        "lastScheduleTime": "2026-08-13T20:00:00Z"
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"scrape-site-f\"},\"name\":\"scrape-site-f\",\"namespace\":\"crawler\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":1800,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"uv run crawler run site-f\\n\"],\"command\":[\"/bin/sh\",\"-c\"],\"envFrom\":[{\"configMapRef\":{\"name\":\"crawler-config\"}},{\"secretRef\":{\"name\":\"crawler-secrets\"}},{\"secretRef\":{\"name\":\"scraper-auth\"}}],\"image\":\"192.0.2.202:30500/crawler:latest\",\"name\":\"scraper\",\"resources\":{\"limits\":{\"cpu\":\"250m\",\"memory\":\"256Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"128Mi\"}}}],\"restartPolicy\":\"Never\"}}}},\"schedule\":\"0 6 1 * *\",\"successfulJobsHistoryLimit\":1,\"suspend\":true}}\n"
+        },
+        "creationTimestamp": "2026-08-11T00:55:00Z",
+        "generation": 1,
+        "labels": {
+          "app": "scrape-site-f"
+        },
+        "name": "scrape-site-f",
+        "namespace": "crawler",
+        "resourceVersion": "2798579",
+        "uid": "786ee905-d393-436b-8f09-9338d2465ebd"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 1800,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "args": [
+                      "uv run crawler run site-f\n"
+                    ],
+                    "command": [
+                      "/bin/sh",
+                      "-c"
+                    ],
+                    "envFrom": [
+                      {
+                        "configMapRef": {
+                          "name": "crawler-config"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "crawler-secrets"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "scraper-auth"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/crawler:latest",
+                    "imagePullPolicy": "Always",
+                    "name": "scraper",
+                    "resources": {
+                      "limits": {
+                        "cpu": "250m",
+                        "memory": "256Mi"
+                      },
+                      "requests": {
+                        "cpu": "100m",
+                        "memory": "128Mi"
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File"
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "terminationGracePeriodSeconds": 30
+              }
+            }
+          }
+        },
+        "schedule": "0 6 1 * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": true
+      },
+      "status": {}
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"scrape-site-g\"},\"name\":\"scrape-site-g\",\"namespace\":\"crawler\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":1800,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"uv run crawler run site-g --search \\u0026\\u0026 uv run crawler run site-g\\n\"],\"command\":[\"/bin/sh\",\"-c\"],\"envFrom\":[{\"configMapRef\":{\"name\":\"crawler-config\"}},{\"secretRef\":{\"name\":\"crawler-secrets\"}}],\"image\":\"192.0.2.202:30500/crawler:latest\",\"name\":\"scraper\",\"resources\":{\"limits\":{\"cpu\":\"250m\",\"memory\":\"256Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"128Mi\"}}}],\"restartPolicy\":\"Never\"}}}},\"schedule\":\"30 2,8,14,20 * * *\",\"successfulJobsHistoryLimit\":1,\"suspend\":true}}\n"
+        },
+        "creationTimestamp": "2026-08-11T00:55:00Z",
+        "generation": 3,
+        "labels": {
+          "app": "scrape-site-g"
+        },
+        "name": "scrape-site-g",
+        "namespace": "crawler",
+        "resourceVersion": "3013968",
+        "uid": "a88c8215-93b9-4532-b8b7-0cc0886bedfa"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 1800,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "args": [
+                      "uv run crawler run site-g --search && uv run crawler run site-g\n"
+                    ],
+                    "command": [
+                      "/bin/sh",
+                      "-c"
+                    ],
+                    "envFrom": [
+                      {
+                        "configMapRef": {
+                          "name": "crawler-config"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "crawler-secrets"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/crawler:latest",
+                    "imagePullPolicy": "Always",
+                    "name": "scraper",
+                    "resources": {
+                      "limits": {
+                        "cpu": "250m",
+                        "memory": "256Mi"
+                      },
+                      "requests": {
+                        "cpu": "100m",
+                        "memory": "128Mi"
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File"
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "terminationGracePeriodSeconds": 30
+              }
+            }
+          }
+        },
+        "schedule": "30 2,8,14,20 * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": true
+      },
+      "status": {
+        "lastScheduleTime": "2026-08-14T00:30:00Z"
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"scrape-events\"},\"name\":\"scrape-events\",\"namespace\":\"crawler\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":1800,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"command\":[\"uv\",\"run\",\"crawler\",\"run\",\"events\"],\"envFrom\":[{\"configMapRef\":{\"name\":\"crawler-config\"}},{\"secretRef\":{\"name\":\"crawler-secrets\"}}],\"image\":\"192.0.2.202:30500/crawler:latest\",\"name\":\"scraper\",\"resources\":{\"limits\":{\"cpu\":\"250m\",\"memory\":\"384Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"192Mi\"}}}],\"restartPolicy\":\"Never\"}}}},\"schedule\":\"20 1,7,13,19 * * *\",\"successfulJobsHistoryLimit\":1,\"suspend\":true}}\n"
+        },
+        "creationTimestamp": "2026-08-11T00:55:00Z",
+        "generation": 1,
+        "labels": {
+          "app": "scrape-events"
+        },
+        "name": "scrape-events",
+        "namespace": "crawler",
+        "resourceVersion": "2798581",
+        "uid": "59f0d6b4-f7d7-4c5e-baab-5141ac083596"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 1800,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "command": [
+                      "uv",
+                      "run",
+                      "crawler",
+                      "run",
+                      "events"
+                    ],
+                    "envFrom": [
+                      {
+                        "configMapRef": {
+                          "name": "crawler-config"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "crawler-secrets"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/crawler:latest",
+                    "imagePullPolicy": "Always",
+                    "name": "scraper",
+                    "resources": {
+                      "limits": {
+                        "cpu": "250m",
+                        "memory": "384Mi"
+                      },
+                      "requests": {
+                        "cpu": "100m",
+                        "memory": "192Mi"
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File"
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "terminationGracePeriodSeconds": 30
+              }
+            }
+          }
+        },
+        "schedule": "20 1,7,13,19 * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": true
+      },
+      "status": {}
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"scrape-site-h\"},\"name\":\"scrape-site-h\",\"namespace\":\"crawler\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":1800,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"uv run crawler run site-h --search \\u0026\\u0026 uv run crawler run site-h\\n\"],\"command\":[\"/bin/sh\",\"-c\"],\"envFrom\":[{\"configMapRef\":{\"name\":\"crawler-config\"}},{\"secretRef\":{\"name\":\"crawler-secrets\"}}],\"image\":\"192.0.2.202:30500/crawler:latest\",\"name\":\"scraper\",\"resources\":{\"limits\":{\"cpu\":\"250m\",\"memory\":\"256Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"128Mi\"}}}],\"restartPolicy\":\"Never\"}}}},\"schedule\":\"45 3,9,15,21 * * *\",\"successfulJobsHistoryLimit\":1,\"suspend\":true}}\n"
+        },
+        "creationTimestamp": "2026-08-11T00:55:00Z",
+        "generation": 3,
+        "labels": {
+          "app": "scrape-site-h"
+        },
+        "name": "scrape-site-h",
+        "namespace": "crawler",
+        "resourceVersion": "3013973",
+        "uid": "3597d09f-0389-40f7-9234-0709e68dfa22"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 1800,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "args": [
+                      "uv run crawler run site-h --search && uv run crawler run site-h\n"
+                    ],
+                    "command": [
+                      "/bin/sh",
+                      "-c"
+                    ],
+                    "envFrom": [
+                      {
+                        "configMapRef": {
+                          "name": "crawler-config"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "crawler-secrets"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/crawler:latest",
+                    "imagePullPolicy": "Always",
+                    "name": "scraper",
+                    "resources": {
+                      "limits": {
+                        "cpu": "250m",
+                        "memory": "256Mi"
+                      },
+                      "requests": {
+                        "cpu": "100m",
+                        "memory": "128Mi"
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File"
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "terminationGracePeriodSeconds": 30
+              }
+            }
+          }
+        },
+        "schedule": "45 3,9,15,21 * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": true
+      },
+      "status": {
+        "lastScheduleTime": "2026-08-13T19:45:00Z"
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"scrape-site-a\"},\"name\":\"scrape-site-a\",\"namespace\":\"crawler\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":1800,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"Xvfb :99 -screen 0 1280x720x24 \\u0026\\nfor i in $(seq 1 10); do xdpyinfo -display :99 \\u003e/dev/null 2\\u003e\\u00261 \\u0026\\u0026 break || sleep 1; done\\nDISPLAY=:99 uv run crawler run site-a\\n\"],\"command\":[\"/bin/sh\",\"-c\"],\"envFrom\":[{\"configMapRef\":{\"name\":\"crawler-config\"}},{\"secretRef\":{\"name\":\"crawler-secrets\"}}],\"image\":\"192.0.2.202:30500/crawler:latest\",\"name\":\"scraper\",\"resources\":{\"limits\":{\"cpu\":\"1000m\",\"memory\":\"1024Mi\"},\"requests\":{\"cpu\":\"200m\",\"memory\":\"512Mi\"}}}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"node-a\"},\"restartPolicy\":\"Never\"}}}},\"schedule\":\"30 3,9,15,21 * * *\",\"successfulJobsHistoryLimit\":1,\"suspend\":true}}\n"
+        },
+        "creationTimestamp": "2026-08-11T00:55:00Z",
+        "generation": 1,
+        "labels": {
+          "app": "scrape-site-a"
+        },
+        "name": "scrape-site-a",
+        "namespace": "crawler",
+        "resourceVersion": "2798583",
+        "uid": "d24cb32a-afd4-4ef5-8041-d3c6758b31ab"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 1800,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "args": [
+                      "Xvfb :99 -screen 0 1280x720x24 &\nfor i in $(seq 1 10); do xdpyinfo -display :99 >/dev/null 2>&1 && break || sleep 1; done\nDISPLAY=:99 uv run crawler run site-a\n"
+                    ],
+                    "command": [
+                      "/bin/sh",
+                      "-c"
+                    ],
+                    "envFrom": [
+                      {
+                        "configMapRef": {
+                          "name": "crawler-config"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "crawler-secrets"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/crawler:latest",
+                    "imagePullPolicy": "Always",
+                    "name": "scraper",
+                    "resources": {
+                      "limits": {
+                        "cpu": "1",
+                        "memory": "1Gi"
+                      },
+                      "requests": {
+                        "cpu": "200m",
+                        "memory": "512Mi"
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File"
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "nodeSelector": {
+                  "kubernetes.io/hostname": "node-a"
+                },
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "terminationGracePeriodSeconds": 30
+              }
+            }
+          }
+        },
+        "schedule": "30 3,9,15,21 * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": true
+      },
+      "status": {}
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"scrape-jobs\"},\"name\":\"scrape-jobs\",\"namespace\":\"crawler\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":3600,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"Xvfb :99 -screen 0 1920x1080x24 -nolisten tcp \\u0026\\nfor i in $(seq 1 10); do xdpyinfo -display :99 \\u003e/dev/null 2\\u003e\\u00261 \\u0026\\u0026 break || sleep 1; done\\nexport DISPLAY=:99\\nexec uv run crawler run jobs\\n\"],\"command\":[\"/bin/sh\",\"-c\"],\"envFrom\":[{\"configMapRef\":{\"name\":\"crawler-config\"}},{\"secretRef\":{\"name\":\"crawler-secrets\"}},{\"secretRef\":{\"name\":\"scraper-auth\"}}],\"image\":\"192.0.2.202:30500/crawler:latest\",\"name\":\"scraper\",\"resources\":{\"limits\":{\"cpu\":\"1000m\",\"memory\":\"1536Mi\"},\"requests\":{\"cpu\":\"250m\",\"memory\":\"768Mi\"}},\"volumeMounts\":[{\"mountPath\":\"/app/browser_state\",\"name\":\"browser-state\"}]}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"node-a\"},\"restartPolicy\":\"Never\",\"volumes\":[{\"name\":\"browser-state\",\"persistentVolumeClaim\":{\"claimName\":\"browser-state-pvc\"}}]}}}},\"schedule\":\"0 3,9,15,21 * * *\",\"successfulJobsHistoryLimit\":1,\"suspend\":true}}\n"
+        },
+        "creationTimestamp": "2026-08-11T00:55:00Z",
+        "generation": 1,
+        "labels": {
+          "app": "scrape-jobs"
+        },
+        "name": "scrape-jobs",
+        "namespace": "crawler",
+        "resourceVersion": "2798584",
+        "uid": "f6bfe5ac-f7c6-4cca-a591-e16d1e540d88"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 3600,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "args": [
+                      "Xvfb :99 -screen 0 1920x1080x24 -nolisten tcp &\nfor i in $(seq 1 10); do xdpyinfo -display :99 >/dev/null 2>&1 && break || sleep 1; done\nexport DISPLAY=:99\nexec uv run crawler run jobs\n"
+                    ],
+                    "command": [
+                      "/bin/sh",
+                      "-c"
+                    ],
+                    "envFrom": [
+                      {
+                        "configMapRef": {
+                          "name": "crawler-config"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "crawler-secrets"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "scraper-auth"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/crawler:latest",
+                    "imagePullPolicy": "Always",
+                    "name": "scraper",
+                    "resources": {
+                      "limits": {
+                        "cpu": "1",
+                        "memory": "1536Mi"
+                      },
+                      "requests": {
+                        "cpu": "250m",
+                        "memory": "768Mi"
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File",
+                    "volumeMounts": [
+                      {
+                        "mountPath": "/app/browser_state",
+                        "name": "browser-state"
+                      }
+                    ]
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "nodeSelector": {
+                  "kubernetes.io/hostname": "node-a"
+                },
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "terminationGracePeriodSeconds": 30,
+                "volumes": [
+                  {
+                    "name": "browser-state",
+                    "persistentVolumeClaim": {
+                      "claimName": "browser-state-pvc"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "schedule": "0 3,9,15,21 * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": true
+      },
+      "status": {}
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"scrape-saas-pricing\"},\"name\":\"scrape-saas-pricing\",\"namespace\":\"crawler\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":1800,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"uv run crawler run saas_pricing\\n\"],\"command\":[\"/bin/sh\",\"-c\"],\"envFrom\":[{\"configMapRef\":{\"name\":\"crawler-config\"}},{\"secretRef\":{\"name\":\"crawler-secrets\"}}],\"image\":\"192.0.2.202:30500/crawler:latest\",\"name\":\"scraper\",\"resources\":{\"limits\":{\"cpu\":\"250m\",\"memory\":\"256Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"128Mi\"}}}],\"restartPolicy\":\"Never\"}}}},\"schedule\":\"0 5 * * 0\",\"successfulJobsHistoryLimit\":1,\"suspend\":true}}\n"
+        },
+        "creationTimestamp": "2026-08-11T00:55:00Z",
+        "generation": 1,
+        "labels": {
+          "app": "scrape-saas-pricing"
+        },
+        "name": "scrape-saas-pricing",
+        "namespace": "crawler",
+        "resourceVersion": "2798585",
+        "uid": "4b628575-52ed-4e9c-9245-143ea873ad26"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 1800,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "args": [
+                      "uv run crawler run saas_pricing\n"
+                    ],
+                    "command": [
+                      "/bin/sh",
+                      "-c"
+                    ],
+                    "envFrom": [
+                      {
+                        "configMapRef": {
+                          "name": "crawler-config"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "crawler-secrets"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/crawler:latest",
+                    "imagePullPolicy": "Always",
+                    "name": "scraper",
+                    "resources": {
+                      "limits": {
+                        "cpu": "250m",
+                        "memory": "256Mi"
+                      },
+                      "requests": {
+                        "cpu": "100m",
+                        "memory": "128Mi"
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File"
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "terminationGracePeriodSeconds": 30
+              }
+            }
+          }
+        },
+        "schedule": "0 5 * * 0",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": true
+      },
+      "status": {}
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"scrape-site-i\"},\"name\":\"scrape-site-i\",\"namespace\":\"crawler\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":1800,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"command\":[\"uv\",\"run\",\"crawler\",\"run\",\"stepstone\"],\"envFrom\":[{\"configMapRef\":{\"name\":\"crawler-config\"}},{\"secretRef\":{\"name\":\"crawler-secrets\"}}],\"image\":\"192.0.2.202:30500/crawler:latest\",\"name\":\"scraper\",\"resources\":{\"limits\":{\"cpu\":\"250m\",\"memory\":\"256Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"128Mi\"}}}],\"restartPolicy\":\"Never\"}}}},\"schedule\":\"15 3,9,15,21 * * *\",\"successfulJobsHistoryLimit\":1,\"suspend\":true}}\n"
+        },
+        "creationTimestamp": "2026-08-11T00:55:00Z",
+        "generation": 3,
+        "labels": {
+          "app": "scrape-site-i"
+        },
+        "name": "scrape-site-i",
+        "namespace": "crawler",
+        "resourceVersion": "3013971",
+        "uid": "be6752d5-5466-4e8d-a22a-a3b5b2ed2b2b"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 1800,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "command": [
+                      "uv",
+                      "run",
+                      "crawler",
+                      "run",
+                      "stepstone"
+                    ],
+                    "envFrom": [
+                      {
+                        "configMapRef": {
+                          "name": "crawler-config"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "crawler-secrets"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/crawler:latest",
+                    "imagePullPolicy": "Always",
+                    "name": "scraper",
+                    "resources": {
+                      "limits": {
+                        "cpu": "250m",
+                        "memory": "256Mi"
+                      },
+                      "requests": {
+                        "cpu": "100m",
+                        "memory": "128Mi"
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File"
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "terminationGracePeriodSeconds": 30
+              }
+            }
+          }
+        },
+        "schedule": "15 3,9,15,21 * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": true
+      },
+      "status": {
+        "lastScheduleTime": "2026-08-14T01:15:00Z"
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"scrape-site-c-enrich\"},\"name\":\"scrape-site-c-enrich\",\"namespace\":\"crawler\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":3600,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"Xvfb :99 -screen 0 1920x1080x24 -nolisten tcp \\u0026\\nfor i in $(seq 1 10); do xdpyinfo -display :99 \\u003e/dev/null 2\\u003e\\u00261 \\u0026\\u0026 break || sleep 1; done\\nexport DISPLAY=:99\\nexec uv run crawler run site-c\\n\"],\"command\":[\"/bin/sh\",\"-c\"],\"envFrom\":[{\"configMapRef\":{\"name\":\"crawler-config\"}},{\"secretRef\":{\"name\":\"crawler-secrets\"}},{\"secretRef\":{\"name\":\"scraper-auth\"}}],\"image\":\"192.0.2.202:30500/crawler:latest\",\"name\":\"scraper\",\"resources\":{\"limits\":{\"cpu\":\"1000m\",\"memory\":\"1536Mi\"},\"requests\":{\"cpu\":\"250m\",\"memory\":\"768Mi\"}},\"volumeMounts\":[{\"mountPath\":\"/app/browser_state\",\"name\":\"browser-state\"}]}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"node-a\"},\"restartPolicy\":\"Never\",\"volumes\":[{\"name\":\"browser-state\",\"persistentVolumeClaim\":{\"claimName\":\"browser-state-pvc\"}}]}}}},\"schedule\":\"0 2,8,14,20 * * *\",\"successfulJobsHistoryLimit\":1,\"suspend\":true}}\n"
+        },
+        "creationTimestamp": "2026-08-11T00:55:00Z",
+        "generation": 1,
+        "labels": {
+          "app": "scrape-site-c-enrich"
+        },
+        "name": "scrape-site-c-enrich",
+        "namespace": "crawler",
+        "resourceVersion": "2798587",
+        "uid": "56c70efe-e873-4b71-9696-997a0291d7f7"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 3600,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "args": [
+                      "Xvfb :99 -screen 0 1920x1080x24 -nolisten tcp &\nfor i in $(seq 1 10); do xdpyinfo -display :99 >/dev/null 2>&1 && break || sleep 1; done\nexport DISPLAY=:99\nexec uv run crawler run site-c\n"
+                    ],
+                    "command": [
+                      "/bin/sh",
+                      "-c"
+                    ],
+                    "envFrom": [
+                      {
+                        "configMapRef": {
+                          "name": "crawler-config"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "crawler-secrets"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "scraper-auth"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/crawler:latest",
+                    "imagePullPolicy": "Always",
+                    "name": "scraper",
+                    "resources": {
+                      "limits": {
+                        "cpu": "1",
+                        "memory": "1536Mi"
+                      },
+                      "requests": {
+                        "cpu": "250m",
+                        "memory": "768Mi"
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File",
+                    "volumeMounts": [
+                      {
+                        "mountPath": "/app/browser_state",
+                        "name": "browser-state"
+                      }
+                    ]
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "nodeSelector": {
+                  "kubernetes.io/hostname": "node-a"
+                },
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "terminationGracePeriodSeconds": 30,
+                "volumes": [
+                  {
+                    "name": "browser-state",
+                    "persistentVolumeClaim": {
+                      "claimName": "browser-state-pvc"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "schedule": "0 2,8,14,20 * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": true
+      },
+      "status": {}
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"scrape-site-c-search\"},\"name\":\"scrape-site-c-search\",\"namespace\":\"crawler\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":3600,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"Xvfb :99 -screen 0 1920x1080x24 -nolisten tcp \\u0026\\nfor i in $(seq 1 10); do xdpyinfo -display :99 \\u003e/dev/null 2\\u003e\\u00261 \\u0026\\u0026 break || sleep 1; done\\nexport DISPLAY=:99\\nexec uv run crawler run site-c --search\\n\"],\"command\":[\"/bin/sh\",\"-c\"],\"envFrom\":[{\"configMapRef\":{\"name\":\"crawler-config\"}},{\"secretRef\":{\"name\":\"crawler-secrets\"}},{\"secretRef\":{\"name\":\"scraper-auth\"}}],\"image\":\"192.0.2.202:30500/crawler:latest\",\"name\":\"scraper\",\"resources\":{\"limits\":{\"cpu\":\"1000m\",\"memory\":\"1536Mi\"},\"requests\":{\"cpu\":\"250m\",\"memory\":\"768Mi\"}},\"volumeMounts\":[{\"mountPath\":\"/app/browser_state\",\"name\":\"browser-state\"}]}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"node-a\"},\"restartPolicy\":\"Never\",\"volumes\":[{\"name\":\"browser-state\",\"persistentVolumeClaim\":{\"claimName\":\"browser-state-pvc\"}}]}}}},\"schedule\":\"0 1,7,13,19 * * *\",\"successfulJobsHistoryLimit\":1,\"suspend\":true}}\n"
+        },
+        "creationTimestamp": "2026-08-11T00:55:00Z",
+        "generation": 1,
+        "labels": {
+          "app": "scrape-site-c-search"
+        },
+        "name": "scrape-site-c-search",
+        "namespace": "crawler",
+        "resourceVersion": "2798588",
+        "uid": "c7ed3a79-6a76-4554-8686-6f20b75a380c"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 3600,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "args": [
+                      "Xvfb :99 -screen 0 1920x1080x24 -nolisten tcp &\nfor i in $(seq 1 10); do xdpyinfo -display :99 >/dev/null 2>&1 && break || sleep 1; done\nexport DISPLAY=:99\nexec uv run crawler run site-c --search\n"
+                    ],
+                    "command": [
+                      "/bin/sh",
+                      "-c"
+                    ],
+                    "envFrom": [
+                      {
+                        "configMapRef": {
+                          "name": "crawler-config"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "crawler-secrets"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "scraper-auth"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/crawler:latest",
+                    "imagePullPolicy": "Always",
+                    "name": "scraper",
+                    "resources": {
+                      "limits": {
+                        "cpu": "1",
+                        "memory": "1536Mi"
+                      },
+                      "requests": {
+                        "cpu": "250m",
+                        "memory": "768Mi"
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File",
+                    "volumeMounts": [
+                      {
+                        "mountPath": "/app/browser_state",
+                        "name": "browser-state"
+                      }
+                    ]
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "nodeSelector": {
+                  "kubernetes.io/hostname": "node-a"
+                },
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "terminationGracePeriodSeconds": 30,
+                "volumes": [
+                  {
+                    "name": "browser-state",
+                    "persistentVolumeClaim": {
+                      "claimName": "browser-state-pvc"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "schedule": "0 1,7,13,19 * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": true
+      },
+      "status": {}
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "CronJob",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"CronJob\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"scrape-site-b\"},\"name\":\"scrape-site-b\",\"namespace\":\"crawler\"},\"spec\":{\"concurrencyPolicy\":\"Forbid\",\"failedJobsHistoryLimit\":3,\"jobTemplate\":{\"spec\":{\"activeDeadlineSeconds\":1800,\"backoffLimit\":1,\"template\":{\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"Xvfb :99 -screen 0 1280x720x24 \\u0026\\nfor i in $(seq 1 10); do xdpyinfo -display :99 \\u003e/dev/null 2\\u003e\\u00261 \\u0026\\u0026 break || sleep 1; done\\nDISPLAY=:99 uv run crawler run site-b\\n\"],\"command\":[\"/bin/sh\",\"-c\"],\"envFrom\":[{\"configMapRef\":{\"name\":\"crawler-config\"}},{\"secretRef\":{\"name\":\"crawler-secrets\"}},{\"secretRef\":{\"name\":\"scraper-auth\"}}],\"image\":\"192.0.2.202:30500/crawler:latest\",\"name\":\"scraper\",\"resources\":{\"limits\":{\"cpu\":\"1000m\",\"memory\":\"1024Mi\"},\"requests\":{\"cpu\":\"200m\",\"memory\":\"512Mi\"}},\"volumeMounts\":[{\"mountPath\":\"/app/browser_state\",\"name\":\"browser-state\"}]}],\"nodeSelector\":{\"kubernetes.io/hostname\":\"node-a\"},\"restartPolicy\":\"Never\",\"volumes\":[{\"name\":\"browser-state\",\"persistentVolumeClaim\":{\"claimName\":\"browser-state-pvc\"}}]}}}},\"schedule\":\"45 7,19 * * *\",\"successfulJobsHistoryLimit\":1,\"suspend\":true}}\n"
+        },
+        "creationTimestamp": "2026-08-11T00:55:01Z",
+        "generation": 1,
+        "labels": {
+          "app": "scrape-site-b"
+        },
+        "name": "scrape-site-b",
+        "namespace": "crawler",
+        "resourceVersion": "2798590",
+        "uid": "57a62d48-06c8-42be-b9f4-8e98ca7a0388"
+      },
+      "spec": {
+        "concurrencyPolicy": "Forbid",
+        "failedJobsHistoryLimit": 3,
+        "jobTemplate": {
+          "metadata": {},
+          "spec": {
+            "activeDeadlineSeconds": 1800,
+            "backoffLimit": 1,
+            "template": {
+              "metadata": {},
+              "spec": {
+                "automountServiceAccountToken": false,
+                "containers": [
+                  {
+                    "args": [
+                      "Xvfb :99 -screen 0 1280x720x24 &\nfor i in $(seq 1 10); do xdpyinfo -display :99 >/dev/null 2>&1 && break || sleep 1; done\nDISPLAY=:99 uv run crawler run site-b\n"
+                    ],
+                    "command": [
+                      "/bin/sh",
+                      "-c"
+                    ],
+                    "envFrom": [
+                      {
+                        "configMapRef": {
+                          "name": "crawler-config"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "crawler-secrets"
+                        }
+                      },
+                      {
+                        "secretRef": {
+                          "name": "scraper-auth"
+                        }
+                      }
+                    ],
+                    "image": "192.0.2.202:30500/crawler:latest",
+                    "imagePullPolicy": "Always",
+                    "name": "scraper",
+                    "resources": {
+                      "limits": {
+                        "cpu": "1",
+                        "memory": "1Gi"
+                      },
+                      "requests": {
+                        "cpu": "200m",
+                        "memory": "512Mi"
+                      }
+                    },
+                    "terminationMessagePath": "/dev/termination-log",
+                    "terminationMessagePolicy": "File",
+                    "volumeMounts": [
+                      {
+                        "mountPath": "/app/browser_state",
+                        "name": "browser-state"
+                      }
+                    ]
+                  }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "nodeSelector": {
+                  "kubernetes.io/hostname": "node-a"
+                },
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "terminationGracePeriodSeconds": 30,
+                "volumes": [
+                  {
+                    "name": "browser-state",
+                    "persistentVolumeClaim": {
+                      "claimName": "browser-state-pvc"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "schedule": "45 7,19 * * *",
+        "successfulJobsHistoryLimit": 1,
+        "suspend": true
+      },
+      "status": {}
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

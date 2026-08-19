@@ -1,0 +1,8 @@
+{
+  "items": [
+    {
+      "metadata": { "namespace": "crawler", "name": "browser-state-pvc" },
+      "status": { "phase": "Pending" }
+    }
+  ]
+}

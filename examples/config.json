@@ -1,0 +1,41 @@
+{
+  "$comment": "pulse config — copy to ~/.config/pulse/config.json. Everything optional; missing sections are skipped.",
+  "k8s": {
+    "context": "default",
+    "ignoreNamespaces": ["kube-system", "kube-public", "kube-node-lease"],
+    "scaledToZeroOk": ["assistant/assistant-telegram", "crawler/enrichment-worker"],
+    "cronjobs": {
+      "maxMissedRuns": 2,
+      "override": {
+        "$comment": "keys are <ns>/<name>; <ns>/* matches every cronjob in the namespace",
+        "assistant/assistant-rentals-classify": { "suspendedOk": true },
+        "crawler/*": { "suspendedOk": true }
+      }
+    }
+  },
+  "sites": [
+    { "url": "https://storefront.example/", "expect": { "status": 200, "tlsDaysMin": 14, "contains": "Storefront" } },
+    { "url": "https://staging.storefront.example/", "expect": { "status": [200, 401] }, "lan": true },
+    { "url": "https://mysite.example/", "expect": { "status": 200, "tlsDaysMin": 14 } },
+    { "url": "https://oss1.example/", "group": "hosting" },
+    { "url": "https://oss2.example/", "group": "hosting" },
+    { "url": "https://oss3.example/", "group": "hosting" },
+    { "url": "https://oss4.example/", "group": "hosting" },
+    { "url": "https://oss5.example/", "group": "hosting" },
+    { "url": "https://oss6.example/", "group": "hosting" },
+    { "url": "https://oss7.example/", "group": "hosting" },
+    { "url": "https://oss8.example/", "group": "hosting" },
+    { "url": "https://oss9.example/", "group": "hosting" },
+    { "url": "https://oss10.example/", "group": "hosting" }
+  ],
+  "prometheus": {
+    "url": "http://prometheus.monitoring.svc:9090",
+    "portForward": "monitoring/svc/prometheus:9090",
+    "disks": [{ "instance": "node-a", "mount": "/mnt/ssd", "warnPct": 85, "critPct": 92 }],
+    "warnPctDefault": 85
+  },
+  "hosts": [
+    { "name": "prod-host", "ssh": "root@203.0.113.10", "checks": ["df", "docker", "uptime"] }
+  ],
+  "budgets": { "siteTimeoutMs": 8000, "kubectlTimeoutS": 8, "sshTimeoutS": 8, "concurrency": 8 }
+}

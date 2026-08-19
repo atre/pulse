@@ -1,0 +1,13 @@
+# snuff manifest — definition-of-done gates. Run `snuff` to execute all.
+gates:
+  - name: lint
+    run: npm run lint
+    paths: [src/**, tsconfig.json, package.json]
+  - name: test
+    run: npm test
+    needs: [lint]
+    paths: [src/**, test/**, tsconfig*.json, package.json]
+  - name: build
+    run: npm run build
+    needs: [lint]
+    paths: [src/**, tsconfig.json, package.json]

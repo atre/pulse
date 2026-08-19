@@ -1,0 +1,9 @@
+{
+  "items": [
+    {
+      "metadata": { "namespace": "assistant", "name": "assistant-mcp" },
+      "spec": { "replicas": 1, "selector": { "matchLabels": { "app": "assistant-mcp" } } },
+      "status": { "readyReplicas": 0 }
+    }
+  ]
+}

@@ -1,0 +1,1298 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "annotations": {
+          "alpha.kubernetes.io/provided-node-ip": "192.0.2.39",
+          "flannel.alpha.coreos.com/backend-data": "null",
+          "flannel.alpha.coreos.com/backend-type": "host-gw",
+          "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+          "flannel.alpha.coreos.com/public-ip": "192.0.2.39",
+          "k3s.io/hostname": "node-b",
+          "k3s.io/internal-ip": "192.0.2.39",
+          "k3s.io/node-args": "[\"agent\",\"--flannel-iface\",\"eth0\",\"--node-ip\",\"192.0.2.39\"]",
+          "k3s.io/node-config-hash": "AR25DR75D4MHRB66HZITNDGBV5LGVAUUAXRCZTBF3YIB2QPQI6HA====",
+          "k3s.io/node-env": "{\"K3S_TOKEN\":\"********\",\"K3S_URL\":\"https://192.0.2.202:6443\"}",
+          "node.alpha.kubernetes.io/ttl": "0",
+          "p2p.k3s.cattle.io/node-address": "/ip4/192.0.2.39/tcp/5001/p2p/QmYiMufo5RLdAyX3viCoR4CNKeVHk78T9uWTXBMFwySQ2m",
+          "p2p.k3s.cattle.io/node-addresses": "{\"ID\":\"QmYiMufo5RLdAyX3viCoR4CNKeVHk78T9uWTXBMFwySQ2m\",\"Addrs\":[\"/ip4/192.0.2.39/tcp/5001\"]}",
+          "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+        },
+        "creationTimestamp": "2026-06-26T20:42:43Z",
+        "finalizers": [
+          "wrangler.cattle.io/node"
+        ],
+        "labels": {
+          "beta.kubernetes.io/arch": "arm64",
+          "beta.kubernetes.io/instance-type": "k3s",
+          "beta.kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "arm64",
+          "kubernetes.io/hostname": "node-b",
+          "kubernetes.io/os": "linux",
+          "node.kubernetes.io/instance-type": "k3s",
+          "p2p.k3s.cattle.io/enabled": "true"
+        },
+        "name": "node-b",
+        "resourceVersion": "3212013",
+        "uid": "ce14e8b3-e5ac-4a4f-b7b3-2998827ab156"
+      },
+      "spec": {
+        "podCIDR": "10.42.1.0/24",
+        "podCIDRs": [
+          "10.42.1.0/24"
+        ],
+        "providerID": "k3s://node-b"
+      },
+      "status": {
+        "addresses": [
+          {
+            "address": "192.0.2.39",
+            "type": "InternalIP"
+          },
+          {
+            "address": "node-b",
+            "type": "Hostname"
+          }
+        ],
+        "allocatable": {
+          "cpu": "4",
+          "ephemeral-storage": "117733034302",
+          "memory": "16607600Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "4",
+          "ephemeral-storage": "121024912Ki",
+          "memory": "16607600Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "lastHeartbeatTime": "2026-08-16T15:54:53Z",
+            "lastTransitionTime": "2026-08-11T06:03:06Z",
+            "message": "kubelet has sufficient memory available",
+            "reason": "KubeletHasSufficientMemory",
+            "status": "False",
+            "type": "MemoryPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-08-16T15:54:53Z",
+            "lastTransitionTime": "2026-08-11T06:03:06Z",
+            "message": "kubelet has no disk pressure",
+            "reason": "KubeletHasNoDiskPressure",
+            "status": "False",
+            "type": "DiskPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-08-16T15:54:53Z",
+            "lastTransitionTime": "2026-08-11T06:03:06Z",
+            "message": "kubelet has sufficient PID available",
+            "reason": "KubeletHasSufficientPID",
+            "status": "False",
+            "type": "PIDPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-08-16T15:54:53Z",
+            "lastTransitionTime": "2026-08-11T06:03:06Z",
+            "message": "kubelet is posting ready status",
+            "reason": "KubeletReady",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "daemonEndpoints": {
+          "kubeletEndpoint": {
+            "Port": 10250
+          }
+        },
+        "features": {
+          "supplementalGroupsPolicy": true
+        },
+        "images": [
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:1bb2f705971690708fa1b0904ea9a01d710ab16697f99339a37252c07f193308",
+              "192.0.2.202:30500/storefront-tools:g2a01d3733c6e"
+            ],
+            "sizeBytes": 1432341114
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/crawler@sha256:4d90661ef7fb2034aa6a55e866b31ed39f73caf0c3bc1b8d7f1c12aaa0ad433a",
+              "192.0.2.202:30500/crawler:latest"
+            ],
+            "sizeBytes": 607409733
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/gateway@sha256:1306a4f8c90f105b5d64d8ff70f42d6b25b738815bf2a4165981d1eff182933a",
+              "192.0.2.202:30500/gateway:latest"
+            ],
+            "sizeBytes": 511234540
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/syncbot-sync@sha256:b278c28dd2094ea4f411a6e9b0ad86ed92793e951d12b683c9cbb537a277726d",
+              "192.0.2.202:30500/syncbot-sync:latest"
+            ],
+            "sizeBytes": 237792120
+          },
+          {
+            "names": [
+              "docker.io/library/postgres@sha256:fe03a7605299a34ddf5e4f285dff78c3d7190a576b3c6b46f2fcff69f4bffd54",
+              "docker.io/library/postgres:16"
+            ],
+            "sizeBytes": 158821363
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:370962b082deaba4e804e25e9008c99805de9ae848f3b308de9b3da578b787fd",
+              "192.0.2.202:30500/assistant-sync:g54f0afe33635"
+            ],
+            "sizeBytes": 137318433
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:4b707ae17f1125a1d4dab22bdf4d8b3f632f6c8e980d162ebc80c6a7d18c45c1",
+              "192.0.2.202:30500/assistant-sync:g9a0675142103"
+            ],
+            "sizeBytes": 137036172
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:5f9383433e42e7f21b0965cfb59e85459b695f4f9ac3991be4a976778f1009bb",
+              "192.0.2.202:30500/assistant-sync:g615a5614cdf9"
+            ],
+            "sizeBytes": 136742584
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:1b20fbb2c9c135fe2504459f542bdbd13dd8f50d8451048ad0b5acde9b071a6e",
+              "192.0.2.202:30500/assistant-sync:gf1054285ad09"
+            ],
+            "sizeBytes": 130976913
+          },
+          {
+            "names": [
+              "docker.io/library/postgres@sha256:e013e867e712fec275706a6c51c966f0bb0c93cfa8f51000f85a15f9865a28cb",
+              "docker.io/library/postgres:16-alpine"
+            ],
+            "sizeBytes": 113870135
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:ba8257edf1f68b9a99f811d14629f3591ab211d30406ad5399195696f95aa384",
+              "192.0.2.202:30500/assistant-sync:ge14b562c4f61"
+            ],
+            "sizeBytes": 100879590
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:87862cdae9e541f3101db3551bda54e7e3f2d66e3621dc89efe2e7c72ae7c097",
+              "192.0.2.202:30500/assistant-sync:g4c0485cc"
+            ],
+            "sizeBytes": 100734217
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:3d7be8e4946c0813517d3240ae839361ffb08df3f4c44775d32b3010b8b4fb6f",
+              "192.0.2.202:30500/assistant-sync:latest"
+            ],
+            "sizeBytes": 100733994
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:b4dd94f541e8835acd7f6e22d5f69a0d3eb6724abc2f2bbd20838e5ffd21430b",
+              "192.0.2.202:30500/assistant-sync:g4ad26de5cb4c"
+            ],
+            "sizeBytes": 100672697
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-traefik@sha256:c56901603318ee375477ee5c3f50d175d3ec42dc102efc2f1158f0756ba4dffa",
+              "docker.io/rancher/mirrored-library-traefik:3.5.1"
+            ],
+            "sizeBytes": 45990039
+          },
+          {
+            "names": [
+              "docker.io/prom/node-exporter@sha256:1b4e4438faca4dd7e001dd445d161a4a2091b0fededa84093b3a8dfeae1f1be0",
+              "docker.io/prom/node-exporter:v1.12.1"
+            ],
+            "sizeBytes": 12474288
+          },
+          {
+            "names": [
+              "docker.io/curlimages/curl@sha256:08e466006f0860e54fc299378de998935333e0e130a15f6f98482e9f8dab3058",
+              "docker.io/curlimages/curl:8.5.0"
+            ],
+            "sizeBytes": 9555436
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-lb@sha256:7eb86d5b908ec6ddd9796253d8cc2f43df99420fc8b8a18452a94dc56f86aca0",
+              "docker.io/rancher/klipper-lb:v0.4.13"
+            ],
+            "sizeBytes": 5547992
+          },
+          {
+            "names": [
+              "docker.io/library/busybox@sha256:dc2d74b28e4cf8984fa52af1f39bc7c3d9c73760b41a74d629f5d11b1ab28616",
+              "docker.io/library/busybox:latest"
+            ],
+            "sizeBytes": 1925780
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-pause@sha256:74c4244427b7312c5b901fe0f67cbc53683d06f4f24c6faee65d4182bf0fa893",
+              "docker.io/rancher/mirrored-pause:3.6"
+            ],
+            "sizeBytes": 253243
+          }
+        ],
+        "nodeInfo": {
+          "architecture": "arm64",
+          "bootID": "d57d83eb-e09c-4979-9c16-d744cb9b312d",
+          "containerRuntimeVersion": "containerd://2.1.5-k3s1",
+          "kernelVersion": "6.18.34+rpt-rpi-2712",
+          "kubeProxyVersion": "",
+          "kubeletVersion": "v1.34.3+k3s1",
+          "machineID": "8a01880e3e9247fbb22c884ca4b3ea1e",
+          "operatingSystem": "linux",
+          "osImage": "Debian GNU/Linux 13 (trixie)",
+          "systemUUID": "8a01880e3e9247fbb22c884ca4b3ea1e"
+        },
+        "runtimeHandlers": [
+          {
+            "features": {
+              "recursiveReadOnlyMounts": true,
+              "userNamespaces": true
+            },
+            "name": ""
+          },
+          {
+            "features": {
+              "recursiveReadOnlyMounts": true,
+              "userNamespaces": true
+            },
+            "name": "runc"
+          },
+          {
+            "features": {
+              "recursiveReadOnlyMounts": false,
+              "userNamespaces": false
+            },
+            "name": "runhcs-wcow-process"
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "annotations": {
+          "alpha.kubernetes.io/provided-node-ip": "192.0.2.30",
+          "flannel.alpha.coreos.com/backend-data": "null",
+          "flannel.alpha.coreos.com/backend-type": "host-gw",
+          "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+          "flannel.alpha.coreos.com/public-ip": "192.0.2.30",
+          "k3s.io/hostname": "node-c",
+          "k3s.io/internal-ip": "192.0.2.30",
+          "k3s.io/node-args": "[\"agent\",\"--flannel-iface\",\"eth0\",\"--node-ip\",\"192.0.2.30\"]",
+          "k3s.io/node-config-hash": "PHDBBCZBOJZAYCQLV6ZL2HNQ5IVGYO5VBUYUDCIHUBAYUUHDWTQQ====",
+          "k3s.io/node-env": "{\"K3S_TOKEN\":\"********\",\"K3S_URL\":\"https://192.0.2.202:6443\"}",
+          "node.alpha.kubernetes.io/ttl": "0",
+          "p2p.k3s.cattle.io/node-address": "/ip4/192.0.2.30/tcp/5001/p2p/QmSMN1Sm18bYBK5yBw3iTM6BE1JKHW2QxCAR2Wugtb1uwG",
+          "p2p.k3s.cattle.io/node-addresses": "{\"ID\":\"QmSMN1Sm18bYBK5yBw3iTM6BE1JKHW2QxCAR2Wugtb1uwG\",\"Addrs\":[\"/ip4/192.0.2.30/tcp/5001\"]}",
+          "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+        },
+        "creationTimestamp": "2026-06-26T20:43:06Z",
+        "finalizers": [
+          "wrangler.cattle.io/node"
+        ],
+        "labels": {
+          "beta.kubernetes.io/arch": "arm64",
+          "beta.kubernetes.io/instance-type": "k3s",
+          "beta.kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "arm64",
+          "kubernetes.io/hostname": "node-c",
+          "kubernetes.io/os": "linux",
+          "node.kubernetes.io/instance-type": "k3s",
+          "p2p.k3s.cattle.io/enabled": "true"
+        },
+        "name": "node-c",
+        "resourceVersion": "3211917",
+        "uid": "daa2a72b-eb24-4e49-83c8-b36df77af300"
+      },
+      "spec": {
+        "podCIDR": "10.42.2.0/24",
+        "podCIDRs": [
+          "10.42.2.0/24"
+        ],
+        "providerID": "k3s://node-c"
+      },
+      "status": {
+        "addresses": [
+          {
+            "address": "192.0.2.30",
+            "type": "InternalIP"
+          },
+          {
+            "address": "node-c",
+            "type": "Hostname"
+          }
+        ],
+        "allocatable": {
+          "cpu": "4",
+          "ephemeral-storage": "59327923973",
+          "memory": "8007464Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "4",
+          "ephemeral-storage": "60986764Ki",
+          "memory": "8007464Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "lastHeartbeatTime": "2026-08-16T15:52:34Z",
+            "lastTransitionTime": "2026-06-26T20:43:06Z",
+            "message": "kubelet has sufficient memory available",
+            "reason": "KubeletHasSufficientMemory",
+            "status": "False",
+            "type": "MemoryPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-08-16T15:52:34Z",
+            "lastTransitionTime": "2026-06-26T20:43:06Z",
+            "message": "kubelet has no disk pressure",
+            "reason": "KubeletHasNoDiskPressure",
+            "status": "False",
+            "type": "DiskPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-08-16T15:52:34Z",
+            "lastTransitionTime": "2026-06-26T20:43:06Z",
+            "message": "kubelet has sufficient PID available",
+            "reason": "KubeletHasSufficientPID",
+            "status": "False",
+            "type": "PIDPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-08-16T15:52:34Z",
+            "lastTransitionTime": "2026-06-26T20:43:06Z",
+            "message": "kubelet is posting ready status",
+            "reason": "KubeletReady",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "daemonEndpoints": {
+          "kubeletEndpoint": {
+            "Port": 10250
+          }
+        },
+        "features": {
+          "supplementalGroupsPolicy": true
+        },
+        "images": [
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:59827150402f4980b17fe615450c3d3a0e45aadb99c616a8cbba75af0e91f8ce",
+              "192.0.2.202:30500/storefront-tools:g5ac7cc1fbe8e"
+            ],
+            "sizeBytes": 2856650262
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:073ff715c6f7dd03035e7ce60746590ffa4a43d55974a5dceced886b1fa53aa4",
+              "192.0.2.202:30500/storefront-tools:gb709a4e6a55a"
+            ],
+            "sizeBytes": 1193444301
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/crawler@sha256:4d90661ef7fb2034aa6a55e866b31ed39f73caf0c3bc1b8d7f1c12aaa0ad433a",
+              "192.0.2.202:30500/crawler:latest"
+            ],
+            "sizeBytes": 607409733
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:4a968b08e84ee2af896227f0fc2ec0af1dcdffd538b640352cfb24ed03ea3615",
+              "192.0.2.202:30500/storefront-tools:gdf24ce30cd86"
+            ],
+            "sizeBytes": 444977395
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:9404a510c7796ac11ac8d928da938c77ef5c90b3f0fc1c0d42b7d628505dcc1f",
+              "192.0.2.202:30500/storefront-tools:g0acb82ae5a5d"
+            ],
+            "sizeBytes": 444974436
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:acddef774e97154c7a2958e1d74f7850d9dc915b579282321a627c25ff4a791c",
+              "192.0.2.202:30500/storefront-tools:geb6b8336624a"
+            ],
+            "sizeBytes": 444974337
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:01bbbeeec9ebbe20e48575e4d68000198152f5445ec374e0b5fcb2cdb74e2b68",
+              "192.0.2.202:30500/storefront-tools:g7fe82746fe7b"
+            ],
+            "sizeBytes": 444974010
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:88a31038fb8dc9882edcdb43a43352710a68e9a5c90bdffa675d710a10a2d0b1",
+              "192.0.2.202:30500/storefront-tools:gf2bf917f752e"
+            ],
+            "sizeBytes": 444972826
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:45b1f7b0f38a99cba3365442f2240d4d9c6b6f0e6d2e2adec2cb8cb11122b1ce",
+              "192.0.2.202:30500/storefront-tools:gae1fc9cf2f82-dirty-1786892275-stagingurl"
+            ],
+            "sizeBytes": 441496207
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:cdc1eea4799a95b281141a03c21c63868e19eb8d110f566963b972a7eaceac50",
+              "192.0.2.202:30500/storefront-tools:gae1fc9cf2f82-dirty-1786889385-stagingurl"
+            ],
+            "sizeBytes": 441478750
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:9a32d0cfe78d7334b24a407f5fcfa4c7f2d2578b0b38ab24a79274568f8f93d4",
+              "192.0.2.202:30500/storefront-tools:gae1fc9cf2f82-stagingurl"
+            ],
+            "sizeBytes": 441478533
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:0e218f79dc6aa6576a5f992c48374eee9713997ea6721a10581a92b42efe7795",
+              "192.0.2.202:30500/storefront-tools:g22e7b9f06c55-dirty-1786836701"
+            ],
+            "sizeBytes": 441464283
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:927abc1284fc312fb043fd8408dea3f135428a735b8772da96c1592c9776a8d0",
+              "192.0.2.202:30500/storefront-tools:gae1fc9cf2f82"
+            ],
+            "sizeBytes": 441463756
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:050c1a1f1f0b87e0cbd5554176bb14a46633da0e9507b1ceb0cb17f0c8dad6aa",
+              "192.0.2.202:30500/storefront-tools:gf05f221c3432"
+            ],
+            "sizeBytes": 429954728
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:cd304c2d4e991918f55a64b3fe6694a5c374c82a3241b55417b80e10cc3b5b7d",
+              "192.0.2.202:30500/storefront-tools:g0e1bbdda58c9"
+            ],
+            "sizeBytes": 429868108
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:37437c8632eba3465ec43e350c4b2431e64bce58c76e416e597fe4e8cb2804d8",
+              "192.0.2.202:30500/storefront-tools:gcea4daa274b2"
+            ],
+            "sizeBytes": 429811277
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:6650050462020876c49abab3d4b0900f5d914fa987f6bd925617eb7fb4859543",
+              "192.0.2.202:30500/storefront-tools:g2888808d7654"
+            ],
+            "sizeBytes": 429796352
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:5096e8825143c5172cdb3293589f80c29528216aa5e783af898ef23758b661b4",
+              "192.0.2.202:30500/storefront-tools:g06f0e8f01ec3"
+            ],
+            "sizeBytes": 429796019
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:18149d941540770bfdec771d1b467a813d6179c5b96d5215c43856801f1ce628",
+              "192.0.2.202:30500/storefront-tools:g38ab4f47c4df"
+            ],
+            "sizeBytes": 429794892
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:b0db5f98da79127a848e689f8949e49ebd6a181a0a78a2ad2d853d6bdf3c288a",
+              "192.0.2.202:30500/storefront-tools:g54e43dfe4ea8"
+            ],
+            "sizeBytes": 429790108
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:86c74238722853fa4cf2d144503bbe025840868ef5a4d51232b0fd3e52d261e2",
+              "192.0.2.202:30500/storefront-tools:g01ac8297bebb"
+            ],
+            "sizeBytes": 429788299
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:4338f9b78aebca458c1497941d1f0325574d77d69edde769f0528b98521086f3",
+              "192.0.2.202:30500/storefront-tools:g876b9af41db6"
+            ],
+            "sizeBytes": 381361331
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:91cc363bb7a6cb686027a3bff94847ada653387ddef46320dd29e3b64e6ec470",
+              "192.0.2.202:30500/storefront-tools:g98747304ce36"
+            ],
+            "sizeBytes": 381360928
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:4310da4183e58b1e5aaa57ae9a214e592e56519e795d243510b5bd9e5f1fb5ee",
+              "192.0.2.202:30500/storefront-tools:gbd7e06b9f272"
+            ],
+            "sizeBytes": 381360164
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront-tools@sha256:70d001cbfde2e651c480ff3124a63e62a5f5ae6959d21bced04c63e49b48fcb4",
+              "192.0.2.202:30500/storefront-tools:ge01df8b6c495"
+            ],
+            "sizeBytes": 381360154
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/syncbot-sync@sha256:b278c28dd2094ea4f411a6e9b0ad86ed92793e951d12b683c9cbb537a277726d",
+              "192.0.2.202:30500/syncbot-sync:latest"
+            ],
+            "sizeBytes": 237792120
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:9c1a217d9a2812253596b511248531395fb2a1ec76815497502ead5b557c926c",
+              "192.0.2.202:30500/assistant-sync:gd158d0bb2f48"
+            ],
+            "sizeBytes": 137361302
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:370962b082deaba4e804e25e9008c99805de9ae848f3b308de9b3da578b787fd",
+              "192.0.2.202:30500/assistant-sync:g54f0afe33635"
+            ],
+            "sizeBytes": 137318433
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:fa002fa534913de69910885fbdfaed323ac45babd2e3014b56057f66b9538537",
+              "192.0.2.202:30500/assistant-sync:g4523900c58be"
+            ],
+            "sizeBytes": 137265025
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:3a0ebc8ee37e7eac0175174a690ad37a6b376524e981027bfedb812a0be7ecfd",
+              "192.0.2.202:30500/assistant-sync:g9d2279a497f9"
+            ],
+            "sizeBytes": 137101652
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:d385b4de57f140224e525265d46366f5400aaf51dea17eb366cfd15d2870842d",
+              "192.0.2.202:30500/assistant-sync:gf0d844725c78"
+            ],
+            "sizeBytes": 137087301
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:4b707ae17f1125a1d4dab22bdf4d8b3f632f6c8e980d162ebc80c6a7d18c45c1",
+              "192.0.2.202:30500/assistant-sync:g9a0675142103"
+            ],
+            "sizeBytes": 137036172
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:a355eb8c63cc8974fce544b9b0499755d62ee10911b2c095e5f1d7f0a5228542",
+              "192.0.2.202:30500/assistant-sync:g6ef87eb48583"
+            ],
+            "sizeBytes": 137034101
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:5f9383433e42e7f21b0965cfb59e85459b695f4f9ac3991be4a976778f1009bb",
+              "192.0.2.202:30500/assistant-sync:g615a5614cdf9"
+            ],
+            "sizeBytes": 136742584
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:5ae10ee50671e18ce0ea6e0ccf745a174e6a2d7bc16abc47a02aec62cb9c3746",
+              "192.0.2.202:30500/assistant-sync:gf066e54271a7"
+            ],
+            "sizeBytes": 136742494
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:72799c89d060e10077e724117acf3c27222837a4cda8de2740332528227d3b97",
+              "192.0.2.202:30500/assistant-sync:g67146c01dfed"
+            ],
+            "sizeBytes": 136736555
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:661c6474266d432ff7fd9f04ae2199c89afb70b0fe0b693048a0f71fe7685a03",
+              "192.0.2.202:30500/assistant-sync:g253898d36d04"
+            ],
+            "sizeBytes": 136734906
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:b1d861401a05da4b2fda8509d74e1444e24f2f61e932d09fdec110eeaf58d469",
+              "192.0.2.202:30500/assistant-sync:ga7180664ce2b"
+            ],
+            "sizeBytes": 134713517
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:1b20fbb2c9c135fe2504459f542bdbd13dd8f50d8451048ad0b5acde9b071a6e",
+              "192.0.2.202:30500/assistant-sync:gf1054285ad09"
+            ],
+            "sizeBytes": 130976913
+          },
+          {
+            "names": [
+              "docker.io/library/postgres@sha256:e013e867e712fec275706a6c51c966f0bb0c93cfa8f51000f85a15f9865a28cb",
+              "docker.io/library/postgres:16-alpine"
+            ],
+            "sizeBytes": 113870135
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:ba8257edf1f68b9a99f811d14629f3591ab211d30406ad5399195696f95aa384",
+              "192.0.2.202:30500/assistant-sync:ge14b562c4f61"
+            ],
+            "sizeBytes": 100879590
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:87862cdae9e541f3101db3551bda54e7e3f2d66e3621dc89efe2e7c72ae7c097",
+              "192.0.2.202:30500/assistant-sync:g4c0485cc"
+            ],
+            "sizeBytes": 100734217
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:b4dd94f541e8835acd7f6e22d5f69a0d3eb6724abc2f2bbd20838e5ffd21430b",
+              "192.0.2.202:30500/assistant-sync:g4ad26de5cb4c"
+            ],
+            "sizeBytes": 100672697
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/assistant-sync@sha256:1a3d57f2744659875c24f9184e6107f25ec97f33883e6f77b26bdbe7457cbac7",
+              "192.0.2.202:30500/assistant-sync:latest"
+            ],
+            "sizeBytes": 100321561
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-library-traefik@sha256:c56901603318ee375477ee5c3f50d175d3ec42dc102efc2f1158f0756ba4dffa",
+              "docker.io/rancher/mirrored-library-traefik:3.5.1"
+            ],
+            "sizeBytes": 45990039
+          },
+          {
+            "names": [
+              "docker.io/cloudflare/cloudflared@sha256:e39ee8da81ad5e05d77f38d2f51c60ca51bf2a8450ac3abab50c17fdb91d91bf",
+              "docker.io/cloudflare/cloudflared:2026.7.3"
+            ],
+            "sizeBytes": 27473304
+          },
+          {
+            "names": [
+              "registry.k8s.io/kube-state-metrics/kube-state-metrics@sha256:85108987d044b18a098126732f98602df408888c0f7d456241f5abefb9744bc1",
+              "registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.19.1"
+            ],
+            "sizeBytes": 16932059
+          },
+          {
+            "names": [
+              "docker.io/prom/node-exporter@sha256:1b4e4438faca4dd7e001dd445d161a4a2091b0fededa84093b3a8dfeae1f1be0",
+              "docker.io/prom/node-exporter:v1.12.1"
+            ],
+            "sizeBytes": 12474288
+          },
+          {
+            "names": [
+              "docker.io/curlimages/curl@sha256:08e466006f0860e54fc299378de998935333e0e130a15f6f98482e9f8dab3058",
+              "docker.io/curlimages/curl:8.5.0"
+            ],
+            "sizeBytes": 9555436
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-lb@sha256:7eb86d5b908ec6ddd9796253d8cc2f43df99420fc8b8a18452a94dc56f86aca0",
+              "docker.io/rancher/klipper-lb:v0.4.13"
+            ],
+            "sizeBytes": 5547992
+          }
+        ],
+        "nodeInfo": {
+          "architecture": "arm64",
+          "bootID": "392257be-b7ed-4ba0-8e22-ee328371934d",
+          "containerRuntimeVersion": "containerd://2.1.5-k3s1",
+          "kernelVersion": "6.18.34+rpt-rpi-v8",
+          "kubeProxyVersion": "",
+          "kubeletVersion": "v1.34.3+k3s1",
+          "machineID": "423c201d830f478a91af265131332641",
+          "operatingSystem": "linux",
+          "osImage": "Debian GNU/Linux 13 (trixie)",
+          "systemUUID": "423c201d830f478a91af265131332641"
+        },
+        "runtimeHandlers": [
+          {
+            "features": {
+              "recursiveReadOnlyMounts": true,
+              "userNamespaces": true
+            },
+            "name": ""
+          },
+          {
+            "features": {
+              "recursiveReadOnlyMounts": true,
+              "userNamespaces": true
+            },
+            "name": "runc"
+          },
+          {
+            "features": {
+              "recursiveReadOnlyMounts": false,
+              "userNamespaces": false
+            },
+            "name": "runhcs-wcow-process"
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Node",
+      "metadata": {
+        "annotations": {
+          "alpha.kubernetes.io/provided-node-ip": "192.0.2.202",
+          "flannel.alpha.coreos.com/backend-data": "null",
+          "flannel.alpha.coreos.com/backend-type": "host-gw",
+          "flannel.alpha.coreos.com/kube-subnet-manager": "true",
+          "flannel.alpha.coreos.com/public-ip": "192.0.2.202",
+          "k3s.io/encryption-config-hash": "start-97bc0cdc1d30a3940eadf3f3c9a29d69a4efde550a466c4583d599472b1414ec",
+          "k3s.io/hostname": "node-a",
+          "k3s.io/internal-ip": "192.0.2.202",
+          "k3s.io/node-args": "[\"server\",\"--write-kubeconfig-mode\",\"0644\",\"--tls-san\",\"192.0.2.202\",\"--tls-san\",\"node-a\",\"--tls-san\",\"node-a.lab.example\",\"--secrets-encryption\",\"true\",\"--default-local-storage-path\",\"/mnt/ssd/local-path\",\"--flannel-backend\",\"host-gw\",\"--flannel-iface\",\"eth0\",\"--node-ip\",\"192.0.2.202\",\"--embedded-registry\",\"true\"]",
+          "k3s.io/node-config-hash": "J43CMKUUWE6255ZTZGE3OZMVECJ3VVDQTYNAKEPEKZZP54IGVFGA====",
+          "k3s.io/node-env": "{}",
+          "node.alpha.kubernetes.io/ttl": "0",
+          "p2p.k3s.cattle.io/node-address": "/ip4/192.0.2.202/tcp/5001/p2p/QmTmNVQECT2qbwCc1in5h9tUdyCKWxRvUjDqRXqPyooFsr",
+          "p2p.k3s.cattle.io/node-addresses": "{\"ID\":\"QmTmNVQECT2qbwCc1in5h9tUdyCKWxRvUjDqRXqPyooFsr\",\"Addrs\":[\"/ip4/192.0.2.202/tcp/5001\"]}",
+          "volumes.kubernetes.io/controller-managed-attach-detach": "true"
+        },
+        "creationTimestamp": "2026-06-26T20:42:24Z",
+        "finalizers": [
+          "wrangler.cattle.io/node"
+        ],
+        "labels": {
+          "beta.kubernetes.io/arch": "arm64",
+          "beta.kubernetes.io/instance-type": "k3s",
+          "beta.kubernetes.io/os": "linux",
+          "kubernetes.io/arch": "arm64",
+          "kubernetes.io/hostname": "node-a",
+          "kubernetes.io/os": "linux",
+          "node-role.kubernetes.io/control-plane": "true",
+          "node.kubernetes.io/instance-type": "k3s",
+          "p2p.k3s.cattle.io/enabled": "true",
+          "storage": "ssd"
+        },
+        "name": "node-a",
+        "resourceVersion": "3211824",
+        "uid": "c2a694e0-8d38-45d0-9367-c082f91c9336"
+      },
+      "spec": {
+        "podCIDR": "10.42.0.0/24",
+        "podCIDRs": [
+          "10.42.0.0/24"
+        ],
+        "providerID": "k3s://node-a"
+      },
+      "status": {
+        "addresses": [
+          {
+            "address": "192.0.2.202",
+            "type": "InternalIP"
+          },
+          {
+            "address": "node-a",
+            "type": "Hostname"
+          }
+        ],
+        "allocatable": {
+          "cpu": "4",
+          "ephemeral-storage": "117733034302",
+          "memory": "8255872Ki",
+          "pods": "110"
+        },
+        "capacity": {
+          "cpu": "4",
+          "ephemeral-storage": "121024912Ki",
+          "memory": "8255872Ki",
+          "pods": "110"
+        },
+        "conditions": [
+          {
+            "lastHeartbeatTime": "2026-08-16T15:50:31Z",
+            "lastTransitionTime": "2026-06-26T20:42:24Z",
+            "message": "kubelet has sufficient memory available",
+            "reason": "KubeletHasSufficientMemory",
+            "status": "False",
+            "type": "MemoryPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-08-16T15:50:31Z",
+            "lastTransitionTime": "2026-06-26T20:42:24Z",
+            "message": "kubelet has no disk pressure",
+            "reason": "KubeletHasNoDiskPressure",
+            "status": "False",
+            "type": "DiskPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-08-16T15:50:31Z",
+            "lastTransitionTime": "2026-06-26T20:42:24Z",
+            "message": "kubelet has sufficient PID available",
+            "reason": "KubeletHasSufficientPID",
+            "status": "False",
+            "type": "PIDPressure"
+          },
+          {
+            "lastHeartbeatTime": "2026-08-16T15:50:31Z",
+            "lastTransitionTime": "2026-06-26T20:42:24Z",
+            "message": "kubelet is posting ready status",
+            "reason": "KubeletReady",
+            "status": "True",
+            "type": "Ready"
+          }
+        ],
+        "daemonEndpoints": {
+          "kubeletEndpoint": {
+            "Port": 10250
+          }
+        },
+        "features": {
+          "supplementalGroupsPolicy": true
+        },
+        "images": [
+          {
+            "names": [
+              "192.0.2.202:30500/crawler@sha256:f3353f11c09fb304f2db82efadddf4f30d80d83e884f3d3e19daf24f35ef67a2",
+              "192.0.2.202:30500/crawler:latest"
+            ],
+            "sizeBytes": 607416633
+          },
+          {
+            "names": [
+              "docker.io/grafana/grafana@sha256:7cb8c64c4d57a57e734073f3cc94620adb24a0acb929bd80ba9f14017e3a975b",
+              "docker.io/grafana/grafana:13.1.1"
+            ],
+            "sizeBytes": 352718535
+          },
+          {
+            "names": [
+              "docker.io/pgvector/pgvector@sha256:131dcf7ff6a900545df8e7e092c270aa8c6db2f2c818e408cb45ec21316b74e6",
+              "docker.io/pgvector/pgvector:pg16"
+            ],
+            "sizeBytes": 154062776
+          },
+          {
+            "names": [
+              "docker.io/mwader/static-ffmpeg:latest"
+            ],
+            "sizeBytes": 119508670
+          },
+          {
+            "names": [
+              "docker.io/prom/prometheus@sha256:508729e0e2d18e11fd742a5a5ca70e557b940a93948c3c95fd0123a6fd538b69",
+              "docker.io/prom/prometheus:v3.13.2"
+            ],
+            "sizeBytes": 98197158
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:f3a47f14176013b9dffcf36159d8f85c01b325512a51f71727fe2a4adec6ace0",
+              "192.0.2.202:30500/storefront:g2e97ab7e8e66"
+            ],
+            "sizeBytes": 87099232
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:89e22d8dd0c2231204c8438c5e004d997d0ceabb47b3e59bf1dc6fe83195758f",
+              "192.0.2.202:30500/storefront:pass6"
+            ],
+            "sizeBytes": 87095873
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:d62c97493e5f772e1adc163953ddcc6eabc54303df228db60d8188fecea45547",
+              "192.0.2.202:30500/storefront:g49f5427df021"
+            ],
+            "sizeBytes": 87061268
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:b419131ec9f6df98cc7cfaf3e62b946c2a05fb334c9ffa22c74e6fb082518ea9",
+              "192.0.2.202:30500/storefront:g367d0d1b49e7"
+            ],
+            "sizeBytes": 87047819
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:806f09fe93557ff37359c7f7c7af762ca466bd859b5b2a26f9b5d6608a312d19",
+              "192.0.2.202:30500/storefront:gb709a4e6a55a"
+            ],
+            "sizeBytes": 87030676
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:f0d9b74d31da72f7c30bf83af4aea3eb1342c291f9a22f5ee6d063150954c260",
+              "192.0.2.202:30500/storefront:g44f6ac1fc399-dirty-1784913744"
+            ],
+            "sizeBytes": 87029057
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:06b59d602a1916bec8a26b8f9ebb3428d44b04c8b83cb654a176c27570ed4b0a",
+              "192.0.2.202:30500/storefront:g5ac7cc1fbe8e"
+            ],
+            "sizeBytes": 87012071
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:3850f150bebdd1f0f27a002ba699dd4cb4cff6ee72a6ca02f4de8d5433151ea9",
+              "192.0.2.202:30500/storefront:g44f6ac1fc399-dirty-1784913871",
+              "192.0.2.202:30500/storefront:g5e9608fe5a8c"
+            ],
+            "sizeBytes": 87005207
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:f040ebbcbc0ef4069420b4f7f6496092477d87bf4396d660d7d35f33a8ee2061",
+              "192.0.2.202:30500/storefront:g0e1bbdda58c9"
+            ],
+            "sizeBytes": 86993941
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:74ebdbe62edff2d16184df67fb0eb81983011847c5582ac41eaf0aec7049e54d",
+              "192.0.2.202:30500/storefront:g44f6ac1fc399-dirty-1784755771"
+            ],
+            "sizeBytes": 86993437
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:1c3d84e7f159209182de566c020b6917e62ea4b5c48ed659cce50be5a2efd64b",
+              "192.0.2.202:30500/storefront:g2a01d3733c6e"
+            ],
+            "sizeBytes": 86992232
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:ebe5061fb505099e21a349319d9c42873e1716c2ce826200c647e4fb668e8c02",
+              "192.0.2.202:30500/storefront:g44f6ac1fc399"
+            ],
+            "sizeBytes": 86991075
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:955835f1b87e44c3b996fb6c99e069041a660471b5c0387dd3c8e18e52432174",
+              "192.0.2.202:30500/storefront:gae1fc9cf2f82-stagingurl"
+            ],
+            "sizeBytes": 86989015
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:531f131101c3e4aaf44448d4c832261b6dc8481d8364057a1de39ca48130e226",
+              "192.0.2.202:30500/storefront:g2f49a8d79b26"
+            ],
+            "sizeBytes": 86988108
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:fd478f46eb30fa5e73825f3219b95c81b3b76727c4dc5fdc94396b4eb1fba3e0",
+              "192.0.2.202:30500/storefront:gae1fc9cf2f82"
+            ],
+            "sizeBytes": 86987496
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:e5ab0d294c3f3d2c9505118dfdedaa61f62622318cca844a775e5b9567b30e9b",
+              "192.0.2.202:30500/storefront:gae1fc9cf2f82-dirty-1786889385-stagingurl"
+            ],
+            "sizeBytes": 86986612
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:9430644f04353348764e8a6ed58936ade529d8457857bdea2f8f23d04a4111cd",
+              "192.0.2.202:30500/storefront:gae1fc9cf2f82-dirty-1786892275-stagingurl"
+            ],
+            "sizeBytes": 86986486
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:bfb98f834210c430275d6531ab1e97b9563c32d69bdb0715c07d656a546f3c48",
+              "192.0.2.202:30500/storefront:gf05f221c3432"
+            ],
+            "sizeBytes": 86986464
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:29c0231ca5d2e0de31064498b3e97d34096a84b17c1270d6da71357c6d337e95",
+              "192.0.2.202:30500/storefront:g22e7b9f06c55-dirty-1786836701"
+            ],
+            "sizeBytes": 86985791
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:29a1395b2c70047910854edf074b1f2ed18a6b0e6c8e12c8e4c480f3615584a6",
+              "192.0.2.202:30500/storefront:g49f5427df021-dirty-1784071551"
+            ],
+            "sizeBytes": 86982874
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:ba06a274bd1fe6a4d3519bf720233c8f10bb708612959bac3d3995986bed93d6",
+              "192.0.2.202:30500/storefront:g49f5427df021-dirty-1784071207"
+            ],
+            "sizeBytes": 86958442
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:d79c6baabf3c3d4f112d1be3a95167f5509130badcb31e7477f49cfdfd7ac8ae",
+              "192.0.2.202:30500/storefront:g54e43dfe4ea8"
+            ],
+            "sizeBytes": 86927932
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:931f71209ec8c537f0133ef49a91179338f83edd87f4d932300ee298672b2beb",
+              "192.0.2.202:30500/storefront:ge01df8b6c495"
+            ],
+            "sizeBytes": 86923462
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:e754c0987f48ff2d59422320bd3972f461a5a4e540d5b0b0ba5a32bf0895d5c1",
+              "192.0.2.202:30500/storefront:gcea4daa274b2"
+            ],
+            "sizeBytes": 86922824
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:77b9c944f8a29f760cd43800d3a1a93ab8777ebde5d2ac28f6547deafbc582ef",
+              "192.0.2.202:30500/storefront:gbd7e06b9f272"
+            ],
+            "sizeBytes": 86922548
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:8860a5c0f96546f453646007032ad5b3a7094cf6e8fb36cf81205326f6b40111",
+              "192.0.2.202:30500/storefront:g98747304ce36"
+            ],
+            "sizeBytes": 86922536
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:7a4fa17327a92803fcb60721ed906de74058137ab42f3151aa6c3490287a3462",
+              "192.0.2.202:30500/storefront:g01ac8297bebb"
+            ],
+            "sizeBytes": 86920015
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:f753563b6c5c04eafb371105faca0a211978b9422e033dab96c7ca44e993de2c",
+              "192.0.2.202:30500/storefront:g2888808d7654"
+            ],
+            "sizeBytes": 86916447
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:bf98e6eb589b771a254c64ef3f1aab52b101a34aba9cc25ea9c7ec21010c0587",
+              "192.0.2.202:30500/storefront:g876b9af41db6"
+            ],
+            "sizeBytes": 86915828
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:02b03e1d9f7b69b0813056336bb449cb178dc299522154eeb3f5935cd7686b38",
+              "192.0.2.202:30500/storefront:g87563a517d2d"
+            ],
+            "sizeBytes": 86913578
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:384efb39ed75b10888e4cb8578d4365f740fb8199ffb71be3d3e1f58eafb730b",
+              "192.0.2.202:30500/storefront:gc58d86ba4000"
+            ],
+            "sizeBytes": 86912195
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:94c2cc78471ab127d20ee9453d41f34bc680a54fd296a59bc15abc937be81a3a",
+              "192.0.2.202:30500/storefront:g0544bc10756a"
+            ],
+            "sizeBytes": 86912159
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:0bbddf72b63a93d063aeafce418585a4c8b935001fceafbd6cee377d4cfd7fcb",
+              "192.0.2.202:30500/storefront:ga71136600ff3"
+            ],
+            "sizeBytes": 86908849
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:0da77a51e9e4fca3cdc4efd260d7e6071651ab22b920ce4b59f079530a859ebd",
+              "192.0.2.202:30500/storefront:g38ab4f47c4df"
+            ],
+            "sizeBytes": 86908638
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:477aef51cee79a433f118208871840443e50a539d14b923a6de2b4366edebd4b",
+              "192.0.2.202:30500/storefront:g06f0e8f01ec3"
+            ],
+            "sizeBytes": 86908161
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:ca818ba4e19bbfa8cd662925d6758d99fce46f7183d2ef94f4f22ea3a52879bf",
+              "192.0.2.202:30500/storefront:gb9ab1f0fceab"
+            ],
+            "sizeBytes": 86895533
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:db5a3dae0b72bcdd8057aed51ee96a9365606b841043e7f9c3c409b048f9f7c0"
+            ],
+            "sizeBytes": 77788070
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:14a26c94c4c20e2c5aa31a32a738f7d9022c5e43186c52e0a9f9d0003b40d412",
+              "192.0.2.202:30500/storefront:latest"
+            ],
+            "sizeBytes": 77781551
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:775aa6365f6643c6b9fefa5e713d6ef0920d771617bcd4609823b5af79e60c94",
+              "192.0.2.202:30500/storefront:gdf24ce30cd86"
+            ],
+            "sizeBytes": 71362558
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:6d040b987d68730d9021a31ab47492887e85340f467d7c929e231680fd9abb07",
+              "192.0.2.202:30500/storefront:geb6b8336624a"
+            ],
+            "sizeBytes": 71355418
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:be64b6eb7aff742e81d6d071add77d7b40d90ac119a601beeb1607482e255882",
+              "192.0.2.202:30500/storefront:g0acb82ae5a5d"
+            ],
+            "sizeBytes": 71355383
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:eb6fe7fd5503ebc557f88f889cab7703f77987dfc449189321bf1ee6797d50cf",
+              "192.0.2.202:30500/storefront:gf2bf917f752e"
+            ],
+            "sizeBytes": 71349527
+          },
+          {
+            "names": [
+              "192.0.2.202:30500/storefront@sha256:810556a1bce3b1ed35e142a50070563dcc78d4f68777f218d51e6b4c59443e39",
+              "192.0.2.202:30500/storefront:g7fe82746fe7b"
+            ],
+            "sizeBytes": 71344024
+          },
+          {
+            "names": [
+              "docker.io/rancher/klipper-helm@sha256:9fbadb1e55ea0030dacc82d7c8c744f350b4be82305df3757950348a25393533",
+              "docker.io/rancher/klipper-helm:v0.9.12-build20251215"
+            ],
+            "sizeBytes": 60871613
+          },
+          {
+            "names": [
+              "docker.io/rancher/mirrored-coredns-coredns@sha256:9b9128672209474da07c91439bf15ed704ae05ad918dd6454e5b6ae14e35fee6",
+              "docker.io/rancher/mirrored-coredns-coredns:1.13.1"
+            ],
+            "sizeBytes": 21168808
+          }
+        ],
+        "nodeInfo": {
+          "architecture": "arm64",
+          "bootID": "ae17f5cd-d869-4d78-a98d-c8e4b8b48afc",
+          "containerRuntimeVersion": "containerd://2.1.5-k3s1",
+          "kernelVersion": "6.18.34+rpt-rpi-2712",
+          "kubeProxyVersion": "",
+          "kubeletVersion": "v1.34.3+k3s1",
+          "machineID": "add711983a494451a2eb68ef05a7c461",
+          "operatingSystem": "linux",
+          "osImage": "Debian GNU/Linux 13 (trixie)",
+          "systemUUID": "add711983a494451a2eb68ef05a7c461"
+        },
+        "runtimeHandlers": [
+          {
+            "features": {
+              "recursiveReadOnlyMounts": true,
+              "userNamespaces": true
+            },
+            "name": ""
+          },
+          {
+            "features": {
+              "recursiveReadOnlyMounts": true,
+              "userNamespaces": true
+            },
+            "name": "runc"
+          },
+          {
+            "features": {
+              "recursiveReadOnlyMounts": false,
+              "userNamespaces": false
+            },
+            "name": "runhcs-wcow-process"
+          }
+        ]
+      }
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

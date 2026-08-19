@@ -1,0 +1,4 @@
+{
+  "$comment": "record timestamp — pulse uses this as `now` for fixture runs so cron staleness math stays deterministic",
+  "now": "2026-08-16T15:55:21Z"
+}

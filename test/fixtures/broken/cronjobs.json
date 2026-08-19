@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "metadata": { "namespace": "assistant", "name": "assistant-rss-sync" },
+      "spec": { "schedule": "*/15 * * * *", "suspend": false },
+      "status": { "lastScheduleTime": "2026-08-16T15:45:00Z" }
+    },
+    {
+      "metadata": { "namespace": "commerce", "name": "storefront-sync-tracking" },
+      "spec": { "schedule": "7 */2 * * *", "suspend": false },
+      "status": { "lastScheduleTime": "2026-08-16T09:37:00Z" }
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "$comment": "fixed `now` for deterministic runs — all timestamps below are relative to this",
+  "now": "2026-08-16T16:00:00Z"
+}

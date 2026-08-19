@@ -1,0 +1,13 @@
+{
+  "$comment": "fixture config mirroring the real cluster's intended state — lab renders all green",
+  "k8s": {
+    "context": "default",
+    "scaledToZeroOk": ["assistant/assistant-telegram", "crawler/enrichment-worker"],
+    "cronjobs": {
+      "override": {
+        "assistant/assistant-rentals-classify": { "suspendedOk": true },
+        "crawler/*": { "suspendedOk": true }
+      }
+    }
+  }
+}

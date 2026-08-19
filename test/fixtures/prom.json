@@ -1,0 +1,35 @@
+{
+  "node_filesystem_avail_bytes": {
+    "status": "success",
+    "data": {
+      "resultType": "vector",
+      "result": [
+        { "metric": { "instance": "192.0.2.10:9100", "node": "node-a", "mountpoint": "/mnt/ssd" }, "value": [1700000000, "600000000"] },
+        { "metric": { "instance": "node-b", "mountpoint": "/mnt/ssd" }, "value": [1700000000, "120000000"] },
+        { "metric": { "instance": "node-c", "mountpoint": "/mnt/ssd" }, "value": [1700000000, "50000000"] }
+      ]
+    }
+  },
+  "node_filesystem_size_bytes": {
+    "status": "success",
+    "data": {
+      "resultType": "vector",
+      "result": [
+        { "metric": { "instance": "192.0.2.10:9100", "node": "node-a", "mountpoint": "/mnt/ssd" }, "value": [1700000000, "1000000000"] },
+        { "metric": { "instance": "node-b", "mountpoint": "/mnt/ssd" }, "value": [1700000000, "1000000000"] },
+        { "metric": { "instance": "node-c", "mountpoint": "/mnt/ssd" }, "value": [1700000000, "1000000000"] }
+      ]
+    }
+  },
+  "up": {
+    "status": "success",
+    "data": {
+      "resultType": "vector",
+      "result": [
+        { "metric": { "instance": "192.0.2.10:9100", "node": "node-a", "job": "node-exporter" }, "value": [1700000000, "1"] },
+        { "metric": { "instance": "node-b", "job": "node-exporter" }, "value": [1700000000, "1"] },
+        { "metric": { "instance": "node-c", "job": "node-exporter" }, "value": [1700000000, "0"] }
+      ]
+    }
+  }
+}

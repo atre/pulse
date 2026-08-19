@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "metadata": {
+        "namespace": "assistant",
+        "name": "assistant-rss-sync-29781590",
+        "ownerReferences": [{ "kind": "CronJob", "name": "assistant-rss-sync" }]
+      },
+      "status": {
+        "startTime": "2026-08-16T15:52:00Z",
+        "failed": 1,
+        "conditions": [{ "type": "Failed", "status": "True", "reason": "BackoffLimitExceeded" }]
+      }
+    }
+  ]
+}

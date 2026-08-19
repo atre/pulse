@@ -1,0 +1,26 @@
+{
+  "name": "pulse",
+  "version": "0.1.0",
+  "description": "Runtime radar for a home lab + prod fleet — k3s workloads, cronjobs, nodes, prod sites, TLS, disks — one AI-readable digest",
+  "type": "module",
+  "bin": { "pulse": "./dist/index.js" },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "prepare": "npm run build",
+    "prelink": "npm run build",
+    "test": "tsc -p tsconfig.test.json && node --test test-dist/test/*.test.js",
+    "lint": "tsc --noEmit"
+  },
+  "keywords": ["k3s", "kubernetes", "uptime", "radar", "claude-code", "cli", "devops"],
+  "license": "MIT",
+  "private": true,
+  "author": "Mykyta Herashchenko",
+  "files": ["dist", "skills"],
+  "repository": { "type": "git", "url": "git+https://github.com/atre/pulse.git" },
+  "homepage": "https://github.com/atre/pulse#readme",
+  "bugs": { "url": "https://github.com/atre/pulse/issues" },
+  "engines": { "node": ">=20.0.0" },
+  "devDependencies": { "@types/node": "^25.5.0", "typescript": "^5.9.3" }
+}

@@ -1,0 +1,359 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "apps/v1",
+      "kind": "DaemonSet",
+      "metadata": {
+        "annotations": {
+          "deprecated.daemonset.template.generation": "1",
+          "objectset.rio.cattle.io/applied": "H4sIAAAAAAAA/8RVT2/jthP9Kj/MWVaklTd2BPwOQRIUQbuOYXt7WRjBiBzFrGmSIEfaGIG+e0HFySpd58+lW/hgkHzzODNv9PgA6NSf5IOyBkpA58JJm0MCW2UklHCJtLNmSQwJ7IhRIiOUD4DGWEZW1oS4tNVfJDgQp17ZVCCzplTZExU5IHn13H435Ed37RZKOGnz5H+/KyP/vyTfKkHvxhncEZTAHqlW2w/Bg0MRY7ZNRaOwD0w76BLQWJF+s5INhg2UMC1Oa1EJyj59kp8l0ueqOD09G9eUE9bF9EycFVhPpIAEQiuENeyt1uTTbREGbMZKCqRJsPVQQo060DshoRU/1fsB/CsFH6hCK3Q1OhCOimoyyScyZvJGaHAkYqd+5P8AO2Sx+eO5iejc6+RdlwDTzmlk6mMHY6U/RvHrOjWoFxu2O9sYPoznuRBxtbJbMlD2EiYQL0FlyAcovz0Ambb/P+SzXFzczm8WK0igRd3ErWkGXfICsDif/Xa1HECytP+dvEBeXi1Xt/PFzepmgFxdzH/GvHVfj7ieD2/Ls3RcpHk+SfNsDN06AbXDu3ji0YgN+ZOtVs6RH+mqbLN0nOYFHEDzRuu51UrsoYTremZ57imQYXieuCincKNpBgk46/mxT89tm1vPUE6zBDY28I/VsWhv2Qqrn+peJ+Ap2MYLihMUlSPReMX7C2uY7jmKKNBhpbRiRY9jJiWU32B2tbo9v/xyPYN118X+vC/ceFz8WuX+ceF/Jl3M4w3txuNiKF6/PErwr8m3juTK9qEaQ5gdvK7/pEfRekfCK1YCNRy9JeyDYB2GA2CIU+XacarcbW39d/Ry2Hjo1n3CQ2OYDSwWEmCryT+9mNEa6poEQwkzuxQbko2Ovral2P8+R281pdGMvCGmEJ3qYGEjp9H0z6OLlP0TcnWvAod+QB45Lg4lnktpTbgxen88YB09rnESmZbskeluH3sQnVKZu6/9waPF33812KLSWGmCMo82vnexxMULbO+ZjNz0ConGezI8a3YV+adCJZRZApKC8iSPHZl+74sK4cj2glDuocy67u8AAAD//9InAZG+CAAA",
+          "objectset.rio.cattle.io/id": "",
+          "objectset.rio.cattle.io/owner-gvk": "/v1, Kind=Service",
+          "objectset.rio.cattle.io/owner-name": "traefik",
+          "objectset.rio.cattle.io/owner-namespace": "kube-system"
+        },
+        "creationTimestamp": "2026-06-26T20:42:51Z",
+        "generation": 1,
+        "labels": {
+          "objectset.rio.cattle.io/hash": "836fcbce022d5dae5b36694fe1eaf389c93af7dc",
+          "svccontroller.k3s.cattle.io/nodeselector": "false",
+          "svccontroller.k3s.cattle.io/svcname": "traefik",
+          "svccontroller.k3s.cattle.io/svcnamespace": "kube-system"
+        },
+        "name": "svclb-traefik-3b7717de",
+        "namespace": "kube-system",
+        "resourceVersion": "2814930",
+        "uid": "336668bc-8432-4ef3-861b-fef8f2e16e60"
+      },
+      "spec": {
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "svclb-traefik-3b7717de"
+          }
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "svclb-traefik-3b7717de",
+              "svccontroller.k3s.cattle.io/svcname": "traefik",
+              "svccontroller.k3s.cattle.io/svcnamespace": "kube-system"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "env": [
+                  {
+                    "name": "SRC_PORT",
+                    "value": "80"
+                  },
+                  {
+                    "name": "SRC_RANGES",
+                    "value": "0.0.0.0/0"
+                  },
+                  {
+                    "name": "DEST_PROTO",
+                    "value": "TCP"
+                  },
+                  {
+                    "name": "DEST_PORT",
+                    "value": "80"
+                  },
+                  {
+                    "name": "DEST_IPS",
+                    "value": "10.43.117.104"
+                  }
+                ],
+                "image": "rancher/klipper-lb:v0.4.13",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "lb-tcp-80",
+                "ports": [
+                  {
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "name": "lb-tcp-80",
+                    "protocol": "TCP"
+                  }
+                ],
+                "resources": {},
+                "securityContext": {
+                  "capabilities": {
+                    "add": [
+                      "NET_ADMIN"
+                    ]
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              },
+              {
+                "env": [
+                  {
+                    "name": "SRC_PORT",
+                    "value": "443"
+                  },
+                  {
+                    "name": "SRC_RANGES",
+                    "value": "0.0.0.0/0"
+                  },
+                  {
+                    "name": "DEST_PROTO",
+                    "value": "TCP"
+                  },
+                  {
+                    "name": "DEST_PORT",
+                    "value": "443"
+                  },
+                  {
+                    "name": "DEST_IPS",
+                    "value": "10.43.117.104"
+                  }
+                ],
+                "image": "rancher/klipper-lb:v0.4.13",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "lb-tcp-443",
+                "ports": [
+                  {
+                    "containerPort": 443,
+                    "hostPort": 443,
+                    "name": "lb-tcp-443",
+                    "protocol": "TCP"
+                  }
+                ],
+                "resources": {},
+                "securityContext": {
+                  "capabilities": {
+                    "add": [
+                      "NET_ADMIN"
+                    ]
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "priorityClassName": "system-node-critical",
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "sysctls": [
+                {
+                  "name": "net.ipv4.ip_forward",
+                  "value": "1"
+                }
+              ]
+            },
+            "serviceAccount": "svclb",
+            "serviceAccountName": "svclb",
+            "terminationGracePeriodSeconds": 30,
+            "tolerations": [
+              {
+                "effect": "NoSchedule",
+                "key": "node-role.kubernetes.io/control-plane",
+                "operator": "Exists"
+              },
+              {
+                "key": "CriticalAddonsOnly",
+                "operator": "Exists"
+              }
+            ]
+          }
+        },
+        "updateStrategy": {
+          "rollingUpdate": {
+            "maxSurge": 0,
+            "maxUnavailable": 1
+          },
+          "type": "RollingUpdate"
+        }
+      },
+      "status": {
+        "currentNumberScheduled": 3,
+        "desiredNumberScheduled": 3,
+        "numberAvailable": 3,
+        "numberMisscheduled": 0,
+        "numberReady": 3,
+        "observedGeneration": 1,
+        "updatedNumberScheduled": 3
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "DaemonSet",
+      "metadata": {
+        "annotations": {
+          "deprecated.daemonset.template.generation": "3",
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"apps/v1\",\"kind\":\"DaemonSet\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"node-exporter\"},\"name\":\"node-exporter\",\"namespace\":\"monitoring\"},\"spec\":{\"selector\":{\"matchLabels\":{\"app\":\"node-exporter\"}},\"template\":{\"metadata\":{\"labels\":{\"app\":\"node-exporter\"}},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"args\":[\"--path.procfs=/host/proc\",\"--path.sysfs=/host/sys\",\"--path.rootfs=/host/root\",\"--collector.filesystem.mount-points-exclude=^/(dev|proc|sys|run/k3s|var/lib/kubelet/pods|var/lib/rancher/k3s/agent/containerd)($|/)\",\"--collector.filesystem.fs-types-exclude=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|securityfs|selinuxfs|squashfs|sysfs|tracefs)$\",\"--collector.thermal_zone\",\"--collector.textfile.directory=/host/textfile\"],\"image\":\"prom/node-exporter:v1.12.1\",\"name\":\"node-exporter\",\"ports\":[{\"containerPort\":9100,\"hostPort\":9100,\"name\":\"metrics\"}],\"resources\":{\"limits\":{\"cpu\":\"200m\",\"memory\":\"128Mi\"},\"requests\":{\"cpu\":\"20m\",\"memory\":\"32Mi\"}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"readOnlyRootFilesystem\":true},\"volumeMounts\":[{\"mountPath\":\"/host/proc\",\"name\":\"proc\",\"readOnly\":true},{\"mountPath\":\"/host/sys\",\"name\":\"sys\",\"readOnly\":true},{\"mountPath\":\"/host/root\",\"mountPropagation\":\"HostToContainer\",\"name\":\"root\",\"readOnly\":true},{\"mountPath\":\"/host/textfile\",\"name\":\"textfile\",\"readOnly\":true}]}],\"hostNetwork\":true,\"hostPID\":true,\"securityContext\":{\"runAsGroup\":65534,\"runAsNonRoot\":true,\"runAsUser\":65534,\"seccompProfile\":{\"type\":\"RuntimeDefault\"}},\"tolerations\":[{\"operator\":\"Exists\"}],\"volumes\":[{\"hostPath\":{\"path\":\"/var/lib/node_exporter/textfile_collector\",\"type\":\"DirectoryOrCreate\"},\"name\":\"textfile\"},{\"hostPath\":{\"path\":\"/proc\"},\"name\":\"proc\"},{\"hostPath\":{\"path\":\"/sys\"},\"name\":\"sys\"},{\"hostPath\":{\"path\":\"/\"},\"name\":\"root\"}]}},\"updateStrategy\":{\"type\":\"RollingUpdate\"}}}\n"
+        },
+        "creationTimestamp": "2026-08-01T22:37:34Z",
+        "generation": 3,
+        "labels": {
+          "app": "node-exporter"
+        },
+        "name": "node-exporter",
+        "namespace": "monitoring",
+        "resourceVersion": "2824053",
+        "uid": "ab8bccf6-8abc-45e2-bc33-658281104fce"
+      },
+      "spec": {
+        "revisionHistoryLimit": 10,
+        "selector": {
+          "matchLabels": {
+            "app": "node-exporter"
+          }
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "node-exporter"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "args": [
+                  "--path.procfs=/host/proc",
+                  "--path.sysfs=/host/sys",
+                  "--path.rootfs=/host/root",
+                  "--collector.filesystem.mount-points-exclude=^/(dev|proc|sys|run/k3s|var/lib/kubelet/pods|var/lib/rancher/k3s/agent/containerd)($|/)",
+                  "--collector.filesystem.fs-types-exclude=^(autofs|binfmt_misc|bpf|cgroup2?|configfs|debugfs|devpts|devtmpfs|fusectl|hugetlbfs|iso9660|mqueue|nsfs|overlay|proc|procfs|pstore|securityfs|selinuxfs|squashfs|sysfs|tracefs)$",
+                  "--collector.thermal_zone",
+                  "--collector.textfile.directory=/host/textfile"
+                ],
+                "image": "prom/node-exporter:v1.12.1",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "node-exporter",
+                "ports": [
+                  {
+                    "containerPort": 9100,
+                    "hostPort": 9100,
+                    "name": "metrics",
+                    "protocol": "TCP"
+                  }
+                ],
+                "resources": {
+                  "limits": {
+                    "cpu": "200m",
+                    "memory": "128Mi"
+                  },
+                  "requests": {
+                    "cpu": "20m",
+                    "memory": "32Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/host/proc",
+                    "name": "proc",
+                    "readOnly": true
+                  },
+                  {
+                    "mountPath": "/host/sys",
+                    "name": "sys",
+                    "readOnly": true
+                  },
+                  {
+                    "mountPath": "/host/root",
+                    "mountPropagation": "HostToContainer",
+                    "name": "root",
+                    "readOnly": true
+                  },
+                  {
+                    "mountPath": "/host/textfile",
+                    "name": "textfile",
+                    "readOnly": true
+                  }
+                ]
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "hostNetwork": true,
+            "hostPID": true,
+            "restartPolicy": "Always",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsGroup": 65534,
+              "runAsNonRoot": true,
+              "runAsUser": 65534,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30,
+            "tolerations": [
+              {
+                "operator": "Exists"
+              }
+            ],
+            "volumes": [
+              {
+                "hostPath": {
+                  "path": "/var/lib/node_exporter/textfile_collector",
+                  "type": "DirectoryOrCreate"
+                },
+                "name": "textfile"
+              },
+              {
+                "hostPath": {
+                  "path": "/proc",
+                  "type": ""
+                },
+                "name": "proc"
+              },
+              {
+                "hostPath": {
+                  "path": "/sys",
+                  "type": ""
+                },
+                "name": "sys"
+              },
+              {
+                "hostPath": {
+                  "path": "/",
+                  "type": ""
+                },
+                "name": "root"
+              }
+            ]
+          }
+        },
+        "updateStrategy": {
+          "rollingUpdate": {
+            "maxSurge": 0,
+            "maxUnavailable": 1
+          },
+          "type": "RollingUpdate"
+        }
+      },
+      "status": {
+        "currentNumberScheduled": 3,
+        "desiredNumberScheduled": 3,
+        "numberAvailable": 3,
+        "numberMisscheduled": 0,
+        "numberReady": 3,
+        "observedGeneration": 3,
+        "updatedNumberScheduled": 3
+      }
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

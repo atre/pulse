@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "metadata": { "name": "node-c" },
+      "status": {
+        "conditions": [
+          { "type": "MemoryPressure", "status": "False" },
+          { "type": "DiskPressure", "status": "False" },
+          { "type": "Ready", "status": "False", "reason": "KubeletNotReady" }
+        ]
+      }
+    }
+  ]
+}

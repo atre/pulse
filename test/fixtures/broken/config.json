@@ -1,0 +1,4 @@
+{
+  "$comment": "fixture config — pure defaults, nothing whitelisted, so every seeded break surfaces",
+  "k8s": { "context": "default" }
+}

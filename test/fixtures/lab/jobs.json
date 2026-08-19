@@ -1,0 +1,3597 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-16T15:15:00Z"
+        },
+        "creationTimestamp": "2026-08-16T15:15:00Z",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "f48de70b-664c-4658-9066-d983fb8e036a",
+          "batch.kubernetes.io/job-name": "storefront-abandoned-carts-29781555",
+          "controller-uid": "f48de70b-664c-4658-9066-d983fb8e036a",
+          "job-name": "storefront-abandoned-carts-29781555"
+        },
+        "name": "storefront-abandoned-carts-29781555",
+        "namespace": "commerce",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "storefront-abandoned-carts",
+            "uid": "077626ba-0696-4155-9984-b85c85c2ea03"
+          }
+        ],
+        "resourceVersion": "3210157",
+        "uid": "f48de70b-664c-4658-9066-d983fb8e036a"
+      },
+      "spec": {
+        "activeDeadlineSeconds": 120,
+        "backoffLimit": 1,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "f48de70b-664c-4658-9066-d983fb8e036a"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "batch.kubernetes.io/controller-uid": "f48de70b-664c-4658-9066-d983fb8e036a",
+              "batch.kubernetes.io/job-name": "storefront-abandoned-carts-29781555",
+              "controller-uid": "f48de70b-664c-4658-9066-d983fb8e036a",
+              "job-name": "storefront-abandoned-carts-29781555"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "sh",
+                  "-c",
+                  "curl -sf -H \"Authorization: Bearer $CRON_SECRET\" \\\n  http://storefront.commerce.svc.cluster.local/api/cron/abandoned-carts\n"
+                ],
+                "env": [
+                  {
+                    "name": "CRON_SECRET",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "key": "CRON_SECRET",
+                        "name": "storefront-secret"
+                      }
+                    }
+                  }
+                ],
+                "image": "curlimages/curl:8.5.0",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "cron",
+                "resources": {
+                  "limits": {
+                    "cpu": "50m",
+                    "memory": "64Mi"
+                  },
+                  "requests": {
+                    "cpu": "10m",
+                    "memory": "32Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Never",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "runAsUser": 65534,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "completionTime": "2026-08-16T15:15:14Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-16T15:15:14Z",
+            "lastTransitionTime": "2026-08-16T15:15:14Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-08-16T15:15:14Z",
+            "lastTransitionTime": "2026-08-16T15:15:14Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-08-16T15:15:00Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-16T15:30:00Z"
+        },
+        "creationTimestamp": "2026-08-16T15:30:00Z",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "3a373fcc-3e57-470d-8c34-cdac240a3673",
+          "batch.kubernetes.io/job-name": "storefront-abandoned-carts-29781570",
+          "controller-uid": "3a373fcc-3e57-470d-8c34-cdac240a3673",
+          "job-name": "storefront-abandoned-carts-29781570"
+        },
+        "name": "storefront-abandoned-carts-29781570",
+        "namespace": "commerce",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "storefront-abandoned-carts",
+            "uid": "077626ba-0696-4155-9984-b85c85c2ea03"
+          }
+        ],
+        "resourceVersion": "3210883",
+        "uid": "3a373fcc-3e57-470d-8c34-cdac240a3673"
+      },
+      "spec": {
+        "activeDeadlineSeconds": 120,
+        "backoffLimit": 1,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "3a373fcc-3e57-470d-8c34-cdac240a3673"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "batch.kubernetes.io/controller-uid": "3a373fcc-3e57-470d-8c34-cdac240a3673",
+              "batch.kubernetes.io/job-name": "storefront-abandoned-carts-29781570",
+              "controller-uid": "3a373fcc-3e57-470d-8c34-cdac240a3673",
+              "job-name": "storefront-abandoned-carts-29781570"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "sh",
+                  "-c",
+                  "curl -sf -H \"Authorization: Bearer $CRON_SECRET\" \\\n  http://storefront.commerce.svc.cluster.local/api/cron/abandoned-carts\n"
+                ],
+                "env": [
+                  {
+                    "name": "CRON_SECRET",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "key": "CRON_SECRET",
+                        "name": "storefront-secret"
+                      }
+                    }
+                  }
+                ],
+                "image": "curlimages/curl:8.5.0",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "cron",
+                "resources": {
+                  "limits": {
+                    "cpu": "50m",
+                    "memory": "64Mi"
+                  },
+                  "requests": {
+                    "cpu": "10m",
+                    "memory": "32Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Never",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "runAsUser": 65534,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "completionTime": "2026-08-16T15:30:09Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-16T15:30:09Z",
+            "lastTransitionTime": "2026-08-16T15:30:09Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-08-16T15:30:09Z",
+            "lastTransitionTime": "2026-08-16T15:30:09Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-08-16T15:30:00Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-16T15:45:00Z"
+        },
+        "creationTimestamp": "2026-08-16T15:45:00Z",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "82618a64-b96b-4c6c-bbb4-76da7afbfc46",
+          "batch.kubernetes.io/job-name": "storefront-abandoned-carts-29781585",
+          "controller-uid": "82618a64-b96b-4c6c-bbb4-76da7afbfc46",
+          "job-name": "storefront-abandoned-carts-29781585"
+        },
+        "name": "storefront-abandoned-carts-29781585",
+        "namespace": "commerce",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "storefront-abandoned-carts",
+            "uid": "077626ba-0696-4155-9984-b85c85c2ea03"
+          }
+        ],
+        "resourceVersion": "3211613",
+        "uid": "82618a64-b96b-4c6c-bbb4-76da7afbfc46"
+      },
+      "spec": {
+        "activeDeadlineSeconds": 120,
+        "backoffLimit": 1,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "82618a64-b96b-4c6c-bbb4-76da7afbfc46"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "batch.kubernetes.io/controller-uid": "82618a64-b96b-4c6c-bbb4-76da7afbfc46",
+              "batch.kubernetes.io/job-name": "storefront-abandoned-carts-29781585",
+              "controller-uid": "82618a64-b96b-4c6c-bbb4-76da7afbfc46",
+              "job-name": "storefront-abandoned-carts-29781585"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "sh",
+                  "-c",
+                  "curl -sf -H \"Authorization: Bearer $CRON_SECRET\" \\\n  http://storefront.commerce.svc.cluster.local/api/cron/abandoned-carts\n"
+                ],
+                "env": [
+                  {
+                    "name": "CRON_SECRET",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "key": "CRON_SECRET",
+                        "name": "storefront-secret"
+                      }
+                    }
+                  }
+                ],
+                "image": "curlimages/curl:8.5.0",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "cron",
+                "resources": {
+                  "limits": {
+                    "cpu": "50m",
+                    "memory": "64Mi"
+                  },
+                  "requests": {
+                    "cpu": "10m",
+                    "memory": "32Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Never",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "runAsUser": 65534,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "completionTime": "2026-08-16T15:45:24Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-16T15:45:24Z",
+            "lastTransitionTime": "2026-08-16T15:45:24Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-08-16T15:45:24Z",
+            "lastTransitionTime": "2026-08-16T15:45:24Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-08-16T15:45:00Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-14T02:23:00Z"
+        },
+        "creationTimestamp": "2026-08-14T02:23:00Z",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "a60ee8dc-c45a-4c5b-baec-fcf2c3594f2e",
+          "batch.kubernetes.io/job-name": "storefront-cleanup-review-images-29777903",
+          "controller-uid": "a60ee8dc-c45a-4c5b-baec-fcf2c3594f2e",
+          "job-name": "storefront-cleanup-review-images-29777903"
+        },
+        "name": "storefront-cleanup-review-images-29777903",
+        "namespace": "commerce",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "storefront-cleanup-review-images",
+            "uid": "93ff962b-9576-40e3-b3ed-df1a10136c6a"
+          }
+        ],
+        "resourceVersion": "3016105",
+        "uid": "a60ee8dc-c45a-4c5b-baec-fcf2c3594f2e"
+      },
+      "spec": {
+        "activeDeadlineSeconds": 300,
+        "backoffLimit": 1,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "a60ee8dc-c45a-4c5b-baec-fcf2c3594f2e"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "batch.kubernetes.io/controller-uid": "a60ee8dc-c45a-4c5b-baec-fcf2c3594f2e",
+              "batch.kubernetes.io/job-name": "storefront-cleanup-review-images-29777903",
+              "controller-uid": "a60ee8dc-c45a-4c5b-baec-fcf2c3594f2e",
+              "job-name": "storefront-cleanup-review-images-29777903"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "sh",
+                  "-c",
+                  "curl -sf -H \"Authorization: Bearer $CRON_SECRET\" \\\n  http://storefront.commerce.svc.cluster.local/api/cron/cleanup-review-images\n"
+                ],
+                "env": [
+                  {
+                    "name": "CRON_SECRET",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "key": "CRON_SECRET",
+                        "name": "storefront-secret"
+                      }
+                    }
+                  }
+                ],
+                "image": "curlimages/curl:8.5.0",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "cron",
+                "resources": {
+                  "limits": {
+                    "cpu": "50m",
+                    "memory": "64Mi"
+                  },
+                  "requests": {
+                    "cpu": "10m",
+                    "memory": "32Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Never",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "runAsUser": 65534,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "completionTime": "2026-08-14T02:23:18Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-14T02:23:18Z",
+            "lastTransitionTime": "2026-08-14T02:23:18Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-08-14T02:23:18Z",
+            "lastTransitionTime": "2026-08-14T02:23:18Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-08-14T02:23:00Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-15T02:23:00Z"
+        },
+        "creationTimestamp": "2026-08-15T02:23:00Z",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "1db2677c-b481-4e4c-8fa8-4749218e75c7",
+          "batch.kubernetes.io/job-name": "storefront-cleanup-review-images-29779343",
+          "controller-uid": "1db2677c-b481-4e4c-8fa8-4749218e75c7",
+          "job-name": "storefront-cleanup-review-images-29779343"
+        },
+        "name": "storefront-cleanup-review-images-29779343",
+        "namespace": "commerce",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "storefront-cleanup-review-images",
+            "uid": "93ff962b-9576-40e3-b3ed-df1a10136c6a"
+          }
+        ],
+        "resourceVersion": "3086225",
+        "uid": "1db2677c-b481-4e4c-8fa8-4749218e75c7"
+      },
+      "spec": {
+        "activeDeadlineSeconds": 300,
+        "backoffLimit": 1,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "1db2677c-b481-4e4c-8fa8-4749218e75c7"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "batch.kubernetes.io/controller-uid": "1db2677c-b481-4e4c-8fa8-4749218e75c7",
+              "batch.kubernetes.io/job-name": "storefront-cleanup-review-images-29779343",
+              "controller-uid": "1db2677c-b481-4e4c-8fa8-4749218e75c7",
+              "job-name": "storefront-cleanup-review-images-29779343"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "sh",
+                  "-c",
+                  "curl -sf -H \"Authorization: Bearer $CRON_SECRET\" \\\n  http://storefront.commerce.svc.cluster.local/api/cron/cleanup-review-images\n"
+                ],
+                "env": [
+                  {
+                    "name": "CRON_SECRET",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "key": "CRON_SECRET",
+                        "name": "storefront-secret"
+                      }
+                    }
+                  }
+                ],
+                "image": "curlimages/curl:8.5.0",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "cron",
+                "resources": {
+                  "limits": {
+                    "cpu": "50m",
+                    "memory": "64Mi"
+                  },
+                  "requests": {
+                    "cpu": "10m",
+                    "memory": "32Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Never",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "runAsUser": 65534,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "completionTime": "2026-08-15T02:23:06Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-15T02:23:06Z",
+            "lastTransitionTime": "2026-08-15T02:23:06Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-08-15T02:23:06Z",
+            "lastTransitionTime": "2026-08-15T02:23:06Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-08-15T02:23:00Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-16T02:23:00Z"
+        },
+        "creationTimestamp": "2026-08-16T02:23:00Z",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "1a884825-6420-47d4-8706-f89c53600174",
+          "batch.kubernetes.io/job-name": "storefront-cleanup-review-images-29780783",
+          "controller-uid": "1a884825-6420-47d4-8706-f89c53600174",
+          "job-name": "storefront-cleanup-review-images-29780783"
+        },
+        "name": "storefront-cleanup-review-images-29780783",
+        "namespace": "commerce",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "storefront-cleanup-review-images",
+            "uid": "93ff962b-9576-40e3-b3ed-df1a10136c6a"
+          }
+        ],
+        "resourceVersion": "3162117",
+        "uid": "1a884825-6420-47d4-8706-f89c53600174"
+      },
+      "spec": {
+        "activeDeadlineSeconds": 300,
+        "backoffLimit": 1,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "1a884825-6420-47d4-8706-f89c53600174"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "batch.kubernetes.io/controller-uid": "1a884825-6420-47d4-8706-f89c53600174",
+              "batch.kubernetes.io/job-name": "storefront-cleanup-review-images-29780783",
+              "controller-uid": "1a884825-6420-47d4-8706-f89c53600174",
+              "job-name": "storefront-cleanup-review-images-29780783"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "sh",
+                  "-c",
+                  "curl -sf -H \"Authorization: Bearer $CRON_SECRET\" \\\n  http://storefront.commerce.svc.cluster.local/api/cron/cleanup-review-images\n"
+                ],
+                "env": [
+                  {
+                    "name": "CRON_SECRET",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "key": "CRON_SECRET",
+                        "name": "storefront-secret"
+                      }
+                    }
+                  }
+                ],
+                "image": "curlimages/curl:8.5.0",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "cron",
+                "resources": {
+                  "limits": {
+                    "cpu": "50m",
+                    "memory": "64Mi"
+                  },
+                  "requests": {
+                    "cpu": "10m",
+                    "memory": "32Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Never",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "runAsUser": 65534,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "completionTime": "2026-08-16T02:23:18Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-16T02:23:18Z",
+            "lastTransitionTime": "2026-08-16T02:23:18Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-08-16T02:23:18Z",
+            "lastTransitionTime": "2026-08-16T02:23:18Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-08-16T02:23:00Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"batch/v1\",\"kind\":\"Job\",\"metadata\":{\"annotations\":{},\"labels\":{\"app\":\"storefront\"},\"name\":\"storefront-migrate\",\"namespace\":\"commerce\"},\"spec\":{\"backoffLimit\":1,\"template\":{\"metadata\":{\"labels\":{\"app\":\"storefront\"}},\"spec\":{\"automountServiceAccountToken\":false,\"containers\":[{\"command\":[\"sh\",\"-c\",\"exec node_modules/.bin/drizzle-kit push ${DRIZZLE_FORCE:+--force}\\n\"],\"env\":[{\"name\":\"DATABASE_URL\",\"valueFrom\":{\"secretKeyRef\":{\"key\":\"DATABASE_URL\",\"name\":\"storefront-secret\"}}},{\"name\":\"HOME\",\"value\":\"/tmp\"}],\"image\":\"192.0.2.202:30500/storefront-tools:gae1fc9cf2f82-dirty-1786892275-stagingurl\",\"imagePullPolicy\":\"Always\",\"name\":\"migrate\",\"resources\":{\"limits\":{\"cpu\":\"500m\",\"memory\":\"512Mi\"},\"requests\":{\"cpu\":\"100m\",\"memory\":\"256Mi\"}},\"securityContext\":{\"allowPrivilegeEscalation\":false,\"capabilities\":{\"drop\":[\"ALL\"]},\"readOnlyRootFilesystem\":true,\"runAsNonRoot\":true,\"runAsUser\":1000},\"volumeMounts\":[{\"mountPath\":\"/tmp\",\"name\":\"tmp\"}],\"workingDir\":\"/app\"}],\"restartPolicy\":\"Never\",\"securityContext\":{\"seccompProfile\":{\"type\":\"RuntimeDefault\"}},\"volumes\":[{\"emptyDir\":{},\"name\":\"tmp\"}]}},\"ttlSecondsAfterFinished\":86400}}\n"
+        },
+        "creationTimestamp": "2026-08-16T14:58:42Z",
+        "generation": 1,
+        "labels": {
+          "app": "storefront"
+        },
+        "name": "storefront-migrate",
+        "namespace": "commerce",
+        "resourceVersion": "3209399",
+        "uid": "55bf37e5-8975-45b9-90b7-7de463974c72"
+      },
+      "spec": {
+        "backoffLimit": 1,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "55bf37e5-8975-45b9-90b7-7de463974c72"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "storefront",
+              "batch.kubernetes.io/controller-uid": "55bf37e5-8975-45b9-90b7-7de463974c72",
+              "batch.kubernetes.io/job-name": "storefront-migrate",
+              "controller-uid": "55bf37e5-8975-45b9-90b7-7de463974c72",
+              "job-name": "storefront-migrate"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "sh",
+                  "-c",
+                  "exec node_modules/.bin/drizzle-kit push ${DRIZZLE_FORCE:+--force}\n"
+                ],
+                "env": [
+                  {
+                    "name": "DATABASE_URL",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "key": "DATABASE_URL",
+                        "name": "storefront-secret"
+                      }
+                    }
+                  },
+                  {
+                    "name": "HOME",
+                    "value": "/tmp"
+                  }
+                ],
+                "image": "192.0.2.202:30500/storefront-tools:gae1fc9cf2f82-dirty-1786892275-stagingurl",
+                "imagePullPolicy": "Always",
+                "name": "migrate",
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "512Mi"
+                  },
+                  "requests": {
+                    "cpu": "100m",
+                    "memory": "256Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true,
+                  "runAsNonRoot": true,
+                  "runAsUser": 1000
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/tmp",
+                    "name": "tmp"
+                  }
+                ],
+                "workingDir": "/app"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Never",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30,
+            "volumes": [
+              {
+                "emptyDir": {},
+                "name": "tmp"
+              }
+            ]
+          }
+        },
+        "ttlSecondsAfterFinished": 86400
+      },
+      "status": {
+        "completionTime": "2026-08-16T15:00:00Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-16T15:00:00Z",
+            "lastTransitionTime": "2026-08-16T15:00:00Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-08-16T15:00:00Z",
+            "lastTransitionTime": "2026-08-16T15:00:00Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-08-16T14:58:42Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-16T10:07:00Z"
+        },
+        "creationTimestamp": "2026-08-16T10:07:00Z",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "0158e1e2-c8b6-4782-8d40-5dd72823c291",
+          "batch.kubernetes.io/job-name": "storefront-sync-tracking-29781247",
+          "controller-uid": "0158e1e2-c8b6-4782-8d40-5dd72823c291",
+          "job-name": "storefront-sync-tracking-29781247"
+        },
+        "name": "storefront-sync-tracking-29781247",
+        "namespace": "commerce",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "storefront-sync-tracking",
+            "uid": "bf63a13d-e501-45d0-a878-272c1a7c8468"
+          }
+        ],
+        "resourceVersion": "3191822",
+        "uid": "0158e1e2-c8b6-4782-8d40-5dd72823c291"
+      },
+      "spec": {
+        "activeDeadlineSeconds": 300,
+        "backoffLimit": 1,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "0158e1e2-c8b6-4782-8d40-5dd72823c291"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "batch.kubernetes.io/controller-uid": "0158e1e2-c8b6-4782-8d40-5dd72823c291",
+              "batch.kubernetes.io/job-name": "storefront-sync-tracking-29781247",
+              "controller-uid": "0158e1e2-c8b6-4782-8d40-5dd72823c291",
+              "job-name": "storefront-sync-tracking-29781247"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "sh",
+                  "-c",
+                  "curl -sf -H \"Authorization: Bearer $CRON_SECRET\" \\\n  http://storefront.commerce.svc.cluster.local/api/cron/sync-tracking\n"
+                ],
+                "env": [
+                  {
+                    "name": "CRON_SECRET",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "key": "CRON_SECRET",
+                        "name": "storefront-secret"
+                      }
+                    }
+                  }
+                ],
+                "image": "curlimages/curl:8.5.0",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "cron",
+                "resources": {
+                  "limits": {
+                    "cpu": "50m",
+                    "memory": "64Mi"
+                  },
+                  "requests": {
+                    "cpu": "10m",
+                    "memory": "32Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Never",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "runAsUser": 65534,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "completionTime": "2026-08-16T10:07:21Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-16T10:07:21Z",
+            "lastTransitionTime": "2026-08-16T10:07:21Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-08-16T10:07:21Z",
+            "lastTransitionTime": "2026-08-16T10:07:21Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-08-16T10:07:00Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-16T12:07:00Z"
+        },
+        "creationTimestamp": "2026-08-16T12:07:00Z",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "80a224b0-94ed-469a-b16a-c9213939ec36",
+          "batch.kubernetes.io/job-name": "storefront-sync-tracking-29781367",
+          "controller-uid": "80a224b0-94ed-469a-b16a-c9213939ec36",
+          "job-name": "storefront-sync-tracking-29781367"
+        },
+        "name": "storefront-sync-tracking-29781367",
+        "namespace": "commerce",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "storefront-sync-tracking",
+            "uid": "bf63a13d-e501-45d0-a878-272c1a7c8468"
+          }
+        ],
+        "resourceVersion": "3199484",
+        "uid": "80a224b0-94ed-469a-b16a-c9213939ec36"
+      },
+      "spec": {
+        "activeDeadlineSeconds": 300,
+        "backoffLimit": 1,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "80a224b0-94ed-469a-b16a-c9213939ec36"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "batch.kubernetes.io/controller-uid": "80a224b0-94ed-469a-b16a-c9213939ec36",
+              "batch.kubernetes.io/job-name": "storefront-sync-tracking-29781367",
+              "controller-uid": "80a224b0-94ed-469a-b16a-c9213939ec36",
+              "job-name": "storefront-sync-tracking-29781367"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "sh",
+                  "-c",
+                  "curl -sf -H \"Authorization: Bearer $CRON_SECRET\" \\\n  http://storefront.commerce.svc.cluster.local/api/cron/sync-tracking\n"
+                ],
+                "env": [
+                  {
+                    "name": "CRON_SECRET",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "key": "CRON_SECRET",
+                        "name": "storefront-secret"
+                      }
+                    }
+                  }
+                ],
+                "image": "curlimages/curl:8.5.0",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "cron",
+                "resources": {
+                  "limits": {
+                    "cpu": "50m",
+                    "memory": "64Mi"
+                  },
+                  "requests": {
+                    "cpu": "10m",
+                    "memory": "32Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Never",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "runAsUser": 65534,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "completionTime": "2026-08-16T12:07:23Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-16T12:07:23Z",
+            "lastTransitionTime": "2026-08-16T12:07:23Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-08-16T12:07:23Z",
+            "lastTransitionTime": "2026-08-16T12:07:23Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-08-16T12:07:00Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-16T14:07:00Z"
+        },
+        "creationTimestamp": "2026-08-16T14:07:00Z",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "399f39a9-2117-46a7-b18d-1e61b228b7f6",
+          "batch.kubernetes.io/job-name": "storefront-sync-tracking-29781487",
+          "controller-uid": "399f39a9-2117-46a7-b18d-1e61b228b7f6",
+          "job-name": "storefront-sync-tracking-29781487"
+        },
+        "name": "storefront-sync-tracking-29781487",
+        "namespace": "commerce",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "storefront-sync-tracking",
+            "uid": "bf63a13d-e501-45d0-a878-272c1a7c8468"
+          }
+        ],
+        "resourceVersion": "3206699",
+        "uid": "399f39a9-2117-46a7-b18d-1e61b228b7f6"
+      },
+      "spec": {
+        "activeDeadlineSeconds": 300,
+        "backoffLimit": 1,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "399f39a9-2117-46a7-b18d-1e61b228b7f6"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "batch.kubernetes.io/controller-uid": "399f39a9-2117-46a7-b18d-1e61b228b7f6",
+              "batch.kubernetes.io/job-name": "storefront-sync-tracking-29781487",
+              "controller-uid": "399f39a9-2117-46a7-b18d-1e61b228b7f6",
+              "job-name": "storefront-sync-tracking-29781487"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "sh",
+                  "-c",
+                  "curl -sf -H \"Authorization: Bearer $CRON_SECRET\" \\\n  http://storefront.commerce.svc.cluster.local/api/cron/sync-tracking\n"
+                ],
+                "env": [
+                  {
+                    "name": "CRON_SECRET",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "key": "CRON_SECRET",
+                        "name": "storefront-secret"
+                      }
+                    }
+                  }
+                ],
+                "image": "curlimages/curl:8.5.0",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "cron",
+                "resources": {
+                  "limits": {
+                    "cpu": "50m",
+                    "memory": "64Mi"
+                  },
+                  "requests": {
+                    "cpu": "10m",
+                    "memory": "32Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "Never",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "runAsUser": 65534,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "completionTime": "2026-08-16T14:07:06Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-16T14:07:06Z",
+            "lastTransitionTime": "2026-08-16T14:07:06Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-08-16T14:07:06Z",
+            "lastTransitionTime": "2026-08-16T14:07:06Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-08-16T14:07:00Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-16T06:45:00+02:00"
+        },
+        "creationTimestamp": "2026-08-16T04:45:00Z",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "f75a789e-355a-49c1-ad94-b7374767c4eb",
+          "batch.kubernetes.io/job-name": "assistant-digest-29780925",
+          "controller-uid": "f75a789e-355a-49c1-ad94-b7374767c4eb",
+          "job-name": "assistant-digest-29780925"
+        },
+        "name": "assistant-digest-29780925",
+        "namespace": "assistant",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "assistant-digest",
+            "uid": "5a6cbafb-36ff-4bbd-8940-45b4d94d8700"
+          }
+        ],
+        "resourceVersion": "3171380",
+        "uid": "f75a789e-355a-49c1-ad94-b7374767c4eb"
+      },
+      "spec": {
+        "activeDeadlineSeconds": 1200,
+        "backoffLimit": 1,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "f75a789e-355a-49c1-ad94-b7374767c4eb"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "batch.kubernetes.io/controller-uid": "f75a789e-355a-49c1-ad94-b7374767c4eb",
+              "batch.kubernetes.io/job-name": "assistant-digest-29780925",
+              "controller-uid": "f75a789e-355a-49c1-ad94-b7374767c4eb",
+              "job-name": "assistant-digest-29780925"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "python",
+                  "main.py",
+                  "digest",
+                  "--print"
+                ],
+                "envFrom": [
+                  {
+                    "secretRef": {
+                      "name": "assistant-secrets"
+                    }
+                  }
+                ],
+                "image": "192.0.2.202:30500/assistant-sync:gd158d0bb2f48",
+                "imagePullPolicy": "Always",
+                "name": "digest",
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "256Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "128Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "OnFailure",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "runAsUser": 1000,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "completionTime": "2026-08-16T04:47:39Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-16T04:47:39Z",
+            "lastTransitionTime": "2026-08-16T04:47:39Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-08-16T04:47:39Z",
+            "lastTransitionTime": "2026-08-16T04:47:39Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-08-16T04:45:00Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-16T06:14:00+02:00"
+        },
+        "creationTimestamp": "2026-08-16T04:14:00Z",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "17f686be-b6f1-4738-946d-12573dcf6137",
+          "batch.kubernetes.io/job-name": "assistant-github-trending-29780894",
+          "controller-uid": "17f686be-b6f1-4738-946d-12573dcf6137",
+          "job-name": "assistant-github-trending-29780894"
+        },
+        "name": "assistant-github-trending-29780894",
+        "namespace": "assistant",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "assistant-github-trending",
+            "uid": "9f794257-4698-4294-8252-8579bef32f85"
+          }
+        ],
+        "resourceVersion": "3169242",
+        "uid": "17f686be-b6f1-4738-946d-12573dcf6137"
+      },
+      "spec": {
+        "activeDeadlineSeconds": 900,
+        "backoffLimit": 2,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "17f686be-b6f1-4738-946d-12573dcf6137"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "batch.kubernetes.io/controller-uid": "17f686be-b6f1-4738-946d-12573dcf6137",
+              "batch.kubernetes.io/job-name": "assistant-github-trending-29780894",
+              "controller-uid": "17f686be-b6f1-4738-946d-12573dcf6137",
+              "job-name": "assistant-github-trending-29780894"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "python",
+                  "main.py",
+                  "github-trending"
+                ],
+                "envFrom": [
+                  {
+                    "secretRef": {
+                      "name": "assistant-secrets"
+                    }
+                  }
+                ],
+                "image": "192.0.2.202:30500/assistant-sync:gd158d0bb2f48",
+                "imagePullPolicy": "Always",
+                "name": "sync",
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "256Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "128Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "OnFailure",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "runAsUser": 1000,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "completionTime": "2026-08-16T04:14:33Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-16T04:14:33Z",
+            "lastTransitionTime": "2026-08-16T04:14:33Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-08-16T04:14:33Z",
+            "lastTransitionTime": "2026-08-16T04:14:33Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-08-16T04:14:00Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-16T15:30:00Z"
+        },
+        "creationTimestamp": "2026-08-16T15:30:00Z",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "806a5aa7-3c55-4f97-9f85-ca242736e669",
+          "batch.kubernetes.io/job-name": "assistant-news-sync-29781570",
+          "controller-uid": "806a5aa7-3c55-4f97-9f85-ca242736e669",
+          "job-name": "assistant-news-sync-29781570"
+        },
+        "name": "assistant-news-sync-29781570",
+        "namespace": "assistant",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "assistant-news-sync",
+            "uid": "656dec7a-7b93-42b4-a960-ab759dcaa4d2"
+          }
+        ],
+        "resourceVersion": "3210924",
+        "uid": "806a5aa7-3c55-4f97-9f85-ca242736e669"
+      },
+      "spec": {
+        "activeDeadlineSeconds": 1800,
+        "backoffLimit": 1,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "806a5aa7-3c55-4f97-9f85-ca242736e669"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "batch.kubernetes.io/controller-uid": "806a5aa7-3c55-4f97-9f85-ca242736e669",
+              "batch.kubernetes.io/job-name": "assistant-news-sync-29781570",
+              "controller-uid": "806a5aa7-3c55-4f97-9f85-ca242736e669",
+              "job-name": "assistant-news-sync-29781570"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "python",
+                  "main.py",
+                  "news",
+                  "--since",
+                  "35"
+                ],
+                "envFrom": [
+                  {
+                    "secretRef": {
+                      "name": "assistant-secrets"
+                    }
+                  }
+                ],
+                "image": "192.0.2.202:30500/assistant-sync:gd158d0bb2f48",
+                "imagePullPolicy": "Always",
+                "name": "sync",
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "256Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "128Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "OnFailure",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "runAsUser": 1000,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "completionTime": "2026-08-16T15:30:45Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-16T15:30:45Z",
+            "lastTransitionTime": "2026-08-16T15:30:45Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-08-16T15:30:45Z",
+            "lastTransitionTime": "2026-08-16T15:30:45Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-08-16T15:30:00Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-13T04:30:00Z"
+        },
+        "creationTimestamp": "2026-08-13T04:30:00Z",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "5154042c-1326-4be9-a047-3c8dc18dff79",
+          "batch.kubernetes.io/job-name": "assistant-rss-sync-29776590",
+          "controller-uid": "5154042c-1326-4be9-a047-3c8dc18dff79",
+          "job-name": "assistant-rss-sync-29776590"
+        },
+        "name": "assistant-rss-sync-29776590",
+        "namespace": "assistant",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "assistant-rss-sync",
+            "uid": "6a0e9605-4d42-4fd5-ae20-8ae491bb0989"
+          }
+        ],
+        "resourceVersion": "2951636",
+        "uid": "5154042c-1326-4be9-a047-3c8dc18dff79"
+      },
+      "spec": {
+        "activeDeadlineSeconds": 1800,
+        "backoffLimit": 1,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "5154042c-1326-4be9-a047-3c8dc18dff79"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "batch.kubernetes.io/controller-uid": "5154042c-1326-4be9-a047-3c8dc18dff79",
+              "batch.kubernetes.io/job-name": "assistant-rss-sync-29776590",
+              "controller-uid": "5154042c-1326-4be9-a047-3c8dc18dff79",
+              "job-name": "assistant-rss-sync-29776590"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "python",
+                  "main.py",
+                  "rss"
+                ],
+                "envFrom": [
+                  {
+                    "secretRef": {
+                      "name": "assistant-secrets"
+                    }
+                  }
+                ],
+                "image": "192.0.2.202:30500/assistant-sync:g4ad26de5cb4c",
+                "imagePullPolicy": "Always",
+                "name": "sync",
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "256Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "128Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "OnFailure",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "runAsUser": 1000,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-13T04:31:15Z",
+            "lastTransitionTime": "2026-08-13T04:31:15Z",
+            "message": "Job has reached the specified backoff limit",
+            "reason": "BackoffLimitExceeded",
+            "status": "True",
+            "type": "FailureTarget"
+          },
+          {
+            "lastProbeTime": "2026-08-13T04:31:32Z",
+            "lastTransitionTime": "2026-08-13T04:31:32Z",
+            "message": "Job has reached the specified backoff limit",
+            "reason": "BackoffLimitExceeded",
+            "status": "True",
+            "type": "Failed"
+          }
+        ],
+        "failed": 1,
+        "ready": 0,
+        "startTime": "2026-08-13T04:30:00Z",
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-13T06:45:00Z"
+        },
+        "creationTimestamp": "2026-08-13T06:45:00Z",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "8c461d77-c0ac-443c-bd47-c71da330616a",
+          "batch.kubernetes.io/job-name": "assistant-rss-sync-29776725",
+          "controller-uid": "8c461d77-c0ac-443c-bd47-c71da330616a",
+          "job-name": "assistant-rss-sync-29776725"
+        },
+        "name": "assistant-rss-sync-29776725",
+        "namespace": "assistant",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "assistant-rss-sync",
+            "uid": "6a0e9605-4d42-4fd5-ae20-8ae491bb0989"
+          }
+        ],
+        "resourceVersion": "2958176",
+        "uid": "8c461d77-c0ac-443c-bd47-c71da330616a"
+      },
+      "spec": {
+        "activeDeadlineSeconds": 1800,
+        "backoffLimit": 1,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "8c461d77-c0ac-443c-bd47-c71da330616a"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "batch.kubernetes.io/controller-uid": "8c461d77-c0ac-443c-bd47-c71da330616a",
+              "batch.kubernetes.io/job-name": "assistant-rss-sync-29776725",
+              "controller-uid": "8c461d77-c0ac-443c-bd47-c71da330616a",
+              "job-name": "assistant-rss-sync-29776725"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "python",
+                  "main.py",
+                  "rss"
+                ],
+                "envFrom": [
+                  {
+                    "secretRef": {
+                      "name": "assistant-secrets"
+                    }
+                  }
+                ],
+                "image": "192.0.2.202:30500/assistant-sync:g4ad26de5cb4c",
+                "imagePullPolicy": "Always",
+                "name": "sync",
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "256Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "128Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "OnFailure",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "runAsUser": 1000,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-13T06:45:52Z",
+            "lastTransitionTime": "2026-08-13T06:45:52Z",
+            "message": "Job has reached the specified backoff limit",
+            "reason": "BackoffLimitExceeded",
+            "status": "True",
+            "type": "FailureTarget"
+          },
+          {
+            "lastProbeTime": "2026-08-13T06:46:32Z",
+            "lastTransitionTime": "2026-08-13T06:46:32Z",
+            "message": "Job has reached the specified backoff limit",
+            "reason": "BackoffLimitExceeded",
+            "status": "True",
+            "type": "Failed"
+          }
+        ],
+        "failed": 1,
+        "ready": 0,
+        "startTime": "2026-08-13T06:45:00Z",
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-13T07:30:00Z"
+        },
+        "creationTimestamp": "2026-08-13T07:30:00Z",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "977b63f5-8072-47b8-a045-9696acb84b22",
+          "batch.kubernetes.io/job-name": "assistant-rss-sync-29776770",
+          "controller-uid": "977b63f5-8072-47b8-a045-9696acb84b22",
+          "job-name": "assistant-rss-sync-29776770"
+        },
+        "name": "assistant-rss-sync-29776770",
+        "namespace": "assistant",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "assistant-rss-sync",
+            "uid": "6a0e9605-4d42-4fd5-ae20-8ae491bb0989"
+          }
+        ],
+        "resourceVersion": "2960380",
+        "uid": "977b63f5-8072-47b8-a045-9696acb84b22"
+      },
+      "spec": {
+        "activeDeadlineSeconds": 1800,
+        "backoffLimit": 1,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "977b63f5-8072-47b8-a045-9696acb84b22"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "batch.kubernetes.io/controller-uid": "977b63f5-8072-47b8-a045-9696acb84b22",
+              "batch.kubernetes.io/job-name": "assistant-rss-sync-29776770",
+              "controller-uid": "977b63f5-8072-47b8-a045-9696acb84b22",
+              "job-name": "assistant-rss-sync-29776770"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "python",
+                  "main.py",
+                  "rss"
+                ],
+                "envFrom": [
+                  {
+                    "secretRef": {
+                      "name": "assistant-secrets"
+                    }
+                  }
+                ],
+                "image": "192.0.2.202:30500/assistant-sync:g4ad26de5cb4c",
+                "imagePullPolicy": "Always",
+                "name": "sync",
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "256Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "128Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "OnFailure",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "runAsUser": 1000,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-13T07:30:43Z",
+            "lastTransitionTime": "2026-08-13T07:30:43Z",
+            "message": "Job has reached the specified backoff limit",
+            "reason": "BackoffLimitExceeded",
+            "status": "True",
+            "type": "FailureTarget"
+          },
+          {
+            "lastProbeTime": "2026-08-13T07:31:25Z",
+            "lastTransitionTime": "2026-08-13T07:31:25Z",
+            "message": "Job has reached the specified backoff limit",
+            "reason": "BackoffLimitExceeded",
+            "status": "True",
+            "type": "Failed"
+          }
+        ],
+        "failed": 1,
+        "ready": 0,
+        "startTime": "2026-08-13T07:30:00Z",
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-16T15:15:00Z"
+        },
+        "creationTimestamp": "2026-08-16T15:16:58Z",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "ed37974d-6b6d-4d1e-98d6-cfccc728c834",
+          "batch.kubernetes.io/job-name": "assistant-rss-sync-29781555",
+          "controller-uid": "ed37974d-6b6d-4d1e-98d6-cfccc728c834",
+          "job-name": "assistant-rss-sync-29781555"
+        },
+        "name": "assistant-rss-sync-29781555",
+        "namespace": "assistant",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "assistant-rss-sync",
+            "uid": "6a0e9605-4d42-4fd5-ae20-8ae491bb0989"
+          }
+        ],
+        "resourceVersion": "3211192",
+        "uid": "ed37974d-6b6d-4d1e-98d6-cfccc728c834"
+      },
+      "spec": {
+        "activeDeadlineSeconds": 1800,
+        "backoffLimit": 1,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "ed37974d-6b6d-4d1e-98d6-cfccc728c834"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "batch.kubernetes.io/controller-uid": "ed37974d-6b6d-4d1e-98d6-cfccc728c834",
+              "batch.kubernetes.io/job-name": "assistant-rss-sync-29781555",
+              "controller-uid": "ed37974d-6b6d-4d1e-98d6-cfccc728c834",
+              "job-name": "assistant-rss-sync-29781555"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "python",
+                  "main.py",
+                  "rss"
+                ],
+                "envFrom": [
+                  {
+                    "secretRef": {
+                      "name": "assistant-secrets"
+                    }
+                  }
+                ],
+                "image": "192.0.2.202:30500/assistant-sync:gd158d0bb2f48",
+                "imagePullPolicy": "Always",
+                "name": "sync",
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "256Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "128Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "OnFailure",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "runAsUser": 1000,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "completionTime": "2026-08-16T15:36:21Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-16T15:36:21Z",
+            "lastTransitionTime": "2026-08-16T15:36:21Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-08-16T15:36:21Z",
+            "lastTransitionTime": "2026-08-16T15:36:21Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-08-16T15:16:58Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-16T15:30:00Z"
+        },
+        "creationTimestamp": "2026-08-16T15:36:21Z",
+        "generation": 1,
+        "labels": {
+          "batch.kubernetes.io/controller-uid": "fc902494-1156-4dd2-9d09-eefdd074148d",
+          "batch.kubernetes.io/job-name": "assistant-rss-sync-29781570",
+          "controller-uid": "fc902494-1156-4dd2-9d09-eefdd074148d",
+          "job-name": "assistant-rss-sync-29781570"
+        },
+        "name": "assistant-rss-sync-29781570",
+        "namespace": "assistant",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "assistant-rss-sync",
+            "uid": "6a0e9605-4d42-4fd5-ae20-8ae491bb0989"
+          }
+        ],
+        "resourceVersion": "3211214",
+        "uid": "fc902494-1156-4dd2-9d09-eefdd074148d"
+      },
+      "spec": {
+        "activeDeadlineSeconds": 1800,
+        "backoffLimit": 1,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "fc902494-1156-4dd2-9d09-eefdd074148d"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "batch.kubernetes.io/controller-uid": "fc902494-1156-4dd2-9d09-eefdd074148d",
+              "batch.kubernetes.io/job-name": "assistant-rss-sync-29781570",
+              "controller-uid": "fc902494-1156-4dd2-9d09-eefdd074148d",
+              "job-name": "assistant-rss-sync-29781570"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "python",
+                  "main.py",
+                  "rss"
+                ],
+                "envFrom": [
+                  {
+                    "secretRef": {
+                      "name": "assistant-secrets"
+                    }
+                  }
+                ],
+                "image": "192.0.2.202:30500/assistant-sync:gd158d0bb2f48",
+                "imagePullPolicy": "Always",
+                "name": "sync",
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "256Mi"
+                  },
+                  "requests": {
+                    "cpu": "50m",
+                    "memory": "128Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File"
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "OnFailure",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "runAsUser": 1000,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30
+          }
+        }
+      },
+      "status": {
+        "active": 1,
+        "ready": 1,
+        "startTime": "2026-08-16T15:36:21Z",
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "objectset.rio.cattle.io/applied": "H4sIAAAAAAAA/5xWbY/aOBf9K48s9dOThLxMeInUDymTWdgyEAEd7aoaIWNuwIsTR7ZDi0b895WdzBDKdDrdb8S55+Tee8695gnhkj6AkJQXKEJrrMiuc/CQhfa02KAI/cnXyEI5KLzBCqPoCeGi4AorygupH/n6HyBKgnIE5Q7BSjFwKO9Qjd4By23CCyU4YyBsssNC2QK2VCphOJD1Uwb+rQBhbw/7hqj16uBZ//tMi83HEbB8qEl/yVPgHFCElMCQ0f27wmWJicbsqzXY8igV5OhkIYbXwEztOitTknR+SNCcvutzOyx3KELEzQY9wD3shxBsgPS8QdgjPRz4Nx4O+lkAYYYhzHQCTSmmubSQCjNmnz/0s8wtZCqbQwYCCgISRV9/kP+qy8hCa8bJfqaRt8DASBZlmEmw0FnYl6PGNW1ZrhpfGWt0M5cE3k1g+zeBb9+EgW/j3mZjh+sgDHrrQdAbbNDp8WQhWQLR3V5jsudZNqE5VSjyXNe1kIK8ZFiBfv+GSd8QihcZ3Y5qERaj2A+7H71+7zYOu5576w0G3aCX3PU9t9/1uv2wG/eG3bvg043vD3vh0E8Gd3Hf/xTHw7DfD/6rO06tKnVTMS1ANPqIrf6BGp2RhWxbgrKlErTYIgttGV9j5tQi30KGK6bm9YAdP6JHC0FxMEyNDtP4PkEWOmBWtWU5WS8RD8l8MZ5N20fzJJ21n0fJ5H51Ox8/JPMWlwQiQLXjhqN4vlzpTy7SeNj+7uVMXQJaYTulShl1Oh+ePn/5lMynyTJZrOJ0fPrQkVpfUvdSdpo67KDneI73/6o0P9yrpF8pbhnP/0h+K8v4y3K0SuPFYjWcJ7fJdDmOJ4sWzAxDGzCeLpLhl3myWnwep6vlZKHzGN/9/RYmncTj6Wq0XKZvRU1nq3Q++6vN5MgDsRzCKqlAOIwTzCzPdW58x3Xcjtc1D0Hz0Oa6i8cTnWQ6m4yHbUYBz/Y7PVqI5nhrTnFBdiA6e0bLEoStTR4dXGfgeL69rijb+K4fer4XogaUVoylnFFy1D3JplylAiQUrTWhSZCFBEheCbOknvRwAKkEVcchLxR8V2bCGePfUkEPlMEWEkkww5fbCZd4TRlV1LCgjeClnqR4MkF6rQjAm1nBjnPO1R1l0MgcKVHByUIHzqoc7nlVqHoSc/0zxUovis6O53BReMdpMm/qaL8zPf4VnGCyg2t8ffwuArPJXmGoz68oVF62tnNeXkf8yGjsIF+Ju9z0eoNpTU+P2i0F38ACGBDFhZZBj5QoQIE0l61EEWK0qL4jI4lUWKgXi8yKO0xZJXRfXrGAqIpYTnmhFax1M2GE52UqeEaZuRbUsTQrrCoUzaHZkPXKBXGgBGJCdDXT1q16vqxqG9QOgLxUx1sq6stmQ6scRegeci6OrWv5Svnfg50F/03cWeb3AZ8lvxTXQqXg+p8KbDT8ZQq/Pj2v9+gJUQV5fbaHY/u6fzAkw8YAFiprh9Tctmu7rmu/BNsX0c4R5/V+ebaRiWmg55vy8aSTrqu9x6VO5wLQuO+MeM2XRn2FVWX2y+nfAAAA///r6skJBgsAAA",
+          "objectset.rio.cattle.io/id": "helm-controller-chart-registration",
+          "objectset.rio.cattle.io/owner-gvk": "helm.cattle.io/v1, Kind=HelmChart",
+          "objectset.rio.cattle.io/owner-name": "traefik",
+          "objectset.rio.cattle.io/owner-namespace": "kube-system"
+        },
+        "creationTimestamp": "2026-06-26T20:42:27Z",
+        "generation": 1,
+        "labels": {
+          "helmcharts.helm.cattle.io/chart": "traefik",
+          "objectset.rio.cattle.io/hash": "c0f97ea7a25e3dec71957c7a3241a38f3e5fae5f"
+        },
+        "name": "helm-install-traefik",
+        "namespace": "kube-system",
+        "ownerReferences": [
+          {
+            "apiVersion": "helm.cattle.io/v1",
+            "blockOwnerDeletion": false,
+            "controller": false,
+            "kind": "HelmChart",
+            "name": "traefik",
+            "uid": "6f0c3143-2432-4532-a7dd-5b3537b9379d"
+          }
+        ],
+        "resourceVersion": "733",
+        "uid": "0e2970e7-4236-49ca-a53b-d1e9095dbc81"
+      },
+      "spec": {
+        "backoffLimit": 1000,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "0e2970e7-4236-49ca-a53b-d1e9095dbc81"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "annotations": {
+              "helmcharts.helm.cattle.io/configHash": "SHA256=187DA5610D199637EF8108616856A7C6F3B422C75C2E9FA82BAAC5883310F505"
+            },
+            "labels": {
+              "batch.kubernetes.io/controller-uid": "0e2970e7-4236-49ca-a53b-d1e9095dbc81",
+              "batch.kubernetes.io/job-name": "helm-install-traefik",
+              "controller-uid": "0e2970e7-4236-49ca-a53b-d1e9095dbc81",
+              "helmcharts.helm.cattle.io/chart": "traefik",
+              "job-name": "helm-install-traefik"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "args": [
+                  "install",
+                  "--set-string",
+                  "global.systemDefaultRegistry="
+                ],
+                "env": [
+                  {
+                    "name": "NAME",
+                    "value": "traefik"
+                  },
+                  {
+                    "name": "VERSION"
+                  },
+                  {
+                    "name": "REPO"
+                  },
+                  {
+                    "name": "HELM_DRIVER",
+                    "value": "secret"
+                  },
+                  {
+                    "name": "CHART_NAMESPACE",
+                    "value": "kube-system"
+                  },
+                  {
+                    "name": "CHART",
+                    "value": "https://%{KUBERNETES_API}%/static/charts/traefik-37.1.1+up37.1.0.tgz"
+                  },
+                  {
+                    "name": "HELM_VERSION"
+                  },
+                  {
+                    "name": "TARGET_NAMESPACE",
+                    "value": "kube-system"
+                  },
+                  {
+                    "name": "AUTH_PASS_CREDENTIALS",
+                    "value": "false"
+                  },
+                  {
+                    "name": "INSECURE_SKIP_TLS_VERIFY",
+                    "value": "false"
+                  },
+                  {
+                    "name": "PLAIN_HTTP",
+                    "value": "false"
+                  },
+                  {
+                    "name": "NO_PROXY",
+                    "value": ".svc,.cluster.local,10.42.0.0/16,10.43.0.0/16"
+                  },
+                  {
+                    "name": "FAILURE_POLICY",
+                    "value": "reinstall"
+                  }
+                ],
+                "image": "rancher/klipper-helm:v0.9.12-build20251215",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "helm",
+                "resources": {},
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/home/klipper-helm/.helm",
+                    "name": "klipper-helm"
+                  },
+                  {
+                    "mountPath": "/home/klipper-helm/.cache",
+                    "name": "klipper-cache"
+                  },
+                  {
+                    "mountPath": "/home/klipper-helm/.config",
+                    "name": "klipper-config"
+                  },
+                  {
+                    "mountPath": "/tmp",
+                    "name": "tmp"
+                  },
+                  {
+                    "mountPath": "/config",
+                    "name": "values"
+                  },
+                  {
+                    "mountPath": "/chart",
+                    "name": "content"
+                  }
+                ]
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "nodeSelector": {
+              "kubernetes.io/os": "linux"
+            },
+            "restartPolicy": "OnFailure",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "serviceAccount": "helm-traefik",
+            "serviceAccountName": "helm-traefik",
+            "terminationGracePeriodSeconds": 30,
+            "volumes": [
+              {
+                "emptyDir": {
+                  "medium": "Memory"
+                },
+                "name": "klipper-helm"
+              },
+              {
+                "emptyDir": {
+                  "medium": "Memory"
+                },
+                "name": "klipper-cache"
+              },
+              {
+                "emptyDir": {
+                  "medium": "Memory"
+                },
+                "name": "klipper-config"
+              },
+              {
+                "emptyDir": {
+                  "medium": "Memory"
+                },
+                "name": "tmp"
+              },
+              {
+                "name": "values",
+                "projected": {
+                  "defaultMode": 420,
+                  "sources": [
+                    {
+                      "secret": {
+                        "items": [
+                          {
+                            "key": "HelmChartValuesContent",
+                            "path": "values-0-000-HelmChart-ValuesContent.yaml"
+                          }
+                        ],
+                        "name": "chart-values-traefik"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "configMap": {
+                  "defaultMode": 420,
+                  "name": "chart-content-traefik"
+                },
+                "name": "content"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "completionTime": "2026-06-26T20:42:54Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-06-26T20:42:54Z",
+            "lastTransitionTime": "2026-06-26T20:42:54Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-06-26T20:42:54Z",
+            "lastTransitionTime": "2026-06-26T20:42:54Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-06-26T20:42:30Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "objectset.rio.cattle.io/applied": "H4sIAAAAAAAA/6RWX2/iuBf9Kj9ZmqdfEpIQShNpHlIaFnYoRMCMdjWqkDE3xYtjR7bDDKr47is7TCeUTqfVvsV/zvG99xxf5xHhin4BqajgKEFrrMm2sw+Qg3aUb1CC/hRr5KASNN5gjVHyiDDnQmNNBVdmKNb/ANEKtCep8AjWmoFHRYca9BZY6RLBtRSMgXTJFkvtSnigSkvLgZxfMohvHKT7sN+diFpL+8D53yfKNx9HwMqBIf0tD8cloARpiaGgO5fIzZsgqsLE4Hb1Glx1UBpKdHQQw2tgNn8TmU1Lec+CtLNvPnKL1RYlKLouiu6mR7pB0F93+2FBNgT3/Lgf94q4CPt+iAu/F4cmiFNKtsiUK40Zc88P+1UGDrIZzqEACZyAQsnXZ1a4qDhy0JoJspsZ5C0wsPIlBWYKHPRT5Kepk4PaEr0oQm2tUsRx4Pth172G69iNrgNw172AuP24C3gdk6Df66Hj/dFBqgJiKr/GZCeKYkJLqlES+L7vIA1lxbAGs/6KaV8RTfCCPowaMRajNOxdfcy6N/4gisL4ejgIBkEUp8ObYTS4juOr4U0cRmE/zaIgi66i+CbuRoM0intxHNz0/4tTjq1MTXEx5SBPOskH84FOmqN7BwHf26VTgafpXYYctMesfl7vo/O060s2X4xn0/bUPMtn7fEom9ytbufjL9m8xaeASNDtfYNROl+uzLGLPB20zz6/OOeA1rat1pVKOp0Pj58+32TzabbMFqs0Hx8/dJQRjjRFUp1WLm637wVe8P+66vYvgn4huWU6/yN7V5Tp5+VolaeLxWowz26z6XKcThYtmHV6GzCeLrLB53m2Wnwa56vlZGHiGA//fg2TT9LxdDVaLvPXdk1nq3w++6vN5Kk9cTzCaqVBekwQzJzA96LQ8z2/E1zZQfc0aHMN0/HEBJnPJuNBm1HCD08d7x1ES/xgZzEnW5CdHaNVBdI17k32vhd7Qeiua8o2oR/2gjDooRMorxnLBaPkYGpSTIXOJSjgrR5gSJCDJChRS9uBHo3jgdSS6sNAcA3ftb26jIlvuaR7yuABMkUww+etB1d4TRnV1LKgjRSVuR7pZIJMv5CANzPODnMh9JAyOMmcaFnD0UF7weoS7kTNdXO9SvOZY206QGcrSjhLvOOdIj/l0V6zNf4dnGCyhUt8M/0mAtuiXmBo5i8odFm1Wm9ZXe54zmjtoF7Yd97GTVsymh7vjVu42MACGBAtpJHBXCnJQYOyL6pCCWKU19+RlURpLPWTRWZ8iCmrpanLCxaQNU/VVHCjYKOb3UZEWeVSFJTZfq8PlW1hNde0hFsocM1000dB7imBlBCTzbT1bJ6/RI0VGhdAWenDLZXNS7KhdYkSdAelkIfW23uh/vtgP0V/J+6n1G8D/pD9XGAHVVKY3xHYGPjTTfz6+KPFJ0+Q5tetAbrnD9X90VA3Md3h6gJ08sk56iUXWa001rXtBsd/AwAA//9qXSb6nQoAAA",
+          "objectset.rio.cattle.io/id": "helm-controller-chart-registration",
+          "objectset.rio.cattle.io/owner-gvk": "helm.cattle.io/v1, Kind=HelmChart",
+          "objectset.rio.cattle.io/owner-name": "traefik-crd",
+          "objectset.rio.cattle.io/owner-namespace": "kube-system"
+        },
+        "creationTimestamp": "2026-06-26T20:42:27Z",
+        "generation": 1,
+        "labels": {
+          "helmcharts.helm.cattle.io/chart": "traefik-crd",
+          "objectset.rio.cattle.io/hash": "48ff3d5c3117b372fcdca509795f9f2702af0592"
+        },
+        "name": "helm-install-traefik-crd",
+        "namespace": "kube-system",
+        "ownerReferences": [
+          {
+            "apiVersion": "helm.cattle.io/v1",
+            "blockOwnerDeletion": false,
+            "controller": false,
+            "kind": "HelmChart",
+            "name": "traefik-crd",
+            "uid": "f9910023-8e89-481e-b51c-793eab9c1755"
+          }
+        ],
+        "resourceVersion": "720",
+        "uid": "079f0f8d-ff4c-4c89-b8a3-1e19f4444256"
+      },
+      "spec": {
+        "backoffLimit": 1000,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "079f0f8d-ff4c-4c89-b8a3-1e19f4444256"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "annotations": {
+              "helmcharts.helm.cattle.io/configHash": "SHA256=E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+            },
+            "labels": {
+              "batch.kubernetes.io/controller-uid": "079f0f8d-ff4c-4c89-b8a3-1e19f4444256",
+              "batch.kubernetes.io/job-name": "helm-install-traefik-crd",
+              "controller-uid": "079f0f8d-ff4c-4c89-b8a3-1e19f4444256",
+              "helmcharts.helm.cattle.io/chart": "traefik-crd",
+              "job-name": "helm-install-traefik-crd"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "args": [
+                  "install"
+                ],
+                "env": [
+                  {
+                    "name": "NAME",
+                    "value": "traefik-crd"
+                  },
+                  {
+                    "name": "VERSION"
+                  },
+                  {
+                    "name": "REPO"
+                  },
+                  {
+                    "name": "HELM_DRIVER",
+                    "value": "secret"
+                  },
+                  {
+                    "name": "CHART_NAMESPACE",
+                    "value": "kube-system"
+                  },
+                  {
+                    "name": "CHART",
+                    "value": "https://%{KUBERNETES_API}%/static/charts/traefik-crd-37.1.1+up37.1.0.tgz"
+                  },
+                  {
+                    "name": "HELM_VERSION"
+                  },
+                  {
+                    "name": "TARGET_NAMESPACE",
+                    "value": "kube-system"
+                  },
+                  {
+                    "name": "AUTH_PASS_CREDENTIALS",
+                    "value": "false"
+                  },
+                  {
+                    "name": "INSECURE_SKIP_TLS_VERIFY",
+                    "value": "false"
+                  },
+                  {
+                    "name": "PLAIN_HTTP",
+                    "value": "false"
+                  },
+                  {
+                    "name": "NO_PROXY",
+                    "value": ".svc,.cluster.local,10.42.0.0/16,10.43.0.0/16"
+                  },
+                  {
+                    "name": "FAILURE_POLICY",
+                    "value": "reinstall"
+                  }
+                ],
+                "image": "rancher/klipper-helm:v0.9.12-build20251215",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "helm",
+                "resources": {},
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/home/klipper-helm/.helm",
+                    "name": "klipper-helm"
+                  },
+                  {
+                    "mountPath": "/home/klipper-helm/.cache",
+                    "name": "klipper-cache"
+                  },
+                  {
+                    "mountPath": "/home/klipper-helm/.config",
+                    "name": "klipper-config"
+                  },
+                  {
+                    "mountPath": "/tmp",
+                    "name": "tmp"
+                  },
+                  {
+                    "mountPath": "/config",
+                    "name": "values"
+                  },
+                  {
+                    "mountPath": "/chart",
+                    "name": "content"
+                  }
+                ]
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "nodeSelector": {
+              "kubernetes.io/os": "linux"
+            },
+            "restartPolicy": "OnFailure",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "serviceAccount": "helm-traefik-crd",
+            "serviceAccountName": "helm-traefik-crd",
+            "terminationGracePeriodSeconds": 30,
+            "volumes": [
+              {
+                "emptyDir": {
+                  "medium": "Memory"
+                },
+                "name": "klipper-helm"
+              },
+              {
+                "emptyDir": {
+                  "medium": "Memory"
+                },
+                "name": "klipper-cache"
+              },
+              {
+                "emptyDir": {
+                  "medium": "Memory"
+                },
+                "name": "klipper-config"
+              },
+              {
+                "emptyDir": {
+                  "medium": "Memory"
+                },
+                "name": "tmp"
+              },
+              {
+                "name": "values",
+                "projected": {
+                  "defaultMode": 420,
+                  "sources": [
+                    {
+                      "secret": {
+                        "name": "chart-values-traefik-crd"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "configMap": {
+                  "defaultMode": 420,
+                  "name": "chart-content-traefik-crd"
+                },
+                "name": "content"
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "completionTime": "2026-06-26T20:42:53Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-06-26T20:42:53Z",
+            "lastTransitionTime": "2026-06-26T20:42:53Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-06-26T20:42:53Z",
+            "lastTransitionTime": "2026-06-26T20:42:53Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-06-26T20:42:30Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-16T15:17:00Z"
+        },
+        "creationTimestamp": "2026-08-16T15:17:00Z",
+        "generation": 1,
+        "labels": {
+          "app": "syncbot",
+          "batch.kubernetes.io/controller-uid": "2d38c458-7a4f-4446-8ec3-3ea00ab51ac8",
+          "batch.kubernetes.io/job-name": "acme-persons-29781557",
+          "controller-uid": "2d38c458-7a4f-4446-8ec3-3ea00ab51ac8",
+          "job-name": "acme-persons-29781557"
+        },
+        "name": "acme-persons-29781557",
+        "namespace": "syncbot",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "acme-persons",
+            "uid": "0ad65af6-dafe-42e6-8e3d-fefe65763944"
+          }
+        ],
+        "resourceVersion": "3210296",
+        "uid": "2d38c458-7a4f-4446-8ec3-3ea00ab51ac8"
+      },
+      "spec": {
+        "activeDeadlineSeconds": 300,
+        "backoffLimit": 6,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "2d38c458-7a4f-4446-8ec3-3ea00ab51ac8"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "syncbot",
+              "batch.kubernetes.io/controller-uid": "2d38c458-7a4f-4446-8ec3-3ea00ab51ac8",
+              "batch.kubernetes.io/job-name": "acme-persons-29781557",
+              "controller-uid": "2d38c458-7a4f-4446-8ec3-3ea00ab51ac8",
+              "job-name": "acme-persons-29781557"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "command": [
+                  "python",
+                  "main.py",
+                  "--job",
+                  "acme",
+                  "populate-persons"
+                ],
+                "env": [
+                  {
+                    "name": "NO_MIGRATE",
+                    "value": "1"
+                  },
+                  {
+                    "name": "JOBS_YAML",
+                    "value": "/config/jobs.yaml"
+                  }
+                ],
+                "envFrom": [
+                  {
+                    "secretRef": {
+                      "name": "syncbot-secrets"
+                    }
+                  }
+                ],
+                "image": "192.0.2.202:30500/syncbot-sync:latest",
+                "imagePullPolicy": "Always",
+                "name": "persons",
+                "resources": {},
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/config",
+                    "name": "jobs-config",
+                    "readOnly": true
+                  }
+                ]
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "OnFailure",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "runAsUser": 1000
+            },
+            "terminationGracePeriodSeconds": 30,
+            "volumes": [
+              {
+                "name": "jobs-config",
+                "secret": {
+                  "defaultMode": 420,
+                  "secretName": "syncbot-jobs"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "completionTime": "2026-08-16T15:17:16Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-16T15:17:16Z",
+            "lastTransitionTime": "2026-08-16T15:17:16Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-08-16T15:17:16Z",
+            "lastTransitionTime": "2026-08-16T15:17:16Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-08-16T15:17:00Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-16T15:54:00Z"
+        },
+        "creationTimestamp": "2026-08-16T15:54:00Z",
+        "generation": 1,
+        "labels": {
+          "app": "syncbot",
+          "batch.kubernetes.io/controller-uid": "68284407-66d9-419a-95de-6d35166a585e",
+          "batch.kubernetes.io/job-name": "acme-sync-29781594",
+          "controller-uid": "68284407-66d9-419a-95de-6d35166a585e",
+          "job-name": "acme-sync-29781594"
+        },
+        "name": "acme-sync-29781594",
+        "namespace": "syncbot",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "acme-sync",
+            "uid": "3dbc6e2e-45a4-47db-b9ae-438acb47e0c0"
+          }
+        ],
+        "resourceVersion": "3211986",
+        "uid": "68284407-66d9-419a-95de-6d35166a585e"
+      },
+      "spec": {
+        "activeDeadlineSeconds": 600,
+        "backoffLimit": 6,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "68284407-66d9-419a-95de-6d35166a585e"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "syncbot",
+              "batch.kubernetes.io/controller-uid": "68284407-66d9-419a-95de-6d35166a585e",
+              "batch.kubernetes.io/job-name": "acme-sync-29781594",
+              "controller-uid": "68284407-66d9-419a-95de-6d35166a585e",
+              "job-name": "acme-sync-29781594"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "command": [
+                  "python",
+                  "main.py",
+                  "--job",
+                  "acme",
+                  "sync-cycle",
+                  "--since",
+                  "5",
+                  "--sources",
+                  "jira,confluence"
+                ],
+                "env": [
+                  {
+                    "name": "NO_MIGRATE",
+                    "value": "1"
+                  },
+                  {
+                    "name": "JOBS_YAML",
+                    "value": "/config/jobs.yaml"
+                  }
+                ],
+                "envFrom": [
+                  {
+                    "secretRef": {
+                      "name": "syncbot-secrets"
+                    }
+                  }
+                ],
+                "image": "192.0.2.202:30500/syncbot-sync:latest",
+                "imagePullPolicy": "Always",
+                "name": "sync",
+                "resources": {},
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  }
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/config",
+                    "name": "jobs-config",
+                    "readOnly": true
+                  }
+                ]
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "restartPolicy": "OnFailure",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "runAsNonRoot": true,
+              "runAsUser": 1000
+            },
+            "terminationGracePeriodSeconds": 30,
+            "volumes": [
+              {
+                "name": "jobs-config",
+                "secret": {
+                  "defaultMode": 420,
+                  "secretName": "syncbot-jobs"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "status": {
+        "completionTime": "2026-08-16T15:54:10Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-16T15:54:10Z",
+            "lastTransitionTime": "2026-08-16T15:54:10Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-08-16T15:54:10Z",
+            "lastTransitionTime": "2026-08-16T15:54:10Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-08-16T15:54:00Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-15T01:47:00Z"
+        },
+        "creationTimestamp": "2026-08-15T01:47:00Z",
+        "generation": 1,
+        "labels": {
+          "app": "pg-backup",
+          "batch.kubernetes.io/controller-uid": "6adb5eeb-5f5f-4830-9bc5-d89e6cb7cb3a",
+          "batch.kubernetes.io/job-name": "pg-backup-29779307",
+          "controller-uid": "6adb5eeb-5f5f-4830-9bc5-d89e6cb7cb3a",
+          "job-name": "pg-backup-29779307"
+        },
+        "name": "pg-backup-29779307",
+        "namespace": "postgres",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "pg-backup",
+            "uid": "a4142533-a896-4677-a801-8c4fe24b9937"
+          }
+        ],
+        "resourceVersion": "3084468",
+        "uid": "6adb5eeb-5f5f-4830-9bc5-d89e6cb7cb3a"
+      },
+      "spec": {
+        "backoffLimit": 2,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "6adb5eeb-5f5f-4830-9bc5-d89e6cb7cb3a"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "pg-backup",
+              "batch.kubernetes.io/controller-uid": "6adb5eeb-5f5f-4830-9bc5-d89e6cb7cb3a",
+              "batch.kubernetes.io/job-name": "pg-backup-29779307",
+              "controller-uid": "6adb5eeb-5f5f-4830-9bc5-d89e6cb7cb3a",
+              "job-name": "pg-backup-29779307"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "sh",
+                  "-c",
+                  "set -eu\nexport PGPASSWORD=\"$POSTGRES_PASSWORD\"\nH=postgres.postgres.svc.cluster.local\nSTAMP=$(date +%Y%m%d-%H%M)\nfor DB in $(psql -h \"$H\" -U \"$POSTGRES_USER\" -d \"$POSTGRES_DB\" -At \\\n    -c \"SELECT datname FROM pg_database WHERE NOT datistemplate\"); do\n  echo \"dumping $DB\"\n  pg_dump -h \"$H\" -U \"$POSTGRES_USER\" -Fc \"$DB\" \\\n    > \"/backups/${DB}-${STAMP}.dump.tmp\"\n  mv \"/backups/${DB}-${STAMP}.dump.tmp\" \"/backups/${DB}-${STAMP}.dump\"\ndone\nfind /backups -name '*.dump' -mtime +14 -delete\nfind /backups -name '*.dump.tmp' -mmin +120 -delete\necho \"backup complete:\"; ls -la /backups | tail -20\n"
+                ],
+                "envFrom": [
+                  {
+                    "secretRef": {
+                      "name": "postgres-secret"
+                    }
+                  }
+                ],
+                "image": "postgres:16-alpine",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "backup",
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "512Mi"
+                  },
+                  "requests": {
+                    "cpu": "100m",
+                    "memory": "128Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/backups",
+                    "name": "backups"
+                  }
+                ]
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "nodeSelector": {
+              "kubernetes.io/hostname": "node-b"
+            },
+            "restartPolicy": "OnFailure",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30,
+            "volumes": [
+              {
+                "hostPath": {
+                  "path": "/var/backups/pg",
+                  "type": "DirectoryOrCreate"
+                },
+                "name": "backups"
+              }
+            ]
+          }
+        },
+        "ttlSecondsAfterFinished": 172800
+      },
+      "status": {
+        "completionTime": "2026-08-15T01:47:21Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-15T01:47:21Z",
+            "lastTransitionTime": "2026-08-15T01:47:21Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-08-15T01:47:21Z",
+            "lastTransitionTime": "2026-08-15T01:47:21Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-08-15T01:47:00Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    },
+    {
+      "apiVersion": "batch/v1",
+      "kind": "Job",
+      "metadata": {
+        "annotations": {
+          "batch.kubernetes.io/cronjob-scheduled-timestamp": "2026-08-16T01:47:00Z"
+        },
+        "creationTimestamp": "2026-08-16T01:47:00Z",
+        "generation": 1,
+        "labels": {
+          "app": "pg-backup",
+          "batch.kubernetes.io/controller-uid": "d7ace742-810f-453b-a9cc-d720ce0356ca",
+          "batch.kubernetes.io/job-name": "pg-backup-29780747",
+          "controller-uid": "d7ace742-810f-453b-a9cc-d720ce0356ca",
+          "job-name": "pg-backup-29780747"
+        },
+        "name": "pg-backup-29780747",
+        "namespace": "postgres",
+        "ownerReferences": [
+          {
+            "apiVersion": "batch/v1",
+            "blockOwnerDeletion": true,
+            "controller": true,
+            "kind": "CronJob",
+            "name": "pg-backup",
+            "uid": "a4142533-a896-4677-a801-8c4fe24b9937"
+          }
+        ],
+        "resourceVersion": "3159785",
+        "uid": "d7ace742-810f-453b-a9cc-d720ce0356ca"
+      },
+      "spec": {
+        "backoffLimit": 2,
+        "completionMode": "NonIndexed",
+        "completions": 1,
+        "manualSelector": false,
+        "parallelism": 1,
+        "podReplacementPolicy": "TerminatingOrFailed",
+        "selector": {
+          "matchLabels": {
+            "batch.kubernetes.io/controller-uid": "d7ace742-810f-453b-a9cc-d720ce0356ca"
+          }
+        },
+        "suspend": false,
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "pg-backup",
+              "batch.kubernetes.io/controller-uid": "d7ace742-810f-453b-a9cc-d720ce0356ca",
+              "batch.kubernetes.io/job-name": "pg-backup-29780747",
+              "controller-uid": "d7ace742-810f-453b-a9cc-d720ce0356ca",
+              "job-name": "pg-backup-29780747"
+            }
+          },
+          "spec": {
+            "automountServiceAccountToken": false,
+            "containers": [
+              {
+                "command": [
+                  "sh",
+                  "-c",
+                  "set -eu\nexport PGPASSWORD=\"$POSTGRES_PASSWORD\"\nH=postgres.postgres.svc.cluster.local\nSTAMP=$(date +%Y%m%d-%H%M)\nfor DB in $(psql -h \"$H\" -U \"$POSTGRES_USER\" -d \"$POSTGRES_DB\" -At \\\n    -c \"SELECT datname FROM pg_database WHERE NOT datistemplate\"); do\n  echo \"dumping $DB\"\n  pg_dump -h \"$H\" -U \"$POSTGRES_USER\" -Fc \"$DB\" \\\n    > \"/backups/${DB}-${STAMP}.dump.tmp\"\n  mv \"/backups/${DB}-${STAMP}.dump.tmp\" \"/backups/${DB}-${STAMP}.dump\"\ndone\nfind /backups -name '*.dump' -mtime +14 -delete\nfind /backups -name '*.dump.tmp' -mmin +120 -delete\necho \"backup complete:\"; ls -la /backups | tail -20\n"
+                ],
+                "envFrom": [
+                  {
+                    "secretRef": {
+                      "name": "postgres-secret"
+                    }
+                  }
+                ],
+                "image": "postgres:16-alpine",
+                "imagePullPolicy": "IfNotPresent",
+                "name": "backup",
+                "resources": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "512Mi"
+                  },
+                  "requests": {
+                    "cpu": "100m",
+                    "memory": "128Mi"
+                  }
+                },
+                "securityContext": {
+                  "allowPrivilegeEscalation": false,
+                  "capabilities": {
+                    "drop": [
+                      "ALL"
+                    ]
+                  },
+                  "readOnlyRootFilesystem": true
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                  {
+                    "mountPath": "/backups",
+                    "name": "backups"
+                  }
+                ]
+              }
+            ],
+            "dnsPolicy": "ClusterFirst",
+            "nodeSelector": {
+              "kubernetes.io/hostname": "node-b"
+            },
+            "restartPolicy": "OnFailure",
+            "schedulerName": "default-scheduler",
+            "securityContext": {
+              "seccompProfile": {
+                "type": "RuntimeDefault"
+              }
+            },
+            "terminationGracePeriodSeconds": 30,
+            "volumes": [
+              {
+                "hostPath": {
+                  "path": "/var/backups/pg",
+                  "type": "DirectoryOrCreate"
+                },
+                "name": "backups"
+              }
+            ]
+          }
+        },
+        "ttlSecondsAfterFinished": 172800
+      },
+      "status": {
+        "completionTime": "2026-08-16T01:47:23Z",
+        "conditions": [
+          {
+            "lastProbeTime": "2026-08-16T01:47:23Z",
+            "lastTransitionTime": "2026-08-16T01:47:23Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "SuccessCriteriaMet"
+          },
+          {
+            "lastProbeTime": "2026-08-16T01:47:23Z",
+            "lastTransitionTime": "2026-08-16T01:47:23Z",
+            "message": "Reached expected number of succeeded pods",
+            "reason": "CompletionsReached",
+            "status": "True",
+            "type": "Complete"
+          }
+        ],
+        "ready": 0,
+        "startTime": "2026-08-16T01:47:00Z",
+        "succeeded": 1,
+        "terminating": 0,
+        "uncountedTerminatedPods": {}
+      }
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}
